@@ -3,7 +3,21 @@ extends Node
 @onready var ui: Control = $UI
 @onready var arena: Node3D = $Arena
 
+#
+func _ready() -> void:
+	AudioGlobal.set_music_state(AudioGlobal.STATE.MAINMENU)
 
 func _on_start_button_pressed() -> void:
 	ui.hide()
 	arena.process_mode = Node.PROCESS_MODE_ALWAYS
+	AudioGlobal.set_music_state(AudioGlobal.STATE.FIGHT) #fade to fight music
+
+
+
+# button sounds
+func _on_start_button_mouse_entered() -> void:
+	AudioGlobal.play_sound("button_1")
+	pass # Replace with function body.
+func _on_start_button_focus_entered() -> void:
+	AudioGlobal.play_sound("button_1")
+	pass # Replace with function body.
