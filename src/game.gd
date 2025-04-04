@@ -2,7 +2,7 @@ extends Node
 
 @onready var ui: Control = $UI
 
-#
+
 func _ready() -> void:
 	AudioGlobal.set_music_state(AudioGlobal.STATE.MAINMENU)
 
