@@ -1,7 +1,6 @@
 extends Node
 
 @onready var ui: Control = $UI
-@onready var arena: Node3D = $Arena
 
 #
 func _ready() -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b08ig35eso0ox"]
+[gd_scene load_steps=3 format=3 uid="uid://b08ig35eso0ox"]
 
 [ext_resource type="Script" uid="uid://b7j4utq80hr78" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://cg3jfm0s4gfj4" path="res://character/character.tscn" id="2_e2o6t"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_80nbo")
@@ -31,6 +32,11 @@ text = "Game Title"
 [node name="StartButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Start"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="Node2D" instance=ExtResource("2_e2o6t")]
+position = Vector2(75, 97)
 
 [connection signal="focus_entered" from="UI/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
 [connection signal="mouse_entered" from="UI/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
