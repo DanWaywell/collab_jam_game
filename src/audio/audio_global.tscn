@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://6au0e78rko7r"]
+[gd_scene load_steps=8 format=3 uid="uid://6au0e78rko7r"]
 
 [ext_resource type="Script" uid="uid://cvpwj068duxtn" path="res://audio/audio_global.gd" id="1_lj2qa"]
 [ext_resource type="AudioStream" uid="uid://bmg3ebdsjar2c" path="res://audio/sfx/button_1.wav" id="2_tcplg"]
+[ext_resource type="AudioStream" uid="uid://cnd155birun7t" path="res://audio/music/crow_fields.mp3" id="3_40v7m"]
+[ext_resource type="AudioStream" uid="uid://8ept4m12u4yb" path="res://audio/sfx/button_2.wav" id="3_60upr"]
 [ext_resource type="AudioStream" uid="uid://cro3amrv7r2vo" path="res://audio/music/together_alone.mp3" id="3_weu62"]
 [ext_resource type="AudioStream" uid="uid://ch066y8ldxbic" path="res://audio/music/the_floor_is_magic.mp3" id="4_40v7m"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_tcplg"]
-clip_count = 4
+clip_count = 5
 clip_0/name = &"OPENINGmusic"
+clip_0/stream = ExtResource("3_40v7m")
 clip_0/auto_advance = 0
 clip_1/name = &"MAINMENUmusic"
 clip_1/stream = ExtResource("3_weu62")
@@ -17,7 +20,8 @@ clip_2/stream = ExtResource("4_40v7m")
 clip_2/auto_advance = 0
 clip_3/name = &"DIALOGUEmusic"
 clip_3/auto_advance = 0
-initial_clip = 1
+clip_4/name = &"LOSEmusic"
+clip_4/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 1.0,
@@ -29,11 +33,12 @@ Vector2i(-1, -1): {
 
 [node name="AudioGlobal" type="Node"]
 script = ExtResource("1_lj2qa")
-sfx = Array[Resource]([ExtResource("2_tcplg")])
+sfx = Array[Resource]([ExtResource("2_tcplg"), ExtResource("3_60upr")])
 
 [node name="sounds" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_tcplg")
+autoplay = true
 bus = &"music"
 playback_type = 1

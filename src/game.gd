@@ -5,10 +5,11 @@ extends Node
 
 #
 func _ready() -> void:
-	AudioGlobal.set_music_state(AudioGlobal.STATE.MAINMENU)
+	AudioGlobal.set_music_state(AudioGlobal.STATE.OPENING)
 
 func _on_start_button_pressed() -> void:
 	ui.hide()
+	AudioGlobal.play_sound("button_1")
 	arena.process_mode = Node.PROCESS_MODE_ALWAYS
 	AudioGlobal.set_music_state(AudioGlobal.STATE.FIGHT) #fade to fight music
 
@@ -16,8 +17,8 @@ func _on_start_button_pressed() -> void:
 
 # button sounds
 func _on_start_button_mouse_entered() -> void:
-	AudioGlobal.play_sound("button_1")
+	AudioGlobal.play_sound("button_2")
 	pass # Replace with function body.
 func _on_start_button_focus_entered() -> void:
-	AudioGlobal.play_sound("button_1")
+	AudioGlobal.play_sound("button_2")
 	pass # Replace with function body.
