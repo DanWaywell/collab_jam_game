@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://b08ig35eso0ox"]
+
+[ext_resource type="Script" uid="uid://b7j4utq80hr78" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://cllvq0bda1lt0" path="res://audio/camera/arena_camera.tscn" id="2_7jktm"]
+[ext_resource type="Texture2D" uid="uid://do7ovd42duyjr" path="res://icon.svg" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://m0kfemwtesg" path="res://audio/player_character/player_character.tscn" id="3_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://qyktsx6cxg6t" path="res://audio/opponent_character/opponent_character.tscn" id="4_7jktm"]
+
+[sub_resource type="Environment" id="Environment_7jktm"]
+background_color = Color(0.76662, 0.76662, 0.76662, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feb5d"]
+albedo_texture = ExtResource("2_e2o6t")
+
+[sub_resource type="QuadMesh" id="QuadMesh_80nbo"]
+size = Vector2(40, 20)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fc0e3"]
+points = PackedVector3Array(20, 10, 0, 20, -10, 0, -20, 10, 0, -20, -10, 0)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_80nbo")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Title"
+
+[node name="StartButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Arena" type="Node3D" parent="."]
+process_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Arena"]
+environment = SubResource("Environment_7jktm")
+
+[node name="Ground" type="MeshInstance3D" parent="Arena"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_feb5d")
+mesh = SubResource("QuadMesh_80nbo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Ground/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fc0e3")
+
+[node name="PlayerCharacter" parent="Arena" instance=ExtResource("3_fc0e3")]
+
+[node name="OpponentCharacter" parent="Arena" instance=ExtResource("4_7jktm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7992, 0, 0)
+
+[node name="ArenaCamera" parent="Arena" node_paths=PackedStringArray("character") instance=ExtResource("2_7jktm")]
+character = NodePath("../PlayerCharacter")
+
+[connection signal="focus_entered" from="UI/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
+[connection signal="mouse_entered" from="UI/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
