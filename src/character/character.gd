@@ -6,15 +6,21 @@ var speed = 60.0
 
 const PROJECTILE = preload("res://projectile/projectile.tscn")
 
+var input_direction := Vector2()
 var direction_facing = Vector2.RIGHT
 
 var health = 3
 
 @onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer
+@onready var touch_screen_joystick: Node2D = $TouchScreenControler/TouchJoystick
+
 
 func _physics_process(_delta: float) -> void:
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if touch_screen_joystick.position_vector != Vector2(0,0):
+		input_direction = touch_screen_joystick.position_vector
+	else:
+		input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	var move_direction = input_direction.normalized()
 
