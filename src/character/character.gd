@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
-const SPEED = 60.0
-const ACCELERATION = 10.0
-const DECELERATION = 20.0
+var speed = 60.0
+#const ACCELERATION = 10.0
+#const DECELERATION = 20.0
 
 const PROJECTILE = preload("res://projectile/projectile.tscn")
 
 var direction_facing = Vector2.RIGHT
 
 var health = 3
+
+@onready var sprite = $Sprite2D
 
 func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -17,9 +19,9 @@ func _physics_process(delta: float) -> void:
 
 	# Movement x y
 	if move_direction:
-		velocity = move_direction * SPEED
-		#velocity.x = move_toward(velocity.x, move_direction.x * SPEED * input_direction.length(), ACCELERATION)
-		#velocity.y = move_toward(velocity.y, move_direction.y * SPEED * input_direction.length(), ACCELERATION)
+		velocity = move_direction * speed
+		#velocity.x = move_toward(velocity.x, move_direction.x * speed * input_direction.length(), ACCELERATION)
+		#velocity.y = move_toward(velocity.y, move_direction.y * speed * input_direction.length(), ACCELERATION)
 	else:
 		velocity = Vector2.ZERO
 		#velocity.x = move_toward(velocity.x, 0, DECELERATION)
@@ -27,7 +29,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	set_cardinal_direction(input_direction)
+	set_direction_facing(input_direction)
 	set_sprite()
 	check_health()
 	
@@ -42,7 +44,7 @@ func fire_projectile():
 	add_sibling(new_projectile)
 
 
-func set_cardinal_direction(vec2):
+func set_direction_facing(vec2):
 	if vec2 != Vector2.ZERO:
 		if abs(vec2.x) > abs(vec2.y):
 			if vec2.x > 0:
@@ -57,15 +59,14 @@ func set_cardinal_direction(vec2):
 
 
 func set_sprite():
-	var sprite = $Sprite2D
 	if direction_facing == Vector2.UP:
 		sprite.frame = 0
 	elif direction_facing == Vector2.RIGHT:
-		sprite.frame = 1
-	elif direction_facing == Vector2.DOWN:
-		sprite.frame = 2
-	elif direction_facing == Vector2.LEFT:
 		sprite.frame = 3
+	elif direction_facing == Vector2.DOWN:
+		sprite.frame = 1
+	elif direction_facing == Vector2.LEFT:
+		sprite.frame = 2
 	else:
 		pass
 
