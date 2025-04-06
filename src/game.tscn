@@ -1,12 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://b08ig35eso0ox"]
+[gd_scene load_steps=6 format=3 uid="uid://b08ig35eso0ox"]
 
 [ext_resource type="Script" uid="uid://b7j4utq80hr78" path="res://game.gd" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://lfe16p1kgndg" path="res://world/world.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://d3hvkkumuenkk" path="res://arena/arena.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://cg3jfm0s4gfj4" path="res://character/character.tscn" id="4_ryrav"]
 [ext_resource type="PackedScene" uid="uid://btkeixeq5foot" path="res://ui/ui.tscn" id="5_eow3j"]
+[ext_resource type="PackedScene" uid="uid://dk8rn71qxwpvw" path="res://opponent/opponent.tscn" id="5_j5wjh"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node2D"]
+process_mode = 4
 script = ExtResource("1_80nbo")
 
 [node name="UI" parent="." instance=ExtResource("5_eow3j")]
+process_mode = 3
 
-[node name="World" parent="." instance=ExtResource("2_feb5d")]
+[node name="Arena" parent="." instance=ExtResource("3_7jktm")]
+
+[node name="Character" parent="." instance=ExtResource("4_ryrav")]
+unique_name_in_owner = true
+position = Vector2(262, 184)
+
+[node name="Opponent" parent="." instance=ExtResource("5_j5wjh")]
+position = Vector2(411, 183)

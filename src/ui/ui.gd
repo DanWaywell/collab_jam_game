@@ -3,6 +3,7 @@ extends CanvasLayer
 
 func _on_start_button_pressed() -> void:
 	hide()
+	get_parent().start_game()
 	AudioGlobal.set_music_state(AudioGlobal.STATE.FIGHT) #fade to fight music
 	AudioGlobal.play_sound("button_1")
 

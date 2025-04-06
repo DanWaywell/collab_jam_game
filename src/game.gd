@@ -1,16 +1,11 @@
-extends Node
+extends Node2D
 
 @onready var ui: CanvasLayer = $UI
-@onready var world: Node2D = $World
 
-
-
-func _ready() -> void:
-#	AudioGlobal.set_music_state(AudioGlobal.STATE.MAINMENU)
-	pass
 
 func start_game():
-	pass
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+
 
 func reset_game():
 	pass
