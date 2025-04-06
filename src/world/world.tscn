@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://lfe16p1kgndg"]
+
+[ext_resource type="PackedScene" uid="uid://d3hvkkumuenkk" path="res://arena/arena.tscn" id="1_4717r"]
+[ext_resource type="Script" uid="uid://d3xtuon0jslq6" path="res://world/world.gd" id="1_h5o24"]
+[ext_resource type="PackedScene" uid="uid://cg3jfm0s4gfj4" path="res://character/character.tscn" id="2_h5o24"]
+[ext_resource type="PackedScene" uid="uid://dk8rn71qxwpvw" path="res://opponent/opponent.tscn" id="3_mmdvd"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_h5o24")
+
+[node name="Arena" parent="." instance=ExtResource("1_4717r")]
+
+[node name="Opponent" parent="Arena" instance=ExtResource("3_mmdvd")]
+position = Vector2(411, 183)
+
+[node name="Character" parent="." instance=ExtResource("2_h5o24")]
+unique_name_in_owner = true
+position = Vector2(262, 184)
