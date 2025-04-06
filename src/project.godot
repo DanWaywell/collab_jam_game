@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Collba Jam Game"
+config/name="Collab Jam Game"
 run/main_scene="uid://b08ig35eso0ox"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
