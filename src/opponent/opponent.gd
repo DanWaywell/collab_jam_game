@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Mob extends CharacterBody2D
 
 var speed = 40.0
 
@@ -6,15 +6,31 @@ var speed = 40.0
 
 var direction_facing = Vector2.RIGHT
 
-var health = 3
+@export var health = 3
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var target = %Character
+@onready var target: CharacterBody2D
+
+func _ready() -> void:
+	spawn()
+
+func spawn():
+	print_debug("spawned")
+	GlobalGameManager.mob_spawned.emit(self)
+
+func seek_target(new_target: CharacterBody2D):
+	if target == null:
+		target = new_target
+	else:
+		pass
 
 
 func _physics_process(_delta: float) -> void:
-	var input_direction = target.position - position
-	
+	var input_direction
+	if target:
+		input_direction= target.position - position
+	else: input_direction = Vector2.ZERO
+
 	var move_direction = input_direction.normalized()
 
 	# Movement x y
@@ -28,7 +44,6 @@ func _physics_process(_delta: float) -> void:
 		#velocity.y = move_toward(velocity.y, 0, DECELERATION)
 
 	move_and_slide()
-	
 	set_direction_facing(input_direction)
 	set_sprite()
 	check_health()
@@ -71,10 +86,22 @@ func set_sprite():
 		pass
 
 
-func take_damage(damage):
+var last_hit_source: CharacterBody2D
+func take_damage(damage, source: CharacterBody2D):
 	health -= damage
+	last_hit_source = source
 
 
 func check_health():
 	if health < 1:
+		if last_hit_source is Player1:
+			GlobalGameManager.enemy_killed_by_player.emit(self)
+		if last_hit_source is Rival:
+			GlobalGameManager.enemy_killed_by_rival.emit(self)
 		queue_free()
+
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body is Player1 or body is Rival:
+		seek_target(body)
+		pass # Replace with function body.

@@ -22,15 +22,19 @@ buses/default_bus_layout="uid://cdkf0idtxlhtu"
 [autoload]
 
 AudioGlobal="*res://audio/audio_global.tscn"
+GlobalGameManager="*res://systems/global_game_manager.tscn"
 
 [display]
 
 window/size/viewport_width=624
 window/size/viewport_height=352
-window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+mobs="group for mobs"
 
 [importer_defaults]
 

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player1 extends CharacterBody2D 
 
 var speed = 60.0
 #const ACCELERATION = 10.0
@@ -43,6 +43,7 @@ func _physics_process(_delta: float) -> void:
 func fire_projectile():
 	var new_projectile = PROJECTILE.instantiate()
 	new_projectile.position = position
+	new_projectile.source = self
 	new_projectile.direction = direction_facing
 	add_sibling(new_projectile)
 
@@ -74,7 +75,7 @@ func set_sprite():
 		pass
 
 
-func take_damage(damage):
+func take_damage(damage, _source: CharacterBody2D):
 	health -= damage
 
 

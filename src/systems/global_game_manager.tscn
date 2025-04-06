@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://xcdvgkn005ur"]
+
+[ext_resource type="Script" uid="uid://b15yelixhw54w" path="res://systems/global_game_manager.gd" id="1_7rmnk"]
+[ext_resource type="Script" uid="uid://cwmktv3cd0l8d" path="res://systems/debug_overlay.gd" id="2_eh8v3"]
+
+[sub_resource type="Theme" id="Theme_l7gmg"]
+Label/colors/font_color = Color(1, 0.292141, 0.752612, 1)
+
+[node name="GlobalGameManager" type="Node"]
+script = ExtResource("1_7rmnk")
+
+[node name="quick_kill_timer" type="Timer" parent="."]
+
+[node name="debug_overlay" type="CanvasLayer" parent="."]
+script = ExtResource("2_eh8v3")
+
+[node name="Player_values" type="HBoxContainer" parent="debug_overlay"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_l7gmg")
+theme_override_constants/separation = 9
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="debug_overlay/Player_values"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PLAYER" type="Label" parent="debug_overlay/Player_values/VBoxContainer2"]
+layout_mode = 2
+text = "PLAYER"
+
+[node name="HSeparator" type="HSeparator" parent="debug_overlay/Player_values/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="debug_overlay/Player_values/VBoxContainer2"]
+layout_mode = 2
+text = "HP"
+
+[node name="kills total" type="Label" parent="debug_overlay/Player_values/VBoxContainer2"]
+layout_mode = 2
+text = "kills total"
+
+[node name="combo untouched" type="Label" parent="debug_overlay/Player_values/VBoxContainer2"]
+layout_mode = 2
+text = "combo untouched"
+
+[node name="combo quicktime" type="Label" parent="debug_overlay/Player_values/VBoxContainer2"]
+layout_mode = 2
+text = "combo quicktime"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug_overlay/Player_values"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PLAYER" type="Label" parent="debug_overlay/Player_values/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="HSeparator" type="HSeparator" parent="debug_overlay/Player_values/VBoxContainer"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="debug_overlay/Player_values/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="kills total" type="Label" parent="debug_overlay/Player_values/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="combo untouched" type="Label" parent="debug_overlay/Player_values/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="combo quicktime" type="Label" parent="debug_overlay/Player_values/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[connection signal="timeout" from="quick_kill_timer" to="." method="_on_quick_kill_timer_timeout"]

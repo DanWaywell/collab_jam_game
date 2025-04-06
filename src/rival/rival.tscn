@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://clfvkqd0lle4"]
+
+[ext_resource type="Script" uid="uid://do1vieeeykvo1" path="res://rival/rival.gd" id="1_3fwa0"]
+[ext_resource type="Texture2D" uid="uid://do7ovd42duyjr" path="res://icon.svg" id="2_5sqv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umddo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fwa0"]
+radius = 37.2156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sqv4"]
+radius = 16.0
+
+[node name="Rival" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_3fwa0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_5sqv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_umddo")
+
+[node name="enemy_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="enemy_circle" type="CollisionShape2D" parent="enemy_area"]
+shape = SubResource("CircleShape2D_3fwa0")
+
+[node name="attack_reach" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="reach_collision" type="CollisionShape2D" parent="attack_reach"]
+shape = SubResource("CircleShape2D_5sqv4")
+
+[connection signal="body_entered" from="enemy_area" to="." method="_on_enemy_area_body_entered"]
+[connection signal="body_entered" from="attack_reach" to="." method="_on_attack_reach_body_entered"]
+[connection signal="body_exited" from="attack_reach" to="." method="_on_attack_reach_body_exited"]
