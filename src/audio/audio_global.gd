@@ -32,13 +32,14 @@ func _ready() -> void:
 		stream.bus = "sound" 
 		effect_node.add_child(stream)
 
-func play_sound(play_sound_name : String) -> void:
+func play_sound(play_sound_name : String, db: float = 0.0) -> void:
 	for i in sfx.size():
 		var sound = sfx[i]
 		var sound_name = sound.resource_path.get_file().get_basename()
 		if sound_name == play_sound_name:
-			var player = effect_node.get_child(0)
+			var player: AudioStreamPlayer = effect_node.get_child(0)
 			player.stream = sound
+			player.volume_db = db
 			player.play()
 			effect_node.move_child(player, sfx_player_number - 1)
 			break

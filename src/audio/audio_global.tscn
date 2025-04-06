@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://6au0e78rko7r"]
+[gd_scene load_steps=10 format=3 uid="uid://6au0e78rko7r"]
 
 [ext_resource type="Script" uid="uid://cvpwj068duxtn" path="res://audio/audio_global.gd" id="1_lj2qa"]
 [ext_resource type="AudioStream" uid="uid://bmg3ebdsjar2c" path="res://audio/sfx/button_1.wav" id="2_tcplg"]
+[ext_resource type="AudioStream" uid="uid://dydqol0gdi0bh" path="res://audio/music/crow_fields.mp3" id="3_40v7m"]
+[ext_resource type="AudioStream" uid="uid://bgi8r11mmcdo6" path="res://audio/sfx/button_2.wav" id="3_60upr"]
 [ext_resource type="AudioStream" uid="uid://cro3amrv7r2vo" path="res://audio/music/together_alone.mp3" id="3_weu62"]
-[ext_resource type="AudioStream" uid="uid://ch066y8ldxbic" path="res://audio/music/the_floor_is_magic.mp3" id="4_40v7m"]
+[ext_resource type="AudioStream" uid="uid://drodnd3nhd2rx" path="res://audio/sfx/magic_projectile2.wav" id="4_72igx"]
+[ext_resource type="AudioStream" uid="uid://cbm0dxpbkeeev" path="res://audio/music/bagpulp.mp3" id="5_40v7m"]
+[ext_resource type="AudioStream" uid="uid://2puvescj4k7s" path="res://audio/sfx/magic_projectile.wav" id="5_kfn1p"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_tcplg"]
 clip_count = 4
 clip_0/name = &"OPENINGmusic"
+clip_0/stream = ExtResource("3_weu62")
 clip_0/auto_advance = 0
 clip_1/name = &"MAINMENUmusic"
-clip_1/stream = ExtResource("3_weu62")
+clip_1/stream = ExtResource("3_40v7m")
 clip_1/auto_advance = 0
 clip_2/name = &"FIGHTmusic"
-clip_2/stream = ExtResource("4_40v7m")
+clip_2/stream = ExtResource("5_40v7m")
 clip_2/auto_advance = 0
 clip_3/name = &"DIALOGUEmusic"
 clip_3/auto_advance = 0
@@ -29,11 +34,12 @@ Vector2i(-1, -1): {
 
 [node name="AudioGlobal" type="Node"]
 script = ExtResource("1_lj2qa")
-sfx = Array[Resource]([ExtResource("2_tcplg")])
+sfx = Array[Resource]([ExtResource("2_tcplg"), ExtResource("3_60upr"), ExtResource("4_72igx"), ExtResource("5_kfn1p")])
 
 [node name="sounds" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_tcplg")
+autoplay = true
 bus = &"music"
 playback_type = 1
