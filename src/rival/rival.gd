@@ -31,39 +31,47 @@ func target_spotted(new_target: Mob):
 	pass
 
 func check_append_to_targets(new_target):
+	if targets.has(new_target):
+		pass
+	else:
+		targets.append(new_target)
+	
+func check_append_to_near_targets(new_target):
 	if target_in_reach.has(new_target):
 		pass
 	else:
 		target_in_reach.append(new_target)
 		
 func change_target(near_target: Mob):
+	check_append_to_near_targets(near_target)
 	if current_target == null:
 		print("change_target: target was null")
 		current_target = near_target
-		check_append_to_targets(near_target)
 		return
 	else:
 		await get_tree().create_timer(1).timeout
 		current_target = near_target
 		print("change_target: new near target")
-		check_append_to_targets(near_target)
+
 		
 func attack():
+	#simulate attack with await
 	await get_tree().create_timer(0.8).timeout
 	if current_target:
 		if target_in_reach.has(current_target):
-			#simulate attack with await
-			print("Rival damaged Mob")
-			current_target.take_damage(1,self)
-			attack()
+			if current_target.health > 0:
+				print("Rival damaged Mob")
+				current_target.take_damage(1,self)
+				attack()
 	else: pass
 
 func enemy_killed(enemy: Mob):
 	if current_target == enemy:
 		target_in_reach.erase(enemy)
+		targets.erase(enemy)
 		print(target_in_reach)
-		if target_in_reach.size() > 0:
-			current_target = target_in_reach.back()
+		if targets.size() > 0:
+			current_target = targets.back()
 		else:
 			current_target = null
 		
@@ -153,8 +161,8 @@ func check_health():
 var target_in_reach:Array [Mob]
 func _on_enemy_area_body_entered(body: Node2D) -> void:
 	if body is Mob:
-		
 		change_target(body)
+		
 	pass # Replace with function body.
 
 var attacking:bool = false
