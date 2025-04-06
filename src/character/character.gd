@@ -11,8 +11,9 @@ var direction_facing = Vector2.RIGHT
 var health = 3
 
 @onready var sprite = $Sprite2D
+@onready var animation_player = $AnimationPlayer
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	var move_direction = input_direction.normalized()
@@ -20,10 +21,12 @@ func _physics_process(delta: float) -> void:
 	# Movement x y
 	if move_direction:
 		velocity = move_direction * speed
+		animation_player.play("walk")
 		#velocity.x = move_toward(velocity.x, move_direction.x * speed * input_direction.length(), ACCELERATION)
 		#velocity.y = move_toward(velocity.y, move_direction.y * speed * input_direction.length(), ACCELERATION)
 	else:
 		velocity = Vector2.ZERO
+		animation_player.play("RESET")
 		#velocity.x = move_toward(velocity.x, 0, DECELERATION)
 		#velocity.y = move_toward(velocity.y, 0, DECELERATION)
 
@@ -47,12 +50,12 @@ func fire_projectile():
 func set_direction_facing(vec2):
 	if vec2 != Vector2.ZERO:
 		if abs(vec2.x) > abs(vec2.y):
-			if vec2.x > 0:
+			if vec2.x > 0.01:
 				direction_facing = Vector2.RIGHT
 			else:
 				direction_facing = Vector2.LEFT
 		else:
-			if vec2.y > 0:
+			if vec2.y > 0.01:
 				direction_facing = Vector2.DOWN
 			else:
 				direction_facing = Vector2.UP
