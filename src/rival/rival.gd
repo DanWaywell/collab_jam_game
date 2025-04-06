@@ -43,27 +43,33 @@ func check_append_to_near_targets(new_target):
 		target_in_reach.append(new_target)
 		
 func change_target(near_target: Mob):
-	check_append_to_near_targets(near_target)
+	check_append_to_targets(near_target)
 	if current_target == null:
 		print("change_target: target was null")
 		current_target = near_target
 		return
 	else:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.3).timeout
 		current_target = near_target
 		print("change_target: new near target")
 
 		
 func attack():
-	#simulate attack with await
-	await get_tree().create_timer(0.8).timeout
-	if current_target:
-		if target_in_reach.has(current_target):
-			if current_target.health > 0:
-				print("Rival damaged Mob")
-				current_target.take_damage(1,self)
-				attack()
-	else: pass
+	if attacking == false:
+		if current_target:
+			if target_in_reach.has(current_target):
+				if current_target.health > 0:
+					print("Rival damaged Mob")
+					current_target.take_damage(1,self)
+					attacking = true
+					#await get_tree().create_timer(0.8).timeout
+					attack()
+					return
+	else:
+		await get_tree().create_timer(0.8).timeout
+		attacking = false
+		attack()
+
 
 func enemy_killed(enemy: Mob):
 	if current_target == enemy:
@@ -83,7 +89,10 @@ func stroll():
 func _physics_process(_delta: float) -> void:
 	var input_direction
 	if current_target:
+		### debug prints -> globalgamemanager, delete later TODO
+		GlobalGameManager.debug_overlay.current_target_rival.text = str(current_target.name)
 		input_direction = current_target.position - position
+		
 	else:
 		input_direction = Vector2.ZERO
 
@@ -104,6 +113,11 @@ func _physics_process(_delta: float) -> void:
 	set_direction_facing(input_direction)
 	set_sprite()
 	check_health()
+	
+	
+
+	
+
 	
 	#if Input.is_action_just_pressed("action_1"):
 		#fire_projectile()
@@ -162,20 +176,13 @@ var target_in_reach:Array [Mob]
 func _on_enemy_area_body_entered(body: Node2D) -> void:
 	if body is Mob:
 		change_target(body)
-		
 	pass # Replace with function body.
 
 var attacking:bool = false
 func _on_attack_reach_body_entered(body: Node2D) -> void:
-	if attacking == false:
-		if body is Mob:
-			if body == current_target:
-				attack()
-				attacking = true
-				return
-	else:
-		await get_tree().create_timer(0.8).timeout
-		attacking = false
+	if body is Mob:
+		check_append_to_near_targets(body)
+		attack()
 	pass # Replace with function body.
 
 

@@ -80,4 +80,80 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "."
 
+[node name="Player_values2" type="HBoxContainer" parent="debug_overlay"]
+offset_left = 201.0
+offset_top = -1.0
+offset_right = 356.0
+offset_bottom = 98.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_l7gmg")
+theme_override_constants/separation = 9
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="debug_overlay/Player_values2"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PLAYER" type="Label" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+text = "RIVAL"
+
+[node name="HSeparator" type="HSeparator" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+text = "HP"
+
+[node name="kills total" type="Label" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+text = "kills total"
+
+[node name="combo untouched" type="Label" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+text = "combo untouched"
+
+[node name="combo quicktime" type="Label" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+text = "combo quicktime"
+
+[node name="current_target" type="Label" parent="debug_overlay/Player_values2/VBoxContainer2"]
+layout_mode = 2
+text = "current Target"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug_overlay/Player_values2"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PLAYER" type="Label" parent="debug_overlay/Player_values2/VBoxContainer"]
+layout_mode = 2
+text = "."
+
+[node name="HSeparator" type="HSeparator" parent="debug_overlay/Player_values2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HP_rival" type="Label" parent="debug_overlay/Player_values2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="kills total_rival" type="Label" parent="debug_overlay/Player_values2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="combo untouched_rival" type="Label" parent="debug_overlay/Player_values2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="combo quicktime_rival" type="Label" parent="debug_overlay/Player_values2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="current_target_rival" type="Label" parent="debug_overlay/Player_values2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "current Target"
+
 [connection signal="timeout" from="quick_kill_timer" to="." method="_on_quick_kill_timer_timeout"]

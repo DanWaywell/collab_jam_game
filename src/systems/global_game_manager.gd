@@ -9,6 +9,8 @@ signal player_got_hit
 
 signal mob_spawned(mob:Mob)
 
+@onready var debug_overlay = $debug_overlay
+
 func _ready() -> void:
 	enemy_killed_by_player.connect(quickness_combo)
 	enemy_killed_by_player.connect(count_kills)
