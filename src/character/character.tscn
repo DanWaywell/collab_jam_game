@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg3jfm0s4gfj4"]
+[gd_scene load_steps=9 format=3 uid="uid://cg3jfm0s4gfj4"]
 
 [ext_resource type="Script" uid="uid://beu8wwcx7tqfb" path="res://character/character.gd" id="1_1l1n4"]
 [ext_resource type="Texture2D" uid="uid://bb6g3dced0f1p" path="res://sprites/sprite_sheet.png" id="1_1w67s"]
+[ext_resource type="AudioStream" uid="uid://dw8xq208my0yn" path="res://audio/sfx/footstep.wav" id="3_0rvpn"]
+[ext_resource type="AudioStream" uid="uid://ms83xq5pmrjq" path="res://audio/sfx/footstep2.wav" id="4_o6jyn"]
+[ext_resource type="AudioStream" uid="uid://b2vlsc355dvif" path="res://audio/sfx/footstep3.wav" id="5_o6jyn"]
+[ext_resource type="Script" uid="uid://ciudolm50y8x1" path="res://character/footsteps_component.gd" id="5_tgjim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5eg0k"]
 size = Vector2(8, 8)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wy5t8"]
+playback_mode = 1
+random_pitch = 1.2
+random_volume_offset_db = 0.3
+streams_count = 3
+stream_0/stream = ExtResource("4_o6jyn")
+stream_0/weight = 2.0
+stream_1/stream = ExtResource("3_0rvpn")
+stream_2/stream = ExtResource("5_o6jyn")
 
 [node name="Character" type="CharacterBody2D"]
 motion_mode = 1
@@ -20,3 +34,9 @@ hframes = 4
 frame = 1
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 16)
+
+[node name="FootstepsComponent" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("player")]
+stream = SubResource("AudioStreamRandomizer_wy5t8")
+bus = &"sound"
+script = ExtResource("5_tgjim")
+player = NodePath("..")
