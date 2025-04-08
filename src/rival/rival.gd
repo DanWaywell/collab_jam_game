@@ -12,6 +12,7 @@ var current_target: Mob
 
 func _ready() -> void:
 	GlobalGameManager.enemy_killed_by_rival.connect(enemy_killed)
+	GlobalGameManager.enemy_killed_by_player.connect(enemy_killed)
 	GlobalGameManager.mob_spawned.connect(target_spotted)
 	pass
 	

@@ -11,6 +11,8 @@ script = ExtResource("1_7rmnk")
 
 [node name="quick_kill_timer" type="Timer" parent="."]
 
+[node name="quick_kill_timer_rival" type="Timer" parent="."]
+
 [node name="debug_overlay" type="CanvasLayer" parent="."]
 script = ExtResource("2_eh8v3")
 
@@ -157,3 +159,4 @@ layout_mode = 2
 text = "current Target"
 
 [connection signal="timeout" from="quick_kill_timer" to="." method="_on_quick_kill_timer_timeout"]
+[connection signal="timeout" from="quick_kill_timer_rival" to="." method="_on_quick_kill_timer_rival_timeout"]

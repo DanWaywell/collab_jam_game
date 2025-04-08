@@ -10,6 +10,11 @@ var input_direction := Vector2()
 var direction_facing = Vector2.RIGHT
 
 var health = 3
+@export var dmg: int = 1
+
+@export var projectile_speed: float = 80.0
+
+
 
 @onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer
@@ -48,6 +53,8 @@ func _physics_process(_delta: float) -> void:
 	
 func fire_projectile():
 	var new_projectile = PROJECTILE.instantiate()
+	new_projectile.speed = projectile_speed
+	new_projectile.damage = dmg
 	new_projectile.position = position
 	new_projectile.source = self
 	new_projectile.direction = direction_facing
