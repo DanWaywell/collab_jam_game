@@ -1,39 +1,54 @@
-[gd_scene format=3 uid="uid://bhqww33804uxk"]
+[gd_scene load_steps=2 format=3 uid="uid://bhqww33804uxk"]
 
-[node name="PotionMenu" type="HBoxContainer"]
+[ext_resource type="Script" uid="uid://c434tvc5s1b3y" path="res://menu/potion_menu.gd" id="1_ffhij"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PotionMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ffhij")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Button1" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Potion 1"
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "+ some thing
 - something"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="VBoxContainer2"]
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Potion 2"
 
-[node name="Label" type="Label" parent="VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "+ some thing
 - something"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Button3" type="Button" parent="VBoxContainer3"]
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 text = "Potion 3"
 
-[node name="Label" type="Label" parent="VBoxContainer3"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 text = "+ some thing
 - something"
+
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/Button1" to="." method="_on_button_1_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer2/Button2" to="." method="_on_button_2_button_up"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer3/Button3" to="." method="_on_button_3_button_up"]
