@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b2vlsc355dvif" path="res://audio/sfx/footstep3.wav" id="5_o6jyn"]
 [ext_resource type="Script" uid="uid://ciudolm50y8x1" path="res://player/footsteps_component.gd" id="5_tgjim"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eg0k"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gtrb"]
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_tgjim"]
 length = 0.001
@@ -86,11 +86,13 @@ stream_2/stream = ExtResource("5_o6jyn")
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_1l1n4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5eg0k")
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_4gtrb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
