@@ -16,9 +16,9 @@
 
 [sub_resource type="Resource" id="Resource_pu5hk"]
 script = ExtResource("3_pu5hk")
-added_dmg = 5
+added_dmg = 25
 name = " of the Windblade"
-description = "Adds 5 DMG while moving, but"
+description = "Adds 25 DMG while moving, but"
 metadata/_custom_type_script = "uid://dsdkaw0kd2i5w"
 
 [sub_resource type="Resource" id="Resource_xxwcp"]

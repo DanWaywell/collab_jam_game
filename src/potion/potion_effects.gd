@@ -13,9 +13,9 @@ signal potion_ready
 @onready var conditions = $conditions
 
 func add_potion(potion: Potion):
-	potion.positive_effect.player = GlobalData
-	potion.negative_effect.player = GlobalData
-	potion.condition.player = GlobalData
+#	potion.positive_effect.player = GlobalData
+#	potion.negative_effect.player = GlobalData
+#	potion.condition.player = GlobalData
 	effects.append(potion)
 	potion.positive_effect.apply()
 	#show positive effect TODO
