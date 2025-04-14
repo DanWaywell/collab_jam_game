@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://do1vieeeykvo1" path="res://rival/rival.gd" id="1_3fwa0"]
 [ext_resource type="Texture2D" uid="uid://cn65oxi778gtl" path="res://sprite/sprite_sheet_2.png" id="2_3fwa0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_umddo"]
-size = Vector2(12, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_umddo"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3fwa0"]
 radius = 37.2156
@@ -23,7 +23,8 @@ region_enabled = true
 region_rect = Rect2(16, 16, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_umddo")
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_umddo")
 
 [node name="enemy_area" type="Area2D" parent="."]
 collision_layer = 0
