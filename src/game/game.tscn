@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b08ig35eso0ox"]
+[gd_scene load_steps=7 format=3 uid="uid://b08ig35eso0ox"]
 
 [ext_resource type="Script" uid="uid://b7j4utq80hr78" path="res://game/game.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://dnf6uu0bnvoro" path="res://sprite/arena.png" id="2_dxrkv"]
-[ext_resource type="Script" uid="uid://cq1jyhakgms6o" path="res://game/arena.gd" id="3_dakft"]
 [ext_resource type="PackedScene" uid="uid://cg3jfm0s4gfj4" path="res://player/character.tscn" id="4_ryrav"]
 [ext_resource type="PackedScene" uid="uid://5hv1etavr06c" path="res://touch_screen/touch_screen_controler.tscn" id="5_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://clfvkqd0lle4" path="res://rival/rival.tscn" id="6_ryrav"]
@@ -15,7 +14,6 @@ script = ExtResource("1_80nbo")
 [node name="Arena" type="Sprite2D" parent="."]
 texture = ExtResource("2_dxrkv")
 centered = false
-script = ExtResource("3_dakft")
 
 [node name="Character" parent="." node_paths=PackedStringArray("touch_controlles") instance=ExtResource("4_ryrav")]
 unique_name_in_owner = true
