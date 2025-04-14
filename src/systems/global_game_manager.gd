@@ -7,6 +7,13 @@ signal enemy_killed_by_player(mob:Mob)
 signal enemy_killed_by_rival(mob:Mob)
 signal player_got_hit
 
+
+# condition signals
+signal kill_combo_streak(enemies_killed: int)
+signal kill_combo_end
+signal quick_combo_streak(enemies_killed: int)
+signal quick_combo_end
+
 @warning_ignore("unused_signal")
 signal mob_spawned(mob:Mob)
 
@@ -38,6 +45,7 @@ var kill_combo_rival: int
 ##Player
 func kill_combo_reset():
 	kill_combo = 0
+	kill_combo_end.emit()
 
 var quickness_kill_combo: int
 
@@ -48,6 +56,7 @@ var quickness_kill_combo: int
 func count_kills(_mob):
 	kill_combo += 1
 	enemies_defeated += 1
+	kill_combo_streak.emit(kill_combo)
 
 var quick_combo_start: bool = false
 
@@ -58,11 +67,13 @@ func quickness_combo(_mob):
 		print("quick combo started")
 		kill_timer.start(time_between_kills)
 		quick_combo_start = true
+		quick_combo_streak.emit(quickness_kill_combo)
 		return
 	if quick_combo_start == true:
 		kill_timer.start(time_between_kills)
 		quickness_kill_combo += 1
 		crowd_activation += 0.1
+		quick_combo_streak.emit(quickness_kill_combo)
 
 func _on_quick_kill_timer_timeout() -> void:
 	var last_combo = quickness_kill_combo
@@ -71,6 +82,7 @@ func _on_quick_kill_timer_timeout() -> void:
 	print("quick combo timeout!")
 	quickness_kill_combo = 0
 	quick_combo_start = false
+	quick_combo_end.emit()
 
 #Rival
 func kill_combo_reset_rival():
