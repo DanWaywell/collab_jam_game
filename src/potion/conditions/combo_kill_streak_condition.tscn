@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0qqge6u66bmv"]
+
+[ext_resource type="Script" uid="uid://bx4xwsw4vqjvg" path="res://potion/conditions/combo_kill_streak_condition.gd" id="1_ll7nk"]
+
+[node name="condition_node" type="Node"]
+script = ExtResource("1_ll7nk")

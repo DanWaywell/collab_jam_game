@@ -6,7 +6,7 @@ class_name PosPotionComp extends Resource
 @export var texture: Texture2D
 var player: Player
 
-func on_apply():
+func apply():
 	#logic for effect on applying
 	pass
 func effect_process():

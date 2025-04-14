@@ -22,6 +22,7 @@ var projectile_speed := 80.0
 
 func _ready() -> void:
 	touch_screen_joystick = touch_controlles.get_node("TouchJoystick")
+	PotionEffects.get_player(self)
 
 
 func _physics_process(_delta: float) -> void:
@@ -80,7 +81,7 @@ func set_direction_facing(vec2):
 
 func take_damage(damage, _source: CharacterBody2D):
 	health -= damage
-
+	GlobalGameManager.player_takes_damage.emit()
 
 func check_health():
 	if health < 1:

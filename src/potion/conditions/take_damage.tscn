@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://begoulaw8py1b"]
+
+[ext_resource type="Script" uid="uid://cbh3wc3u4wl7h" path="res://potion/conditions/take_damage.gd" id="1_uc2ta"]
+
+[node name="condition_node" type="Node"]
+script = ExtResource("1_uc2ta")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=20 format=3 uid="uid://cjhs58ijwf2vd"]
+
+[ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://potion/potion_effects.gd" id="1_lqcbc"]
+[ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_lqcbc"]
+[ext_resource type="Script" uid="uid://uuqnjss2t3jf" path="res://potion/potion_comp.gd" id="2_xdv8d"]
+[ext_resource type="Script" uid="uid://dsdkaw0kd2i5w" path="res://potion/positive_effects/more_dmg_while_moving.gd" id="3_pu5hk"]
+[ext_resource type="Script" uid="uid://cctqkbpuw6328" path="res://potion/negative_effects/slow_down.gd" id="3_xdv8d"]
+[ext_resource type="Script" uid="uid://da2bnmhgnmgy6" path="res://potion/positive_effects/add_movement_speed.gd" id="4_2k22v"]
+[ext_resource type="Script" uid="uid://dfgpc0rycutrn" path="res://potion/process_effects.gd" id="4_4id6q"]
+[ext_resource type="Script" uid="uid://dl8pukivv57rm" path="res://potion/potion_condition_comp.gd" id="6_4id6q"]
+[ext_resource type="Script" uid="uid://bu4yrga0t6o6r" path="res://potion/negative_effects/icy_floor.gd" id="7_rqyw7"]
+[ext_resource type="Script" uid="uid://qbyxk21wa7lf" path="res://potion/conditions/comp_combo_kill_streak.gd" id="7_ypt18"]
+[ext_resource type="Script" uid="uid://d3gsade0u8ctx" path="res://potion/negative_effects/slow_projectiles.gd" id="8_hui8k"]
+[ext_resource type="Script" uid="uid://u7rwgrencmc3" path="res://potion/conditions/comp_take_damage.gd" id="8_med8q"]
+
+[sub_resource type="Resource" id="Resource_pu5hk"]
+script = ExtResource("3_pu5hk")
+added_dmg = 5
+name = "of the Windblade"
+description = "Adds 5 DMG while moving, but"
+metadata/_custom_type_script = "uid://dsdkaw0kd2i5w"
+
+[sub_resource type="Resource" id="Resource_xxwcp"]
+script = ExtResource("4_2k22v")
+modifier = 20
+name = "of the Steed"
+description = ""
+metadata/_custom_type_script = "uid://da2bnmhgnmgy6"
+
+[sub_resource type="Resource" id="Resource_lqcbc"]
+script = ExtResource("3_xdv8d")
+speed = 20
+name = "Arrestive"
+description = "your Movement Speed is slowed down by 20."
+metadata/_custom_type_script = "uid://cctqkbpuw6328"
+
+[sub_resource type="Resource" id="Resource_tqsle"]
+script = ExtResource("7_rqyw7")
+modifier = 12
+name = "Freezing"
+description = "your feet are now sliding on the Floor"
+metadata/_custom_type_script = "uid://bu4yrga0t6o6r"
+
+[sub_resource type="Resource" id="Resource_y1jt1"]
+script = ExtResource("8_hui8k")
+speed = 15
+name = "Crippling"
+description = "your projectiles lose 15 Speed."
+metadata/_custom_type_script = "uid://d3gsade0u8ctx"
+
+[sub_resource type="Resource" id="Resource_med8q"]
+script = ExtResource("7_ypt18")
+max_combo = 10
+name = "brew"
+description = "If your Kill Combo exceeds 10"
+condition_node_path = "res://potion/conditions/combo_kill_streak_condition.tscn"
+metadata/_custom_type_script = "uid://qbyxk21wa7lf"
+
+[sub_resource type="Resource" id="Resource_yag17"]
+script = ExtResource("8_med8q")
+max_counter = 5
+name = "potion"
+description = "If you take damage 5 times"
+condition_node_path = "res://potion/conditions/take_damage.tscn"
+metadata/_custom_type_script = "uid://u7rwgrencmc3"
+
+[node name="PotionEffects" type="Node"]
+script = ExtResource("1_lqcbc")
+pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp")])
+neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1")])
+condition_pool = Array[ExtResource("6_4id6q")]([SubResource("Resource_med8q"), SubResource("Resource_yag17")])
+
+[node name="process_effects" type="Node" parent="."]
+script = ExtResource("4_4id6q")
+
+[node name="conditions" type="Node" parent="."]

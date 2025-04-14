@@ -9,7 +9,7 @@ var sprite_facing_down = 2
 var sprite_facing_left = 3
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if character.direction_facing == Vector2.UP:
 		frame = sprite_facing_up
 	elif character.direction_facing == Vector2.RIGHT:

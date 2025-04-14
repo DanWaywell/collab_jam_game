@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cg3jfm0s4gfj4"]
+[gd_scene load_steps=13 format=3 uid="uid://cg3jfm0s4gfj4"]
 
 [ext_resource type="Script" uid="uid://beu8wwcx7tqfb" path="res://player/character.gd" id="1_1l1n4"]
 [ext_resource type="Texture2D" uid="uid://bb6g3dced0f1p" path="res://sprite/sprite_sheet.png" id="1_1w67s"]
@@ -7,10 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://ms83xq5pmrjq" path="res://audio/sfx/footstep2.wav" id="4_o6jyn"]
 [ext_resource type="AudioStream" uid="uid://b2vlsc355dvif" path="res://audio/sfx/footstep3.wav" id="5_o6jyn"]
 [ext_resource type="Script" uid="uid://ciudolm50y8x1" path="res://player/footsteps_component.gd" id="5_tgjim"]
-[ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://player/potion_effects.gd" id="8_gx66j"]
-[ext_resource type="Script" uid="uid://dsdkaw0kd2i5w" path="res://potion/potion_component_scripts/more_dmg_while_moving.gd" id="11_8brn5"]
-[ext_resource type="Script" uid="uid://dfgpc0rycutrn" path="res://player/process_effects.gd" id="11_gx66j"]
-[ext_resource type="Script" uid="uid://uuqnjss2t3jf" path="res://potion/potion_comp.gd" id="11_hd715"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5eg0k"]
 size = Vector2(8, 8)
@@ -88,13 +84,6 @@ stream_0/weight = 2.0
 stream_1/stream = ExtResource("3_0rvpn")
 stream_2/stream = ExtResource("5_o6jyn")
 
-[sub_resource type="Resource" id="Resource_b4qc5"]
-script = ExtResource("11_8brn5")
-added_dmg = 0
-name = ""
-description = ""
-metadata/_custom_type_script = "uid://dsdkaw0kd2i5w"
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 motion_mode = 1
@@ -123,13 +112,6 @@ stream = SubResource("AudioStreamRandomizer_wy5t8")
 bus = &"sound"
 script = ExtResource("5_tgjim")
 player = NodePath("..")
-
-[node name="Potion_effects" type="Node" parent="."]
-script = ExtResource("8_gx66j")
-pos_effect_pool = Array[ExtResource("11_hd715")]([SubResource("Resource_b4qc5")])
-
-[node name="process_effects" type="Node" parent="Potion_effects"]
-script = ExtResource("11_gx66j")
 
 [node name="ShootDelay" type="Timer" parent="."]
 wait_time = 0.5

@@ -1,7 +1,7 @@
 extends Node2D
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mob_list = []
 	for child in get_children():
 		if child.is_in_group("mobs"):

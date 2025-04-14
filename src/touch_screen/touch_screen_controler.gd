@@ -14,6 +14,6 @@ func _unhandled_input(event):
 		state[event.index] = event.position
 		get_viewport().set_input_as_handled()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if DisplayServer.is_touchscreen_available() and visible == false:
 		visible = true

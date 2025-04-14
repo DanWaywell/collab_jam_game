@@ -13,6 +13,8 @@ signal kill_combo_streak(enemies_killed: int)
 signal kill_combo_end
 signal quick_combo_streak(enemies_killed: int)
 signal quick_combo_end
+@warning_ignore("unused_signal")
+signal player_takes_damage
 
 @warning_ignore("unused_signal")
 signal mob_spawned(mob:Mob)

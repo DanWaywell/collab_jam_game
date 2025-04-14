@@ -17,6 +17,7 @@ script = ExtResource("1_7rmnk")
 script = ExtResource("2_eh8v3")
 
 [node name="Player_values" type="HBoxContainer" parent="debug_overlay"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.6, 0.6)
@@ -83,6 +84,7 @@ layout_mode = 2
 text = "."
 
 [node name="Player_values2" type="HBoxContainer" parent="debug_overlay"]
+visible = false
 offset_left = 201.0
 offset_top = -1.0
 offset_right = 356.0
@@ -157,6 +159,87 @@ text = "."
 unique_name_in_owner = true
 layout_mode = 2
 text = "current Target"
+
+[node name="Potions" type="HBoxContainer" parent="debug_overlay"]
+visible = false
+offset_left = 373.0
+offset_top = 1.0
+offset_right = 635.0
+offset_bottom = 119.0
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_l7gmg")
+theme_override_constants/separation = 9
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="debug_overlay/Potions"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PLAYER" type="Label" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+text = "Potion"
+
+[node name="HSeparator" type="HSeparator" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+text = "pos comp"
+
+[node name="kills total" type="Label" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+text = "neg comp"
+
+[node name="combo untouched" type="Label" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+text = "condition"
+
+[node name="combo quicktime" type="Label" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+text = "potion name"
+
+[node name="current_target" type="Label" parent="debug_overlay/Potions/VBoxContainer2"]
+layout_mode = 2
+text = "potion descr"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug_overlay/Potions"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="potion" type="Label" parent="debug_overlay/Potions/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "potion"
+
+[node name="HSeparator" type="HSeparator" parent="debug_overlay/Potions/VBoxContainer"]
+layout_mode = 2
+
+[node name="pos_comp" type="Label" parent="debug_overlay/Potions/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="neg_comp" type="Label" parent="debug_overlay/Potions/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="condition" type="Label" parent="debug_overlay/Potions/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="potion_name" type="Label" parent="debug_overlay/Potions/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "."
+
+[node name="description" type="Label" parent="debug_overlay/Potions/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "description"
+
+[node name="Button" type="Button" parent="debug_overlay/Potions"]
+layout_mode = 2
 
 [connection signal="timeout" from="quick_kill_timer" to="." method="_on_quick_kill_timer_timeout"]
 [connection signal="timeout" from="quick_kill_timer_rival" to="." method="_on_quick_kill_timer_rival_timeout"]

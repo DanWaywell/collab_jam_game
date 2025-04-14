@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dys8e82hjpiwc"]
+
+[ext_resource type="Script" uid="uid://bawnkohhr8oc5" path="res://potion/condition_node.gd" id="1_scld4"]
+[ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_5fcwy"]
+
+[sub_resource type="Resource" id="Resource_dkkeg"]
+script = ExtResource("2_5fcwy")
+name = ""
+description = ""
+metadata/_custom_type_script = "uid://kr0qosmhnnos"
+
+[node name="condition_node" type="Node"]
+script = ExtResource("1_scld4")
+negative_effect = SubResource("Resource_dkkeg")
