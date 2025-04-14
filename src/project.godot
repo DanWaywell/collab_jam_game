@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Collba Jam Game"
-run/main_scene="uid://b08ig35eso0ox"
+config/name="Collab Jam Game"
+run/main_scene="uid://lwk2kq58tht4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://cdkf0idtxlhtu"
 [autoload]
 
 AudioGlobal="*res://audio/audio_global.tscn"
+GlobalGameManager="*res://game/global_game_manager.tscn"
 
 [display]
 
@@ -29,7 +30,11 @@ window/size/viewport_width=624
 window/size/viewport_height=352
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+mobs="group for mobs"
 
 [importer_defaults]
 
@@ -97,3 +102,4 @@ action_1={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true

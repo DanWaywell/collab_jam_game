@@ -19,19 +19,39 @@ class_name AudioManager extends Node
 # Sound Effects
 ## holds sound files
 @export var sfx : Array[Resource]
+@export var sfx_voices: Array [Resource]
 
 ## number of sound players
 @export var sfx_player_number := 4
-
+@export var sfx_player_number2 := 4
 ## stores sound players while playing
 @onready var effect_node = $sounds
+@onready var effect_node2 = $sounds2
 
 func _ready() -> void:
 	for i in sfx_player_number:
 		var stream = AudioStreamPlayer.new()
 		stream.bus = "sound" 
 		effect_node.add_child(stream)
+	for e in sfx_player_number2:
+		var stream2 = AudioStreamPlayer.new()
+		stream2.bus = "sound"
+		effect_node2.add_child(stream2)
 
+
+func play_sound_voices(play_sound_name: String, db: float = 0.0) -> void:
+	for i in sfx_voices.size():
+		var sound = sfx_voices[i]
+		var sound_name = sound.resource_path.get_file().get_basename()
+		if sound_name == play_sound_name:
+			var player: AudioStreamPlayer = effect_node2.get_child(0)
+			player.stream = sound
+			player.volume_db = db
+			player.play()
+			effect_node2.move_child(player, sfx_player_number2 - 1)
+			break
+			
+	
 func play_sound(play_sound_name : String, db: float = 0.0) -> void:
 	for i in sfx.size():
 		var sound = sfx[i]

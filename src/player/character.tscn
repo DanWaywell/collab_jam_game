@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://cg3jfm0s4gfj4"]
+
+[ext_resource type="Script" uid="uid://beu8wwcx7tqfb" path="res://player/character.gd" id="1_1l1n4"]
+[ext_resource type="Texture2D" uid="uid://bb6g3dced0f1p" path="res://sprite/sprite_sheet.png" id="1_1w67s"]
+[ext_resource type="AudioStream" uid="uid://dw8xq208my0yn" path="res://audio/sfx/footstep.wav" id="3_0rvpn"]
+[ext_resource type="Script" uid="uid://dp52221pgdue5" path="res://player/sprite.gd" id="3_b4qc5"]
+[ext_resource type="AudioStream" uid="uid://ms83xq5pmrjq" path="res://audio/sfx/footstep2.wav" id="4_o6jyn"]
+[ext_resource type="AudioStream" uid="uid://b2vlsc355dvif" path="res://audio/sfx/footstep3.wav" id="5_o6jyn"]
+[ext_resource type="Script" uid="uid://ciudolm50y8x1" path="res://player/footsteps_component.gd" id="5_tgjim"]
+[ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://player/potion_effects.gd" id="8_gx66j"]
+[ext_resource type="Script" uid="uid://c46hc0847ua1x" path="res://potion/potion.gd" id="9_8brn5"]
+[ext_resource type="Script" uid="uid://dsdkaw0kd2i5w" path="res://potion/potion_component_scripts/more_dmg_while_moving.gd" id="11_8brn5"]
+[ext_resource type="Script" uid="uid://dfgpc0rycutrn" path="res://player/process_effects.gd" id="11_gx66j"]
+[ext_resource type="Script" uid="uid://uuqnjss2t3jf" path="res://potion/potion_comp.gd" id="11_hd715"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eg0k"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_tgjim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o6jyn"]
+resource_name = "walk"
+length = 0.75
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(1, -5), Vector2(1.19209e-07, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0909919, -0.0667334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wy5t8"]
+_data = {
+&"RESET": SubResource("Animation_tgjim"),
+&"walk": SubResource("Animation_o6jyn")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wy5t8"]
+playback_mode = 1
+random_pitch = 1.2
+random_volume_offset_db = 0.3
+streams_count = 3
+stream_0/stream = ExtResource("4_o6jyn")
+stream_0/weight = 2.0
+stream_1/stream = ExtResource("3_0rvpn")
+stream_2/stream = ExtResource("5_o6jyn")
+
+[sub_resource type="Resource" id="Resource_8brn5"]
+script = ExtResource("11_hd715")
+name = ""
+description = ""
+metadata/_custom_type_script = "uid://uuqnjss2t3jf"
+
+[sub_resource type="Resource" id="Resource_hq3og"]
+script = ExtResource("9_8brn5")
+positive_effect = SubResource("Resource_8brn5")
+metadata/_custom_type_script = "uid://c46hc0847ua1x"
+
+[sub_resource type="Resource" id="Resource_b4qc5"]
+script = ExtResource("11_8brn5")
+added_dmg = 0
+name = ""
+description = ""
+metadata/_custom_type_script = "uid://dsdkaw0kd2i5w"
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_1l1n4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5eg0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_1w67s")
+hframes = 4
+frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 16)
+script = ExtResource("3_b4qc5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wy5t8")
+}
+speed_scale = 2.0
+
+[node name="FootstepsComponent" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("player")]
+stream = SubResource("AudioStreamRandomizer_wy5t8")
+bus = &"sound"
+script = ExtResource("5_tgjim")
+player = NodePath("..")
+
+[node name="Potion_effects" type="Node" parent="."]
+script = ExtResource("8_gx66j")
+effects = Array[ExtResource("9_8brn5")]([SubResource("Resource_hq3og")])
+pos_effect_pool = Array[ExtResource("11_hd715")]([SubResource("Resource_b4qc5")])
+
+[node name="process_effects" type="Node" parent="Potion_effects"]
+script = ExtResource("11_gx66j")
+
+[node name="ShootDelay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

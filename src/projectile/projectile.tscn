@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://vdrirrw5lor5"]
 
-[ext_resource type="Texture2D" uid="uid://8w65umxwloyh" path="res://sprites/projectiles.png" id="1_6aa83"]
 [ext_resource type="Script" uid="uid://dak0gmui4lvlk" path="res://projectile/projectile.gd" id="1_makwg"]
+[ext_resource type="Texture2D" uid="uid://bb6g3dced0f1p" path="res://sprite/sprite_sheet.png" id="2_makwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml5en"]
-size = Vector2(5, 5)
+size = Vector2(8, 8)
 
 [node name="Projectile" type="Area2D"]
 collision_layer = 0
@@ -15,9 +15,11 @@ script = ExtResource("1_makwg")
 shape = SubResource("RectangleShape2D_ml5en")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6aa83")
+position = Vector2(-4, 0)
+texture = ExtResource("2_makwg")
+hframes = 2
 region_enabled = true
-region_rect = Rect2(24, 0, 8, 16)
+region_rect = Rect2(80, 0, 32, 16)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

@@ -38,6 +38,8 @@ sfx = Array[Resource]([ExtResource("2_tcplg"), ExtResource("3_60upr"), ExtResour
 
 [node name="sounds" type="Node" parent="."]
 
+[node name="sounds2" type="Node" parent="."]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_tcplg")
 autoplay = true
