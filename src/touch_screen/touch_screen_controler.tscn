@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://5hv1etavr06c"]
+
+[ext_resource type="Texture2D" uid="uid://7ygqdsa2h3da" path="res://touch_screen/circle.png" id="1_ltuun"]
+[ext_resource type="Script" uid="uid://b8ybum8ogcg8i" path="res://touch_screen/touch_screen_controler.gd" id="1_vyy65"]
+[ext_resource type="Script" uid="uid://bel0sm3b5hr3y" path="res://touch_screen/touch_joystick.gd" id="2_vyy65"]
+[ext_resource type="Texture2D" uid="uid://oy8tsw68wrh" path="res://touch_screen/dot.png" id="3_5q4nh"]
+[ext_resource type="Script" uid="uid://bqpvp5j365l8k" path="res://touch_screen/dot.gd" id="4_wjfoq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vr1i5"]
+radius = 32.0
+
+[node name="TouchScreenControler" type="CanvasLayer"]
+script = ExtResource("1_vyy65")
+
+[node name="TouchButton1" type="TouchScreenButton" parent="."]
+position = Vector2(576, 274)
+shape = SubResource("CircleShape2D_vr1i5")
+action = "action_1"
+
+[node name="Circle" type="Sprite2D" parent="TouchButton1"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_ltuun")
+
+[node name="TouchButton2" type="TouchScreenButton" parent="."]
+position = Vector2(497, 305)
+shape = SubResource("CircleShape2D_vr1i5")
+action = "action_2"
+
+[node name="Circle" type="Sprite2D" parent="TouchButton2"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_ltuun")
+
+[node name="TouchJoystick" type="Node2D" parent="."]
+position = Vector2(73, 288)
+scale = Vector2(2, 2)
+script = ExtResource("2_vyy65")
+
+[node name="Circle" type="Sprite2D" parent="TouchJoystick"]
+texture_filter = 1
+texture = ExtResource("1_ltuun")
+
+[node name="Dot" type="Sprite2D" parent="TouchJoystick"]
+texture_filter = 1
+texture = ExtResource("3_5q4nh")
+script = ExtResource("4_wjfoq")
+
+[node name="MarkerTopLeft" type="Marker2D" parent="TouchJoystick"]
+position = Vector2(-20.75, -20)
+scale = Vector2(0.25, 0.25)
+
+[node name="MarkerTopRight" type="Marker2D" parent="TouchJoystick"]
+position = Vector2(20.75, 18.5)
+scale = Vector2(0.25, 0.25)

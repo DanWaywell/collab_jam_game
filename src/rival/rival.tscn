@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://clfvkqd0lle4"]
 
 [ext_resource type="Script" uid="uid://do1vieeeykvo1" path="res://rival/rival.gd" id="1_3fwa0"]
-[ext_resource type="Texture2D" uid="uid://do7ovd42duyjr" path="res://icon.svg" id="2_5sqv4"]
+[ext_resource type="Texture2D" uid="uid://cn65oxi778gtl" path="res://sprite/sprite_sheet_2.png" id="2_3fwa0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umddo"]
+size = Vector2(12, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3fwa0"]
 radius = 37.2156
@@ -16,8 +17,10 @@ collision_layer = 2
 script = ExtResource("1_3fwa0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_5sqv4")
+position = Vector2(0, -1)
+texture = ExtResource("2_3fwa0")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_umddo")

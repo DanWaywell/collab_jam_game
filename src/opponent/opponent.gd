@@ -1,22 +1,24 @@
 class_name Mob extends CharacterBody2D
 
-var speed = 40.0
-
-#const PROJECTILE = preload("res://projectile/projectile.tscn")
-
-var direction_facing = Vector2.RIGHT
+var speed := 30.0
+var acceleration := 10.0
+var deceleration := 20.0
+var direction_facing := Vector2.RIGHT
 
 @export var health = 3
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var target: CharacterBody2D
 
+
 func _ready() -> void:
 	spawn()
+
 
 func spawn():
 	print_debug("spawned")
 	GlobalGameManager.mob_spawned.emit(self)
+
 
 func seek_target(new_target: CharacterBody2D):
 	if target == null:
@@ -36,27 +38,17 @@ func _physics_process(_delta: float) -> void:
 	# Movement x y
 	if move_direction:
 		velocity = move_direction * speed
-		#velocity.x = move_toward(velocity.x, move_direction.x * speed * input_direction.length(), ACCELERATION)
-		#velocity.y = move_toward(velocity.y, move_direction.y * speed * input_direction.length(), ACCELERATION)
+		velocity.x = move_toward(velocity.x, move_direction.x * speed, acceleration)
+		velocity.y = move_toward(velocity.y, move_direction.y * speed, acceleration)
 	else:
 		velocity = Vector2.ZERO
-		#velocity.x = move_toward(velocity.x, 0, DECELERATION)
-		#velocity.y = move_toward(velocity.y, 0, DECELERATION)
+		velocity.x = move_toward(velocity.x, 0, deceleration)
+		velocity.y = move_toward(velocity.y, 0, deceleration)
 
 	move_and_slide()
 	set_direction_facing(input_direction)
 	set_sprite()
 	check_health()
-	
-	#if Input.is_action_just_pressed("action_1"):
-		#fire_projectile()
-	#
-	#
-#func fire_projectile():
-	#var new_projectile = PROJECTILE.instantiate()
-	#new_projectile.position = position
-	#new_projectile.direction = direction_facing
-	#add_sibling(new_projectile)
 
 
 func set_direction_facing(vec2):
@@ -94,7 +86,7 @@ func take_damage(damage, source: CharacterBody2D):
 
 func check_health():
 	if health < 1:
-		if last_hit_source is Player1:
+		if last_hit_source is Player:
 			GlobalGameManager.enemy_killed_by_player.emit(self)
 		if last_hit_source is Rival:
 			GlobalGameManager.enemy_killed_by_rival.emit(self)
@@ -102,6 +94,5 @@ func check_health():
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body is Player1 or body is Rival:
+	if body is Player or body is Rival:
 		seek_target(body)
-		pass # Replace with function body.

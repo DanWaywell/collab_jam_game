@@ -160,7 +160,7 @@ func set_sprite():
 
 var last_hit_source: CharacterBody2D
 func take_damage(damage, source: CharacterBody2D):
-	if source != Player1:
+	if source != Player:
 		#for testing
 		health -= damage
 		last_hit_source = source
@@ -168,7 +168,7 @@ func take_damage(damage, source: CharacterBody2D):
 
 func check_health():
 	if health < 1:
-#		if last_hit_source is Player1:
+#		if last_hit_source is Player:
 #			GlobalGameManager.count_kills()
 		#if last_hit_source is Rival:
 		queue_free()

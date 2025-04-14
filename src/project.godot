@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Collab Jam Game"
-run/main_scene="uid://b08ig35eso0ox"
+run/main_scene="uid://lwk2kq58tht4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,7 +22,7 @@ buses/default_bus_layout="uid://cdkf0idtxlhtu"
 [autoload]
 
 AudioGlobal="*res://audio/audio_global.tscn"
-GlobalGameManager="*res://systems/global_game_manager.tscn"
+GlobalGameManager="*res://game/global_game_manager.tscn"
 
 [display]
 
@@ -102,3 +102,4 @@ action_1={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
