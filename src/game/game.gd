@@ -15,7 +15,7 @@ func _ready() -> void:
 	spawn_opponents(GlobalData.number_of_opponents)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if arena.get_child_count() == 0:
 		get_tree().change_scene_to_file("res://menu/potion_menu.tscn")
 

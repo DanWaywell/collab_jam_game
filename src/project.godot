@@ -26,7 +26,6 @@ GlobalGameManager="*res://game/global_game_manager.tscn"
 PotionEffects="*res://potion/potion_effects.tscn"
 GlobalData="*res://game/global_data.gd"
 
-
 [display]
 
 window/size/viewport_width=624

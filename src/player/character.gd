@@ -6,12 +6,6 @@ var touch_screen_joystick: Node2D
 var input_direction := Vector2()
 var direction_facing := Vector2.RIGHT
 
-var speed := 60.0
-var acceleration := 10.0
-var deceleration := 20.0
-var dmg := 1
-var health := 3
-var projectile_speed := 80.0
 
 @export var touch_controlles: CanvasLayer
 
@@ -19,13 +13,13 @@ var projectile_speed := 80.0
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-
 func _ready() -> void:
 	touch_screen_joystick = touch_controlles.get_node("TouchJoystick")
-	PotionEffects.get_player(self)
+
 
 
 func _physics_process(_delta: float) -> void:
+	GlobalData.velocity = velocity
 	if touch_screen_joystick.position_vector != Vector2(0,0):
 		input_direction = touch_screen_joystick.position_vector
 	else:
@@ -36,12 +30,12 @@ func _physics_process(_delta: float) -> void:
 	# Movement x y
 	if move_direction:
 		animation_player.play("walk")
-		velocity.x = move_toward(velocity.x, move_direction.x * speed * input_direction.length(), acceleration)
-		velocity.y = move_toward(velocity.y, move_direction.y * speed * input_direction.length(), acceleration)
+		velocity.x = move_toward(velocity.x, move_direction.x * GlobalData.speed * input_direction.length(), GlobalData.acceleration)
+		velocity.y = move_toward(velocity.y, move_direction.y * GlobalData.speed * input_direction.length(), GlobalData.acceleration)
 	else:
 		animation_player.play("RESET")
-		velocity.x = move_toward(velocity.x, 0, deceleration)
-		velocity.y = move_toward(velocity.y, 0, deceleration)
+		velocity.x = move_toward(velocity.x, 0, GlobalData.deceleration)
+		velocity.y = move_toward(velocity.y, 0, GlobalData.deceleration)
 
 	move_and_slide()
 	
@@ -57,8 +51,8 @@ func _physics_process(_delta: float) -> void:
 
 func fire_projectile():
 	var new_projectile = PROJECTILE.instantiate()
-	new_projectile.speed = projectile_speed
-	new_projectile.damage = dmg
+	new_projectile.speed = GlobalData.projectile_speed
+	new_projectile.damage = GlobalData.dmg
 	new_projectile.position = position
 	new_projectile.source = self
 	new_projectile.direction = direction_facing
@@ -80,9 +74,9 @@ func set_direction_facing(vec2):
 
 
 func take_damage(damage, _source: CharacterBody2D):
-	health -= damage
+	GlobalData.health -= damage
 	GlobalGameManager.player_takes_damage.emit()
 
 func check_health():
-	if health < 1:
+	if GlobalData.health < 1:
 		queue_free()

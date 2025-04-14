@@ -33,4 +33,3 @@ func _process(_delta: float) -> void:
 	kills_total_rival.text = str(game_manager.enemies_defeated_rival)
 	combo_untouched_rival.text = str(game_manager.kill_combo_rival)
 	combo_quicktime_rival.text = str(game_manager.quickness_kill_combo_rival)
-	pos_comp.text = 

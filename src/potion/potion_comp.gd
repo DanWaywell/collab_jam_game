@@ -4,7 +4,8 @@ class_name PosPotionComp extends Resource
 @export_multiline var description: String
 
 @export var texture: Texture2D
-var player: Player
+var player
+
 
 func apply():
 	#logic for effect on applying

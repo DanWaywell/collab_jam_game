@@ -7,7 +7,8 @@ class_name ConditionPotionComp extends Resource
 
 
 @export var texture: Texture2D
-var player: Player
+var player:  GlobalData = GlobalData
+
 
 func apply():
 	var condition_node: ConditionNode = load(condition_node_path).instantiate()
