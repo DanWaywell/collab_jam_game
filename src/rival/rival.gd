@@ -78,7 +78,10 @@ func enemy_killed(enemy: Mob):
 		targets.erase(enemy)
 		print(target_in_reach)
 		if targets.size() > 0:
-			current_target = targets.back()
+			if is_instance_valid(targets.back()):
+				current_target = targets.back()
+			else:
+				current_target = null
 		else:
 			current_target = null
 		
