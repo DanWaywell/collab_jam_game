@@ -74,8 +74,10 @@ func set_direction_facing(vec2):
 
 
 func take_damage(damage, _source: CharacterBody2D):
-	GlobalData.health -= damage
-	GlobalGameManager.player_takes_damage.emit()
+	if damage > 0:
+		GlobalData.health -= damage
+		GlobalGameManager.player_takes_damage.emit()
+	GlobalGameManager.player_got_hit.emit()
 
 func check_health():
 	if GlobalData.health < 1:
