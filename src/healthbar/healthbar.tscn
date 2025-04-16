@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://blabc1royaiag"]
+
+[ext_resource type="Texture2D" uid="uid://bajtcs06d5nhu" path="res://sprite/healthbar_sheet.png" id="1_iywrq"]
+[ext_resource type="Script" uid="uid://bgbia7b58f5rg" path="res://healthbar/healthbar.gd" id="1_y66kq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vii3e"]
+atlas = ExtResource("1_iywrq")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq16f"]
+atlas = ExtResource("1_iywrq")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uge5"]
+atlas = ExtResource("1_iywrq")
+region = Rect2(0, 32, 64, 16)
+
+[node name="healthbar" type="CanvasLayer"]
+script = ExtResource("1_y66kq")
+
+[node name="top" type="Sprite2D" parent="."]
+position = Vector2(45, 272)
+texture = SubResource("AtlasTexture_vii3e")
+hframes = 4
+
+[node name="mid1" type="Sprite2D" parent="."]
+position = Vector2(45, 288)
+texture = SubResource("AtlasTexture_bq16f")
+hframes = 4
+
+[node name="mid2" type="Sprite2D" parent="."]
+position = Vector2(45, 304)
+texture = SubResource("AtlasTexture_bq16f")
+hframes = 4
+
+[node name="mid3" type="Sprite2D" parent="."]
+position = Vector2(45, 320)
+texture = SubResource("AtlasTexture_bq16f")
+hframes = 4
+
+[node name="bottom" type="Sprite2D" parent="."]
+position = Vector2(45, 336)
+texture = SubResource("AtlasTexture_3uge5")
+hframes = 4

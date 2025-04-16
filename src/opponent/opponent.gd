@@ -14,6 +14,12 @@ var direction_facing := Vector2.RIGHT
 func _ready() -> void:
 	spawn()
 
+func attack_player(body: Player):
+	if GlobalData.attacking == false:
+		GlobalData.attacking = true
+		body.take_damage(1,self)
+		GlobalData.attack_timer()
+	pass
 
 func spawn():
 	print_debug("spawned")
@@ -96,3 +102,11 @@ func check_health():
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player or body is Rival:
 		seek_target(body)
+
+var attacking: bool = false
+func _on_attack_reach_body_entered(body: Node2D) -> void:
+	if body is Player and GlobalData.attacking == false:
+		attack_player(body)
+		pass
+		
+	pass # Replace with function body.

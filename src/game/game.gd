@@ -13,6 +13,7 @@ func _ready() -> void:
 	screen_size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
 	
 	spawn_opponents(GlobalData.number_of_opponents)
+	GlobalGameManager.player_hp.emit()
 
 
 func _process(_delta: float) -> void:

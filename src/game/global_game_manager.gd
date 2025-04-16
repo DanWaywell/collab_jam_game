@@ -6,7 +6,8 @@ class_name GameManager extends Node
 signal enemy_killed_by_player(mob:Mob)
 signal enemy_killed_by_rival(mob:Mob)
 signal player_got_hit
-
+@warning_ignore("unused_signal")
+signal player_hp
 
 # condition signals
 signal kill_combo_streak(enemies_killed: int)
