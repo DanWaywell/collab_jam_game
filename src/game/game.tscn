@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b08ig35eso0ox"]
+[gd_scene load_steps=12 format=3 uid="uid://b08ig35eso0ox"]
 
 [ext_resource type="Script" uid="uid://b7j4utq80hr78" path="res://game/game.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://dnf6uu0bnvoro" path="res://sprite/arena.png" id="2_dxrkv"]
@@ -6,8 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://5hv1etavr06c" path="res://touch_screen/touch_screen_controler.tscn" id="5_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://blabc1royaiag" path="res://healthbar/healthbar.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://clfvkqd0lle4" path="res://rival/rival.tscn" id="6_ryrav"]
+[ext_resource type="Script" uid="uid://p5wjjftt8jqm" path="res://game/hud.gd" id="6_y36n6"]
+[ext_resource type="Theme" uid="uid://cjio8qyohpybk" path="res://game/hud_style.tres" id="7_y36n6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u13ga"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8tme"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vho3"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
@@ -25,6 +33,7 @@ touch_controlles = NodePath("../TouchScreenControler")
 position = Vector2(310, 92)
 
 [node name="TouchScreenControler" parent="." instance=ExtResource("5_dxrkv")]
+layer = 2
 visible = false
 
 [node name="ScreenEdges" type="StaticBody2D" parent="."]
@@ -48,4 +57,127 @@ position = Vector2(0, 167)
 rotation = 1.57079
 shape = SubResource("WorldBoundaryShape2D_u13ga")
 
-[node name="healthbar" parent="." instance=ExtResource("6_dakft")]
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("6_y36n6")
+
+[node name="Panel" type="Panel" parent="HUD"]
+offset_right = 103.0
+offset_bottom = 359.0
+theme = ExtResource("7_y36n6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j8tme")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 22.0
+offset_right = 46.0
+offset_bottom = 69.0
+scale = Vector2(0.7, 0.7)
+
+[node name="effect1" type="Label" parent="HUD/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "effect 1"
+
+[node name="effect2" type="Label" parent="HUD/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "effect 2"
+
+[node name="effect3" type="Label" parent="HUD/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "effect 3"
+
+[node name="Label" type="Label" parent="HUD/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 79.0
+offset_bottom = 28.0
+text = "Potion effects"
+
+[node name="healthbar" parent="HUD/Panel" instance=ExtResource("6_dakft")]
+position = Vector2(-14, -131)
+
+[node name="hp" type="Label" parent="HUD/Panel/healthbar"]
+unique_name_in_owner = true
+offset_left = 56.0
+offset_top = 331.0
+offset_right = 131.0
+offset_bottom = 354.0
+theme = ExtResource("7_y36n6")
+text = "hp 15"
+
+[node name="Panel2" type="Panel" parent="HUD"]
+offset_left = -2.0
+offset_top = 261.0
+offset_right = 633.0
+offset_bottom = 381.0
+theme = ExtResource("7_y36n6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3vho3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Panel2"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 12.0
+offset_right = 279.0
+offset_bottom = 59.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="condition" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "condition1"
+
+[node name="condition2" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "condition2"
+
+[node name="condition3" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "condition3"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HUD/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="b" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "-->"
+
+[node name="b2" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "-->"
+
+[node name="b3" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "-->"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/Panel2/HBoxContainer"]
+layout_mode = 2
+
+[node name="negeffect1" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "negeffect1"
+
+[node name="negeffect2" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "negeffect2"
+
+[node name="negeffect3" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "negeffect3"
+
+[node name="Panel3" type="Panel" parent="HUD"]
+offset_left = 529.0
+offset_top = -2.0
+offset_right = 632.0
+offset_bottom = 357.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j8tme")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://by2iwepb24003"]
+
+[ext_resource type="Script" uid="uid://boe8fbfyisoiq" path="res://potion/conditions/lose_quick_combo_node.gd" id="1_82m12"]
+
+[node name="condition_node" type="Node"]
+script = ExtResource("1_82m12")

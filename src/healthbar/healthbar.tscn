@@ -15,7 +15,7 @@ region = Rect2(0, 16, 64, 16)
 atlas = ExtResource("1_iywrq")
 region = Rect2(0, 32, 64, 16)
 
-[node name="healthbar" type="CanvasLayer"]
+[node name="healthbar" type="Node2D"]
 script = ExtResource("1_y66kq")
 
 [node name="top" type="Sprite2D" parent="."]

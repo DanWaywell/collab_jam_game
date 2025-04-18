@@ -1,4 +1,4 @@
-extends ConditionNode
+class_name TakeDamageNode extends ConditionNode
 
 @export var counter_max: int
 var counter: int = 0

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 @onready var top: Sprite2D = $top
 @onready var mid_1: Sprite2D = $mid1
 @onready var mid_2: Sprite2D = $mid2

@@ -1,4 +1,4 @@
-extends ConditionNode
+class_name ConditionComboNode extends ConditionNode
 #connect neccessary signals to check_condition
 
 @export var max_kill_streak: int
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 #or use an oberver pattern
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func check_condition(argument = null):

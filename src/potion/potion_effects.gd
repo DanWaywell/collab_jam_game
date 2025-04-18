@@ -4,6 +4,8 @@ class_name PotionEffectHolder extends Node
 #creates new potions for the shop
 
 signal potion_ready
+@warning_ignore("unused_signal")
+signal condition_met
 
 @export var effects: Array[Potion]
 @export var pos_effect_pool: Array[PosPotionComp]
@@ -28,6 +30,7 @@ func make_random_potion() -> Potion:
 	potion.positive_effect = pos_effect_pool.pick_random()
 	potion.negative_effect = neg_effect_pool.pick_random()
 	potion.condition = condition_pool.pick_random()
+	potion.condition.negative_effect = potion.negative_effect
 	potion.sprite_pos = potion.positive_effect.texture
 	potion.sprite_neg = potion.negative_effect.texture
 	potion.sprite3 = potion.condition.texture
