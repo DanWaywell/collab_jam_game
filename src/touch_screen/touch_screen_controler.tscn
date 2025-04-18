@@ -13,6 +13,7 @@ radius = 32.0
 script = ExtResource("1_vyy65")
 
 [node name="TouchButton1" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2(576, 274)
 shape = SubResource("CircleShape2D_vr1i5")
 action = "action_1"
@@ -23,6 +24,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_ltuun")
 
 [node name="TouchButton2" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2(497, 305)
 shape = SubResource("CircleShape2D_vr1i5")
 action = "action_2"
@@ -51,5 +53,27 @@ position = Vector2(-20.75, -20)
 scale = Vector2(0.25, 0.25)
 
 [node name="MarkerTopRight" type="Marker2D" parent="TouchJoystick"]
+position = Vector2(20.75, 18.5)
+scale = Vector2(0.25, 0.25)
+
+[node name="TouchJoystick2" type="Node2D" parent="."]
+position = Vector2(551, 288)
+scale = Vector2(2, 2)
+script = ExtResource("2_vyy65")
+
+[node name="Circle" type="Sprite2D" parent="TouchJoystick2"]
+texture_filter = 1
+texture = ExtResource("1_ltuun")
+
+[node name="Dot" type="Sprite2D" parent="TouchJoystick2"]
+texture_filter = 1
+texture = ExtResource("3_5q4nh")
+script = ExtResource("4_wjfoq")
+
+[node name="MarkerTopLeft" type="Marker2D" parent="TouchJoystick2"]
+position = Vector2(-20.75, -20)
+scale = Vector2(0.25, 0.25)
+
+[node name="MarkerTopRight" type="Marker2D" parent="TouchJoystick2"]
 position = Vector2(20.75, 18.5)
 scale = Vector2(0.25, 0.25)
