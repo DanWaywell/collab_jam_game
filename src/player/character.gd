@@ -9,7 +9,6 @@ var direction_facing := Vector2.RIGHT
 
 @export var touch_controlles: CanvasLayer
 
-#@onready var shoot_delay: Timer = $ShootDelay
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -43,20 +42,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if not Input.is_action_pressed("action_1"):
 		set_direction_facing(input_direction)
-	
-	#if Input.is_action_pressed("action_1") and shoot_delay.is_stopped():
-		#fire_projectile()
-		#shoot_delay.start()
-#
-#
-#func fire_projectile():
-	#var new_projectile = PROJECTILE.instantiate()
-	#new_projectile.speed = GlobalData.projectile_speed
-	#new_projectile.damage = GlobalData.dmg
-	#new_projectile.position = position
-	#new_projectile.source = self
-	#new_projectile.direction = direction_facing
-	#add_sibling(new_projectile)
 
 
 func set_direction_facing(vec2):
