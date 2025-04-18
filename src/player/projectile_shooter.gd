@@ -5,21 +5,30 @@ const PROJECTILE = preload("res://projectile/projectile.tscn")
 @onready var player: Player = $".."
 @onready var shoot_delay: Timer = $ShootDelay
 
+var touch_screen_joystick_2
+
+func _ready() -> void:
+	touch_screen_joystick_2 = player.touch_controlles.get_node("TouchJoystick2")
+
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("action_1") and shoot_delay.is_stopped():
-		fire_projectile()
-		shoot_delay.start()
+	if shoot_delay.is_stopped():
+		if touch_screen_joystick_2.position_vector != Vector2(0,0):
+			fire_projectile(touch_screen_joystick_2.position_vector)
+			shoot_delay.start()
+		elif Input.is_action_pressed("action_1"):
+			fire_projectile(get_direction_between_mouse_and_player())
+			shoot_delay.start()
 
 
-func fire_projectile():
+func fire_projectile(direction):
 	var new_projectile = PROJECTILE.instantiate()
 	new_projectile.speed = GlobalData.projectile_speed
 	new_projectile.damage = GlobalData.dmg
 	new_projectile.position = global_position
 	new_projectile.source = player
 	
-	new_projectile.direction = get_direction_between_mouse_and_player()
+	new_projectile.direction = direction
 	player.add_sibling(new_projectile)
 
 
