@@ -61,7 +61,7 @@ func attack():
 			if target_in_reach.has(current_target):
 				if current_target.health > 0:
 					print("Rival damaged Mob")
-					current_target.take_damage(1,self)
+					current_target.take_damage(1,self, GlobalData.rival_color)
 					attacking = true
 					#await get_tree().create_timer(0.8).timeout
 					attack()

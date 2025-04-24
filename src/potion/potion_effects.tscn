@@ -17,10 +17,10 @@
 
 [sub_resource type="Resource" id="Resource_pu5hk"]
 script = ExtResource("3_pu5hk")
-added_dmg = 25
+added_dmg = 1
 name = " of the Windblade"
-description = "Adds 25 DMG while moving, but"
-description_small = "25 DMG while moving"
+description = "Adds 1 DMG while moving, but"
+description_small = "1 DMG while moving"
 metadata/_custom_type_script = "uid://dsdkaw0kd2i5w"
 
 [sub_resource type="Resource" id="Resource_xxwcp"]
@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://cctqkbpuw6328"
 
 [sub_resource type="Resource" id="Resource_tqsle"]
 script = ExtResource("7_rqyw7")
-modifier = 12
+modifier = 0.2
 name = "Freezing"
 description = " your feet are now sliding on the Floor"
 description_small = "Floor sliding"
@@ -84,7 +84,7 @@ metadata/_custom_type_script = "uid://u7rwgrencmc3"
 [sub_resource type="Resource" id="Resource_bqx73"]
 script = ExtResource("13_hui8k")
 max_counter = 5
-name = "substance"
+name = " substance"
 description = " if you lose a quickness Combo 5 times"
 description_small = "lose QuickCombo 5 times"
 condition_node_path = "res://potion/conditions/lose_quick_combo_node.tscn"

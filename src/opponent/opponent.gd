@@ -17,7 +17,7 @@ func _ready() -> void:
 func attack_player(body: Player):
 	if GlobalData.attacking == false:
 		GlobalData.attacking = true
-		body.take_damage(1,self)
+		body.take_damage(1,self, GlobalData.enemy_color)
 		GlobalData.attack_timer()
 	pass
 
@@ -85,9 +85,10 @@ func set_sprite():
 
 
 var last_hit_source: CharacterBody2D
-func take_damage(damage, source: CharacterBody2D):
+func take_damage(damage, source: CharacterBody2D, color: Color):
 	health -= damage
 	last_hit_source = source
+	GlobalGameManager.popup_numbers.display_numbers(damage, global_position, self, false, color)
 
 
 func check_health():
@@ -96,6 +97,11 @@ func check_health():
 			GlobalGameManager.enemy_killed_by_player.emit(self)
 		if last_hit_source is Rival:
 			GlobalGameManager.enemy_killed_by_rival.emit(self)
+		
+		# wait a bit before queue_free to show the dmg number
+		$attack_reach/CollisionShape2D.disabled = true
+		$Sprite2D.visible = false
+		await get_tree().create_timer(0.7).timeout
 		queue_free()
 
 

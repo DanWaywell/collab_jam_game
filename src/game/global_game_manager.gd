@@ -21,6 +21,8 @@ signal player_takes_damage
 signal mob_spawned(mob:Mob)
 
 @onready var debug_overlay = $debug_overlay
+@onready var popup_numbers: DamageNumbers = $dmg_numbers
+
 
 func _ready() -> void:
 	enemy_killed_by_player.connect(quickness_combo)

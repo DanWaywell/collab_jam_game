@@ -1,8 +1,9 @@
 class_name IcyFloor extends NegPotionComp
 
 ## under 20!
-@export var modifier: int
+@export var modifier: float
 func apply():
-	GlobalData.acceleration -= modifier
+	GlobalData.deceleration = modifier
+	print("applied icy floor")
 	#show the UI / HUD Icon 
 	pass
