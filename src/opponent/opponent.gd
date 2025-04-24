@@ -93,16 +93,17 @@ func take_damage(damage, source: CharacterBody2D, color: Color):
 
 func check_health():
 	if health < 1:
-		if last_hit_source is Player:
-			GlobalGameManager.enemy_killed_by_player.emit(self)
-		if last_hit_source is Rival:
-			GlobalGameManager.enemy_killed_by_rival.emit(self)
-		
-		# wait a bit before queue_free to show the dmg number
-		$attack_reach/CollisionShape2D.disabled = true
-		$Sprite2D.visible = false
-		await get_tree().create_timer(0.7).timeout
-		queue_free()
+		if is_instance_valid(last_hit_source):
+			if last_hit_source is Player:
+				GlobalGameManager.enemy_killed_by_player.emit(self)
+			if last_hit_source is Rival:
+				GlobalGameManager.enemy_killed_by_rival.emit(self)
+			
+			# wait a bit before queue_free to show the dmg number
+			$attack_reach/CollisionShape2D.disabled = true
+			$Sprite2D.visible = false
+			await get_tree().create_timer(0.7).timeout
+			queue_free()
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:

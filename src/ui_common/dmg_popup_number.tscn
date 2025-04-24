@@ -4,7 +4,6 @@
 
 [node name="dmg_popup_number" type="RichTextLabel"]
 clip_contents = false
-anchors_preset = -1
 theme_override_fonts/normal_font = ExtResource("1_10hlx")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true

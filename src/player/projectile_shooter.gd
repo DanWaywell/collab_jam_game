@@ -11,7 +11,7 @@ func _ready() -> void:
 	touch_screen_joystick_2 = player.touch_controlles.get_node("TouchJoystick2")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if shoot_delay.is_stopped():
 		if touch_screen_joystick_2.position_vector != Vector2(0,0):
 			fire_projectile(touch_screen_joystick_2.position_vector)
@@ -27,7 +27,7 @@ func fire_projectile(direction):
 	new_projectile.damage = GlobalData.dmg
 	new_projectile.position = global_position
 	new_projectile.source = player
-	
+	new_projectile.color = Color.WEB_PURPLE
 	new_projectile.direction = direction
 	player.add_sibling(new_projectile)
 
