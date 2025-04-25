@@ -90,17 +90,19 @@ func take_damage(damage, source: CharacterBody2D, color: Color):
 	last_hit_source = source
 	GlobalGameManager.popup_numbers.display_numbers(damage, global_position, self, false, color)
 
-
+var defeated = false
 func check_health():
 	if health < 1:
 		if is_instance_valid(last_hit_source):
-			if last_hit_source is Player:
-				GlobalGameManager.enemy_killed_by_player.emit(self)
-			if last_hit_source is Rival:
-				GlobalGameManager.enemy_killed_by_rival.emit(self)
-			
+			if defeated == false:
+				if last_hit_source is Player:
+					GlobalGameManager.enemy_killed_by_player.emit(self)
+				if last_hit_source is Rival:
+					GlobalGameManager.enemy_killed_by_rival.emit(self)
+				defeated = true
 			# wait a bit before queue_free to show the dmg number
 			$attack_reach/CollisionShape2D.disabled = true
+			$hurtbox/CollisionShape2D2.disabled = true
 			$Sprite2D.visible = false
 			await get_tree().create_timer(0.7).timeout
 			queue_free()
@@ -115,5 +117,13 @@ func _on_attack_reach_body_entered(body: Node2D) -> void:
 	if body is Player and GlobalData.attacking == false:
 		attack_player(body)
 		pass
-		
-	pass # Replace with function body.
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is Explosion:
+		take_damage(area.damage, area.source, area.color)
+		GlobalGameManager.explosion_hits_mob.emit(global_position)
+		print("explosion hit")
+	if area is AoE:
+		take_damage(area.damage, area.source, area.color)
+		GlobalGameManager.explosion_hits_mob.emit(global_position)
+		print("AoE hit")

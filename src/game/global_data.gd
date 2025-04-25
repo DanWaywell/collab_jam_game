@@ -2,7 +2,18 @@ extends Node
 
 var number_of_opponents = 4
 
+#player ref
+var player: Player 
+##weapons to add
+var weapon_to_add: Array[String]
 
+func get_player(new_player):
+	player = new_player
+	if weapon_to_add.size() > 0:
+		for weapon in weapon_to_add:
+			player.add_weapon(weapon)
+	
+	
 #player vars
 var speed := 60.0
 var acceleration := 10.0

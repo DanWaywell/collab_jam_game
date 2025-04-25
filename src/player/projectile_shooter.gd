@@ -4,6 +4,7 @@ const PROJECTILE = preload("res://projectile/projectile.tscn")
 
 @onready var player: Player = $".."
 @onready var shoot_delay: Timer = $ShootDelay
+@onready var additional_weapons = $additional_weapons
 
 var touch_screen_joystick_2
 
@@ -30,6 +31,11 @@ func fire_projectile(direction):
 	new_projectile.color = Color.WEB_PURPLE
 	new_projectile.direction = direction
 	player.add_sibling(new_projectile)
+	
+	var other_weapons = additional_weapons.get_children()
+	for weapon in other_weapons:
+		weapon.fire()
+	
 
 
 func get_direction_between_mouse_and_player():

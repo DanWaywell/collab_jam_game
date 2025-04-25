@@ -11,11 +11,15 @@ var direction_facing := Vector2.RIGHT
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
+@onready var additional_weapons = $ProjectileShooter/additional_weapons
 func _ready() -> void:
 	touch_screen_joystick = touch_controlles.get_node("TouchJoystick")
+	GlobalData.get_player(self)
 
-
+func add_weapon(new_weapon: String):
+	var load_weapon = load(new_weapon)
+	var weapon_instance = load_weapon.instantiate()
+	additional_weapons.add_child(weapon_instance)
 
 func _physics_process(_delta: float) -> void:
 	GlobalData.velocity = velocity

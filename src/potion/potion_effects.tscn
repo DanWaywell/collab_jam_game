@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjhs58ijwf2vd"]
+[gd_scene load_steps=27 format=3 uid="uid://cjhs58ijwf2vd"]
 
 [ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://potion/potion_effects.gd" id="1_lqcbc"]
 [ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_lqcbc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dfgpc0rycutrn" path="res://potion/process_effects.gd" id="4_4id6q"]
 [ext_resource type="Script" uid="uid://b3dnrw7lr5nra" path="res://potion/positive_effects/quick_projectiles.gd" id="5_rqyw7"]
 [ext_resource type="Script" uid="uid://dl8pukivv57rm" path="res://potion/potion_condition_comp.gd" id="6_4id6q"]
+[ext_resource type="Script" uid="uid://b1001dshj2usj" path="res://potion/positive_effects/add_weapon.gd" id="6_xxwcp"]
 [ext_resource type="Script" uid="uid://bu4yrga0t6o6r" path="res://potion/negative_effects/icy_floor.gd" id="7_rqyw7"]
 [ext_resource type="Script" uid="uid://qbyxk21wa7lf" path="res://potion/conditions/comp_combo_kill_streak.gd" id="7_ypt18"]
 [ext_resource type="Script" uid="uid://d3gsade0u8ctx" path="res://potion/negative_effects/slow_projectiles.gd" id="8_hui8k"]
@@ -38,6 +39,32 @@ name = " of the Assassin"
 description = "Adds 25 Projectile Speed, but "
 description_small = "25 Projectile Speed"
 metadata/_custom_type_script = "uid://b3dnrw7lr5nra"
+
+[sub_resource type="Resource" id="Resource_t73yo"]
+script = ExtResource("6_xxwcp")
+modifier = 0
+weapon_key = "explosive_projectiles"
+weapon_nodes = {
+"aoe_1": "res://projectile/aoe_effect.tscn",
+"explosive_projectiles": "res://projectile/explosive_projectile_node.tscn"
+}
+name = " of the Pyrotechnician"
+description = "Your projectiles explode on impact, but "
+description_small = "Projectiles explode"
+metadata/_custom_type_script = "uid://b1001dshj2usj"
+
+[sub_resource type="Resource" id="Resource_8h1ll"]
+script = ExtResource("6_xxwcp")
+modifier = 0
+weapon_key = "aoe_1"
+weapon_nodes = {
+"aoe_1": "res://projectile/aoe_effect.tscn",
+"explosive_projectiles": "res://projectile/explosive_projectile_node.tscn"
+}
+name = " of the Viper"
+description = "Adds a damaging area around you, but "
+description_small = "damage area"
+metadata/_custom_type_script = "uid://b1001dshj2usj"
 
 [sub_resource type="Resource" id="Resource_lqcbc"]
 script = ExtResource("3_xdv8d")
@@ -92,7 +119,7 @@ metadata/_custom_type_script = "uid://3nn0epjcxgdc"
 
 [node name="PotionEffects" type="Node"]
 script = ExtResource("1_lqcbc")
-pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp"), SubResource("Resource_hui8k")])
+pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp"), SubResource("Resource_hui8k"), SubResource("Resource_t73yo"), SubResource("Resource_8h1ll")])
 neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1")])
 condition_pool = Array[ExtResource("6_4id6q")]([SubResource("Resource_med8q"), SubResource("Resource_yag17"), SubResource("Resource_bqx73")])
 

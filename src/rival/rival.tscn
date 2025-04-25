@@ -13,6 +13,9 @@ radius = 37.2156
 radius = 16.0
 
 [node name="Rival" type="CharacterBody2D"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3fwa0")

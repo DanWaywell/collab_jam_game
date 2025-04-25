@@ -21,6 +21,7 @@ bg_color = Color(0, 0, 0, 1)
 script = ExtResource("1_80nbo")
 
 [node name="Arena" type="Sprite2D" parent="."]
+z_index = -11
 texture = ExtResource("2_dxrkv")
 centered = false
 
@@ -61,17 +62,17 @@ shape = SubResource("WorldBoundaryShape2D_u13ga")
 script = ExtResource("6_y36n6")
 
 [node name="Panel" type="Panel" parent="HUD"]
-offset_right = 103.0
+offset_right = 83.0
 offset_bottom = 359.0
 theme = ExtResource("7_y36n6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_j8tme")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel"]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 9.0
 offset_top = 22.0
-offset_right = 46.0
-offset_bottom = 69.0
+offset_right = 52.0
+offset_bottom = 120.0
 scale = Vector2(0.7, 0.7)
 
 [node name="effect1" type="Label" parent="HUD/Panel/VBoxContainer"]
@@ -85,6 +86,21 @@ layout_mode = 2
 text = "effect 2"
 
 [node name="effect3" type="Label" parent="HUD/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "effect 3"
+
+[node name="effect4" type="Label" parent="HUD/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "effect 3"
+
+[node name="effect5" type="Label" parent="HUD/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "effect 3"
+
+[node name="effect6" type="Label" parent="HUD/Panel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "effect 3"
@@ -111,73 +127,181 @@ text = "hp 15"
 
 [node name="Panel2" type="Panel" parent="HUD"]
 offset_left = -2.0
-offset_top = 261.0
+offset_top = 301.0
 offset_right = 633.0
 offset_bottom = 381.0
 theme = ExtResource("7_y36n6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3vho3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Panel2"]
+[node name="w" type="HBoxContainer" parent="HUD/Panel2"]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 12.0
-offset_right = 279.0
-offset_bottom = 59.0
+offset_left = 223.0
+offset_top = 7.0
+offset_right = 505.0
+offset_bottom = 54.0
+scale = Vector2(0.7, 0.7)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel2/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel2/w"]
 layout_mode = 2
 
-[node name="condition" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer"]
+[node name="condition" type="Label" parent="HUD/Panel2/w/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "condition1"
 
-[node name="condition2" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer"]
+[node name="condition2" type="Label" parent="HUD/Panel2/w/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "condition2"
 
-[node name="condition3" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer"]
+[node name="condition3" type="Label" parent="HUD/Panel2/w/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "condition3"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HUD/Panel2/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HUD/Panel2/w"]
 layout_mode = 2
 
-[node name="b" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "-->"
-
-[node name="b2" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer3"]
+[node name="b" type="Label" parent="HUD/Panel2/w/VBoxContainer3"]
 layout_mode = 2
 text = "-->"
 
-[node name="b3" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer3"]
+[node name="b2" type="Label" parent="HUD/Panel2/w/VBoxContainer3"]
 layout_mode = 2
 text = "-->"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/Panel2/HBoxContainer"]
+[node name="b3" type="Label" parent="HUD/Panel2/w/VBoxContainer3"]
+layout_mode = 2
+text = "-->"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/Panel2/w"]
 layout_mode = 2
 
-[node name="negeffect1" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer2"]
+[node name="negeffect1" type="Label" parent="HUD/Panel2/w/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "negeffect1"
 
-[node name="negeffect2" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer2"]
+[node name="negeffect2" type="Label" parent="HUD/Panel2/w/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "negeffect2"
 
-[node name="negeffect3" type="Label" parent="HUD/Panel2/HBoxContainer/VBoxContainer2"]
+[node name="negeffect3" type="Label" parent="HUD/Panel2/w/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "negeffect3"
 
+[node name="VSeparator" type="VSeparator" parent="HUD/Panel2/w"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HUD/Panel2/w"]
+layout_mode = 2
+
+[node name="condition4" type="Label" parent="HUD/Panel2/w/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "condition1"
+
+[node name="condition5" type="Label" parent="HUD/Panel2/w/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "condition2"
+
+[node name="condition6" type="Label" parent="HUD/Panel2/w/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "condition3"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="HUD/Panel2/w"]
+layout_mode = 2
+
+[node name="b" type="Label" parent="HUD/Panel2/w/VBoxContainer5"]
+layout_mode = 2
+text = "-->"
+
+[node name="b2" type="Label" parent="HUD/Panel2/w/VBoxContainer5"]
+layout_mode = 2
+text = "-->"
+
+[node name="b3" type="Label" parent="HUD/Panel2/w/VBoxContainer5"]
+layout_mode = 2
+text = "-->"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="HUD/Panel2/w"]
+layout_mode = 2
+
+[node name="negeffect4" type="Label" parent="HUD/Panel2/w/VBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "negeffect1"
+
+[node name="negeffect5" type="Label" parent="HUD/Panel2/w/VBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "negeffect2"
+
+[node name="negeffect6" type="Label" parent="HUD/Panel2/w/VBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "negeffect3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/Panel2"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 6.0
+offset_right = 452.0
+offset_bottom = 53.0
+scale = Vector2(0.7, 0.7)
+
 [node name="Panel3" type="Panel" parent="HUD"]
-offset_left = 529.0
+offset_left = 558.0
 offset_top = -2.0
 offset_right = 632.0
 offset_bottom = 357.0
+theme = ExtResource("7_y36n6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_j8tme")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD/Panel3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 68.0
+offset_bottom = 174.0
+
+[node name="player score" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "Score"
+
+[node name="pscore int" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="rival score" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "Rival Score"
+
+[node name="rscore int" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Combo" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "Kill Combo"
+
+[node name="combo int" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "50"
+horizontal_alignment = 1
+
+[node name="quick combo" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "Time Combo"
+
+[node name="qcombo int" type="Label" parent="HUD/Panel3/VBoxContainer2"]
+layout_mode = 2
+text = "3"
+horizontal_alignment = 1

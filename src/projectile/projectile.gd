@@ -21,6 +21,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		if is_instance_valid(source):
 			body.take_damage(damage, source, color)
+			if body is Mob:
+				GlobalGameManager.projectile_hits_mob.emit(body.global_position)
 	
 	queue_free()
 

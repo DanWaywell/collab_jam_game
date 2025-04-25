@@ -20,13 +20,23 @@ signal player_takes_damage
 @warning_ignore("unused_signal")
 signal mob_spawned(mob:Mob)
 
+signal projectile_hits_mob(position: Vector2)
+signal explosion_hits_mob(position: Vector2)
+
+
+
+
 @onready var debug_overlay = $debug_overlay
 @onready var popup_numbers: DamageNumbers = $dmg_numbers
 
+var player_score: int
+var rival_score: int
+signal player_score_changed
 
 func _ready() -> void:
 	enemy_killed_by_player.connect(quickness_combo)
 	enemy_killed_by_player.connect(count_kills)
+	
 	enemy_killed_by_rival.connect(quickness_combo_rival)
 	enemy_killed_by_rival.connect(count_kills_rival)
 	player_got_hit.connect(kill_combo_reset)
@@ -37,6 +47,18 @@ enum  STATE {
 FIGHT,
 SHOP,
 }
+
+func count_player_score(score):
+	player_score += score
+	#player_score_changed.emit()
+
+func count_rival_score(score):
+	rival_score += score
+
+
+
+
+
 
 var enemies_defeated: int
 var enemies_defeated_rival: int
@@ -61,6 +83,14 @@ var quickness_kill_combo: int
 func count_kills(_mob):
 	kill_combo += 1
 	enemies_defeated += 1
+	count_player_score(1)
+	if kill_combo > 0:
+		count_player_score(int(kill_combo))
+		pass
+	if quickness_kill_combo > 0:
+		@warning_ignore("integer_division")
+		count_player_score(int(quickness_kill_combo/3)^2)
+		pass
 	kill_combo_streak.emit(kill_combo)
 
 var quick_combo_start: bool = false
@@ -102,7 +132,14 @@ var quickness_kill_combo_rival: int
 func count_kills_rival(_mob):
 	kill_combo_rival += 1
 	enemies_defeated_rival += 1
-
+	count_rival_score(1)
+	if kill_combo > 0:
+		count_rival_score(int(kill_combo))
+		pass
+	if quickness_kill_combo > 0:
+		@warning_ignore("integer_division")
+		count_rival_score(int(quickness_kill_combo/3)^2)
+		pass
 var quick_combo_start_rival: bool = false
 
 func quickness_combo_rival(_mob):
