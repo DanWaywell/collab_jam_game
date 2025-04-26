@@ -36,7 +36,7 @@ texture = ExtResource("1_ltuun")
 
 [node name="TouchJoystick" type="Node2D" parent="."]
 position = Vector2(73, 288)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("2_vyy65")
 
 [node name="Circle" type="Sprite2D" parent="TouchJoystick"]
@@ -58,7 +58,7 @@ scale = Vector2(0.25, 0.25)
 
 [node name="TouchJoystick2" type="Node2D" parent="."]
 position = Vector2(551, 288)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("2_vyy65")
 
 [node name="Circle" type="Sprite2D" parent="TouchJoystick2"]

@@ -27,10 +27,8 @@ func spawn():
 
 
 func seek_target(new_target: CharacterBody2D):
-	if target == null:
-		target = new_target
-	else:
-		pass
+	target = new_target
+
 
 
 func _physics_process(_delta: float) -> void:
@@ -110,7 +108,9 @@ func check_health():
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body is Player or body is Rival:
+	if body is Player:
+		seek_target(body)
+	if target == null and body is Rival:
 		seek_target(body)
 
 var attacking: bool = false

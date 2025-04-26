@@ -11,7 +11,6 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_318vg")
 
 [node name="Panel" type="Panel" parent="."]
@@ -66,6 +65,44 @@ offset_top = 5.0
 offset_right = 79.0
 offset_bottom = 28.0
 text = "Potion effects"
+
+[node name="Combo" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 115.0
+offset_right = 73.0
+offset_bottom = 128.0
+text = "Kill Combo"
+
+[node name="combo int" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 3.0
+offset_top = 127.0
+offset_right = 82.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 32
+text = "50"
+horizontal_alignment = 1
+
+[node name="quick combo" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 158.0
+offset_right = 72.0
+offset_bottom = 171.0
+text = "Time Combo"
+
+[node name="qcombo int" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 2.0
+offset_top = 170.0
+offset_right = 81.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="."]
 offset_left = -2.0
@@ -210,9 +247,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_j8tme")
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel3"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 16.0
+offset_top = 5.0
 offset_right = 68.0
-offset_bottom = 174.0
+offset_bottom = 163.0
 
 [node name="player score" type="Label" parent="Panel3/VBoxContainer2"]
 layout_mode = 2
@@ -220,6 +257,7 @@ text = "Score"
 
 [node name="pscore int" type="Label" parent="Panel3/VBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
@@ -229,29 +267,12 @@ text = "Rival Score"
 
 [node name="rscore int" type="Label" parent="Panel3/VBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
-[node name="Combo" type="Label" parent="Panel3/VBoxContainer2"]
-layout_mode = 2
-text = "Kill Combo"
-
-[node name="combo int" type="Label" parent="Panel3/VBoxContainer2"]
-layout_mode = 2
-text = "50"
-horizontal_alignment = 1
-
-[node name="quick combo" type="Label" parent="Panel3/VBoxContainer2"]
-layout_mode = 2
-text = "Time Combo"
-
-[node name="qcombo int" type="Label" parent="Panel3/VBoxContainer2"]
-layout_mode = 2
-text = "3"
-horizontal_alignment = 1
-
 [node name="healthbar" parent="Panel3" instance=ExtResource("3_svhta")]
-position = Vector2(-31, -40)
+position = Vector2(-26, -150)
 
 [node name="hp" type="Label" parent="Panel3/healthbar"]
 unique_name_in_owner = true

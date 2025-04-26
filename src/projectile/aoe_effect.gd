@@ -1,7 +1,7 @@
 
 class_name AoE extends Area2D
 
-var radius: int = 16
+var radius: int = 32
 var damage: int = 1
 var color: Color = Color.WEB_PURPLE
 @onready var collision_circle = $CollisionShape2D

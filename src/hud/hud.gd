@@ -8,8 +8,8 @@ extends CanvasLayer
 
 @onready var player_score_int: Label = $"Panel3/VBoxContainer2/pscore int"
 @onready var rival_score_int: Label = $"Panel3/VBoxContainer2/rscore int"
-@onready var combo_int: Label = $"Panel3/VBoxContainer2/combo int"
-@onready var qcombo_int: Label = $"Panel3/VBoxContainer2/qcombo int"
+@onready var combo_int: Label = %"combo int"
+@onready var qcombo_int: Label = %"qcombo int"
 
 
 
@@ -103,6 +103,8 @@ func reset():
 	
 func update_player_score():
 	player_score_int.text = str(GlobalGameManager.player_score)
+	combo_int.text = str(GlobalGameManager.kill_combo)
+	qcombo_int.text = str(GlobalGameManager.quickness_kill_combo)
 func update_rival_score():
 	rival_score_int.text = str(GlobalGameManager.rival_score)
 	
