@@ -16,5 +16,6 @@ func check_condition(_argument = null):
 	counter += 1
 	if counter >= counter_max:
 		negative_effect.apply()
+		negative_effect.condition_met.emit()
 		self.queue_free()
 	pass

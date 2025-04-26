@@ -25,6 +25,7 @@ AudioGlobal="*res://audio/audio_global.tscn"
 GlobalGameManager="*res://game/global_game_manager.tscn"
 PotionEffects="*res://potion/potion_effects.tscn"
 GlobalData="*res://game/global_data.gd"
+Hud="*res://hud/hud.tscn"
 
 [display]
 

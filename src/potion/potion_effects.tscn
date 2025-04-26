@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjhs58ijwf2vd"]
+[gd_scene load_steps=36 format=3 uid="uid://cjhs58ijwf2vd"]
 
 [ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://potion/potion_effects.gd" id="1_lqcbc"]
 [ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_lqcbc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cctqkbpuw6328" path="res://potion/negative_effects/slow_down.gd" id="3_xdv8d"]
 [ext_resource type="Script" uid="uid://da2bnmhgnmgy6" path="res://potion/positive_effects/add_movement_speed.gd" id="4_2k22v"]
 [ext_resource type="Script" uid="uid://dfgpc0rycutrn" path="res://potion/process_effects.gd" id="4_4id6q"]
+[ext_resource type="Texture2D" uid="uid://c5mcmhhehrn1i" path="res://sprite/potions.png" id="4_tqsle"]
 [ext_resource type="Script" uid="uid://b3dnrw7lr5nra" path="res://potion/positive_effects/quick_projectiles.gd" id="5_rqyw7"]
 [ext_resource type="Script" uid="uid://dl8pukivv57rm" path="res://potion/potion_condition_comp.gd" id="6_4id6q"]
 [ext_resource type="Script" uid="uid://b1001dshj2usj" path="res://potion/positive_effects/add_weapon.gd" id="6_xxwcp"]
@@ -16,13 +17,22 @@
 [ext_resource type="Script" uid="uid://u7rwgrencmc3" path="res://potion/conditions/comp_take_damage.gd" id="8_med8q"]
 [ext_resource type="Script" uid="uid://3nn0epjcxgdc" path="res://potion/conditions/comp_lose_quick_counter.gd" id="13_hui8k"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1jt1"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(16, 16, 112, 96)
+
 [sub_resource type="Resource" id="Resource_pu5hk"]
 script = ExtResource("3_pu5hk")
 added_dmg = 1
 name = " of the Windblade"
 description = "Adds 1 DMG while moving, but"
 description_small = "1 DMG while moving"
+texture = SubResource("AtlasTexture_y1jt1")
 metadata/_custom_type_script = "uid://dsdkaw0kd2i5w"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqx73"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(128, 16, 112, 96)
 
 [sub_resource type="Resource" id="Resource_xxwcp"]
 script = ExtResource("4_2k22v")
@@ -30,7 +40,12 @@ modifier = 20
 name = " of the Steed"
 description = "Adds 20 Movement Speed, but "
 description_small = "20 Movement Speed"
+texture = SubResource("AtlasTexture_bqx73")
 metadata/_custom_type_script = "uid://da2bnmhgnmgy6"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t73yo"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(240, 16, 112, 96)
 
 [sub_resource type="Resource" id="Resource_hui8k"]
 script = ExtResource("5_rqyw7")
@@ -38,7 +53,12 @@ speed = 25
 name = " of the Assassin"
 description = "Adds 25 Projectile Speed, but "
 description_small = "25 Projectile Speed"
+texture = SubResource("AtlasTexture_t73yo")
 metadata/_custom_type_script = "uid://b3dnrw7lr5nra"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h1ll"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(352, 16, 112, 96)
 
 [sub_resource type="Resource" id="Resource_t73yo"]
 script = ExtResource("6_xxwcp")
@@ -51,7 +71,12 @@ weapon_nodes = {
 name = " of the Pyrotechnician"
 description = "Your projectiles explode on impact, but "
 description_small = "Projectiles explode"
+texture = SubResource("AtlasTexture_8h1ll")
 metadata/_custom_type_script = "uid://b1001dshj2usj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r5sx"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(128, 16, 112, 96)
 
 [sub_resource type="Resource" id="Resource_8h1ll"]
 script = ExtResource("6_xxwcp")
@@ -64,7 +89,12 @@ weapon_nodes = {
 name = " of the Viper"
 description = "Adds a damaging area around you, but "
 description_small = "damage area"
+texture = SubResource("AtlasTexture_3r5sx")
 metadata/_custom_type_script = "uid://b1001dshj2usj"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6pa8"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(16, 112, 112, 80)
 
 [sub_resource type="Resource" id="Resource_lqcbc"]
 script = ExtResource("3_xdv8d")
@@ -72,7 +102,12 @@ speed = 20
 name = "Arrestive"
 description = " your Movement Speed is slowed down by 20."
 description_small = "- 20 Movement Speed"
+texture = SubResource("AtlasTexture_c6pa8")
 metadata/_custom_type_script = "uid://cctqkbpuw6328"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01mah"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(128, 112, 112, 80)
 
 [sub_resource type="Resource" id="Resource_tqsle"]
 script = ExtResource("7_rqyw7")
@@ -80,7 +115,12 @@ modifier = 0.2
 name = "Freezing"
 description = " your feet are now sliding on the Floor"
 description_small = "Floor sliding"
+texture = SubResource("AtlasTexture_01mah")
 metadata/_custom_type_script = "uid://bu4yrga0t6o6r"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouuda"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(352, 112, 112, 80)
 
 [sub_resource type="Resource" id="Resource_y1jt1"]
 script = ExtResource("8_hui8k")
@@ -88,6 +128,7 @@ speed = 15
 name = "Crippling"
 description = " your projectiles lose 15 Speed."
 description_small = "- 15 Projectile Speed"
+texture = SubResource("AtlasTexture_ouuda")
 metadata/_custom_type_script = "uid://d3gsade0u8ctx"
 
 [sub_resource type="Resource" id="Resource_med8q"]

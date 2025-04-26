@@ -101,11 +101,12 @@ func check_health():
 					GlobalGameManager.enemy_killed_by_rival.emit(self)
 				defeated = true
 			# wait a bit before queue_free to show the dmg number
-			$attack_reach/CollisionShape2D.disabled = true
-			$hurtbox/CollisionShape2D2.disabled = true
-			$Sprite2D.visible = false
-			await get_tree().create_timer(0.7).timeout
-			queue_free()
+		defeated = true
+		$attack_reach/CollisionShape2D.disabled = true
+		$hurtbox/CollisionShape2D2.disabled = true
+		$Sprite2D.visible = false
+		await get_tree().create_timer(0.7).timeout
+		queue_free()
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:

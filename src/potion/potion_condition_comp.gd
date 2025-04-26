@@ -1,5 +1,5 @@
 class_name ConditionPotionComp extends Resource
-
+signal condition_met
 @export var name: String
 @export_multiline var description: String
 @export var description_small: String

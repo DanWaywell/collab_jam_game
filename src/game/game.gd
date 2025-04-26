@@ -14,11 +14,12 @@ func _ready() -> void:
 	
 	spawn_opponents(GlobalData.number_of_opponents)
 	GlobalGameManager.player_hp.emit()
+	Hud.visible = true
 
 
 func _process(_delta: float) -> void:
 	if arena.get_child_count() == 0:
-		get_tree().change_scene_to_file("res://menu/potion_menu.tscn")
+		get_tree().change_scene_to_file("res://menu/potion_shop.tscn")
 
 
 

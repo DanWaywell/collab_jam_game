@@ -6,6 +6,7 @@ class_name PotionEffectHolder extends Node
 signal potion_ready
 @warning_ignore("unused_signal")
 signal condition_met
+signal potion_added
 
 @export var effects: Array[Potion]
 @export var pos_effect_pool: Array[PosPotionComp]
@@ -23,6 +24,7 @@ func add_potion(potion: Potion):
 	#show positive effect TODO
 	potion.condition.apply()
 	#show condition TODO
+	potion_added.emit()
 
 func make_random_potion() -> Potion:
 	var potion: Potion = Potion.new()

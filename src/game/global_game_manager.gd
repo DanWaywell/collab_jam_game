@@ -32,6 +32,7 @@ signal explosion_hits_mob(position: Vector2)
 var player_score: int
 var rival_score: int
 signal player_score_changed
+signal rival_score_changed
 
 func _ready() -> void:
 	enemy_killed_by_player.connect(quickness_combo)

@@ -13,7 +13,8 @@ func count():
 	counter += 1
 	if counter >= value:
 		negative_effect.apply()
-		PotionEffects.condition_met.emit()
+		#PotionEffects.condition_met.emit()
+		negative_effect.condition_met.emit()
 		self.queue_free()
 #or use an oberver pattern
 func _process(_delta: float) -> void:

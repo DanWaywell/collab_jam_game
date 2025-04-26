@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://rnage4g06jci"]
+
+[ext_resource type="Theme" uid="uid://cjio8qyohpybk" path="res://game/hud_style.tres" id="1_s52je"]
+[ext_resource type="Script" uid="uid://d3lcorqgt5r0q" path="res://menu/potion_shop_scene.gd" id="2_877cn"]
+[ext_resource type="Texture2D" uid="uid://c57gyssreb07o" path="res://sprite/potion_shop.png" id="3_x343i"]
+[ext_resource type="Material" uid="uid://xcnlymahbic0" path="res://menu/potion_material.tres" id="4_ux2yj"]
+[ext_resource type="Texture2D" uid="uid://c5mcmhhehrn1i" path="res://sprite/potions.png" id="5_wqofu"]
+[ext_resource type="Theme" uid="uid://dpe6aubqfhehk" path="res://ui_common/empty_button.tres" id="6_877cn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rhk6"]
+atlas = ExtResource("5_wqofu")
+region = Rect2(16, 16, 112, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1su2"]
+atlas = ExtResource("5_wqofu")
+region = Rect2(16, 112, 112, 80)
+
+[node name="PotionShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s52je")
+script = ExtResource("2_877cn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_x343i")
+centered = false
+
+[node name="Potion_display" type="Node2D" parent="."]
+
+[node name="potion_display1" type="Node2D" parent="Potion_display"]
+material = ExtResource("4_ux2yj")
+
+[node name="part1" type="Sprite2D" parent="Potion_display/potion_display1"]
+use_parent_material = true
+position = Vector2(248, 48)
+texture = SubResource("AtlasTexture_7rhk6")
+
+[node name="part2" type="Sprite2D" parent="Potion_display/potion_display1"]
+use_parent_material = true
+position = Vector2(248, 136)
+texture = SubResource("AtlasTexture_w1su2")
+
+[node name="potion_display2" type="Node2D" parent="Potion_display"]
+material = ExtResource("4_ux2yj")
+position = Vector2(145, 0)
+
+[node name="part1" type="Sprite2D" parent="Potion_display/potion_display2"]
+use_parent_material = true
+position = Vector2(248, 48)
+texture = SubResource("AtlasTexture_7rhk6")
+
+[node name="part2" type="Sprite2D" parent="Potion_display/potion_display2"]
+use_parent_material = true
+position = Vector2(248, 136)
+texture = SubResource("AtlasTexture_w1su2")
+
+[node name="potion_display3" type="Node2D" parent="Potion_display"]
+material = ExtResource("4_ux2yj")
+position = Vector2(289, -1)
+
+[node name="part1" type="Sprite2D" parent="Potion_display/potion_display3"]
+use_parent_material = true
+position = Vector2(248, 48)
+texture = SubResource("AtlasTexture_7rhk6")
+
+[node name="part2" type="Sprite2D" parent="Potion_display/potion_display3"]
+use_parent_material = true
+position = Vector2(248, 136)
+texture = SubResource("AtlasTexture_w1su2")
+
+[node name="Name" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 210.0
+offset_top = 78.0
+offset_right = 306.0
+offset_bottom = 118.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/default_color = Color(0.374415, 0.063106, 0.0926617, 1)
+bbcode_enabled = true
+text = "[center]Arrestive brew of the Steed"
+fit_content = true
+
+[node name="Name2" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 355.0
+offset_top = 78.0
+offset_right = 451.0
+offset_bottom = 118.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/default_color = Color(0.374415, 0.063106, 0.0926617, 1)
+bbcode_enabled = true
+text = "[center]Arrestive brew of the Steed"
+fit_content = true
+
+[node name="Name3" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 498.0
+offset_top = 77.0
+offset_right = 596.0
+offset_bottom = 117.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/default_color = Color(0.374415, 0.063106, 0.0926617, 1)
+bbcode_enabled = true
+text = "[center]Arrestive brew of the Steed"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 39.0
+offset_right = 140.0
+offset_bottom = 187.0
+
+[node name="pos_effect" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "sdgsgsdg"
+fit_content = true
+
+[node name="condition" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "sagsgsf"
+fit_content = true
+
+[node name="neg_effect" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "fdgfdahdgs dsh sdh dh fdhadfh"
+fit_content = true
+
+[node name="potion_1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 2.0
+offset_right = 304.0
+offset_bottom = 174.0
+theme = ExtResource("6_877cn")
+flat = true
+
+[node name="potion_2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 5.0
+offset_right = 443.0
+offset_bottom = 169.0
+theme = ExtResource("6_877cn")
+flat = true
+
+[node name="potion_3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 6.0
+offset_right = 591.0
+offset_bottom = 177.0
+theme = ExtResource("6_877cn")
+flat = true
+
+[node name="accept_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 218.0
+offset_right = 132.0
+offset_bottom = 250.0
+text = "accept trade"
+
+[connection signal="pressed" from="potion_1" to="." method="_on_potion_1_pressed"]
+[connection signal="pressed" from="potion_2" to="." method="_on_potion_2_pressed"]
+[connection signal="pressed" from="potion_3" to="." method="_on_potion_3_pressed"]
+[connection signal="pressed" from="accept_button" to="." method="_on_accept_button_pressed"]

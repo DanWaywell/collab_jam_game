@@ -15,5 +15,6 @@ func _process(_delta: float) -> void:
 func check_condition(argument = null):
 	if argument >= max_kill_streak:
 		negative_effect.apply()
+		negative_effect.condition_met.emit()
 		self.queue_free()
 	pass
