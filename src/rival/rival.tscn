@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://clfvkqd0lle4"]
+[gd_scene load_steps=7 format=3 uid="uid://clfvkqd0lle4"]
 
 [ext_resource type="Script" uid="uid://do1vieeeykvo1" path="res://rival/rival.gd" id="1_3fwa0"]
 [ext_resource type="Texture2D" uid="uid://cn65oxi778gtl" path="res://sprite/sprite_sheet_2.png" id="2_3fwa0"]
+[ext_resource type="PackedScene" uid="uid://ct3yu450u2px6" path="res://game/animation_player.tscn" id="3_5sqv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umddo"]
 radius = 8.0
@@ -21,10 +22,12 @@ motion_mode = 1
 script = ExtResource("1_3fwa0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -4)
 texture = ExtResource("2_3fwa0")
+hframes = 4
+frame = 1
 region_enabled = true
-region_rect = Rect2(16, 16, 16, 16)
+region_rect = Rect2(0, 16, 64, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -43,6 +46,8 @@ collision_mask = 4
 
 [node name="reach_collision" type="CollisionShape2D" parent="attack_reach"]
 shape = SubResource("CircleShape2D_5sqv4")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("3_5sqv4")]
 
 [connection signal="body_entered" from="enemy_area" to="." method="_on_enemy_area_body_entered"]
 [connection signal="body_entered" from="attack_reach" to="." method="_on_attack_reach_body_entered"]

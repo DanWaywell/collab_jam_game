@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://dim6n46di2gte"]
+
+[ext_resource type="Script" uid="uid://fmsu75j7ieyb" path="res://dialogue_scene/dialogue.gd" id="1_sxj7e"]
+[ext_resource type="Theme" uid="uid://dpe6aubqfhehk" path="res://ui_common/empty_button.tres" id="2_8513s"]
+[ext_resource type="FontFile" uid="uid://4dbbinfvd0l7" path="res://ui_common/lunchds.ttf" id="3_8513s"]
+[ext_resource type="FontFile" uid="uid://yg3ufmt77a5i" path="res://ui_common/GrapeSoda.ttf" id="3_vuybj"]
+
+[sub_resource type="Theme" id="Theme_ihgy0"]
+default_font = ExtResource("3_vuybj")
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.775518, 0.308432, 0.738071, 1)
+RichTextLabel/fonts/normal_font = ExtResource("3_vuybj")
+
+[sub_resource type="Theme" id="Theme_vuybj"]
+default_font = ExtResource("3_8513s")
+RichTextLabel/fonts/normal_font = ExtResource("3_8513s")
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_sxj7e")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -32.0
+offset_top = -28.0
+offset_right = 728.0
+offset_bottom = 435.0
+mouse_filter = 1
+theme = ExtResource("2_8513s")
+flat = true
+
+[node name="skip" type="Button" parent="Button"]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 335.0
+offset_right = 674.0
+offset_bottom = 385.0
+theme = ExtResource("2_8513s")
+theme_override_fonts/font = ExtResource("3_vuybj")
+text = "skip intro"
+
+[node name="player_label" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 87.0
+offset_top = 175.0
+offset_right = 514.0
+offset_bottom = 279.0
+theme = SubResource("Theme_ihgy0")
+
+[node name="do_something" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 192.0
+offset_top = 140.0
+offset_right = 619.0
+offset_bottom = 244.0
+theme = SubResource("Theme_ihgy0")
+bbcode_enabled = true
+text = "[shake rate=6.0 level=12 connected=1]Do something !"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 97.0
+offset_top = 39.0
+offset_right = 526.0
+offset_bottom = 158.0
+theme = SubResource("Theme_vuybj")
+theme_override_colors/default_color = Color(0.882353, 0.733333, 0.552941, 1)
+bbcode_enabled = true
+text = ". . . and this is how I'll bring an end to all evil and save cute, little kittens. "
+visible_characters_behavior = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button/skip" to="." method="_on_skip_pressed"]

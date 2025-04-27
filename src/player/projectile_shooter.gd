@@ -23,6 +23,13 @@ func _physics_process(_delta: float) -> void:
 
 
 func fire_projectile(direction):
+
+	if GlobalData.shaking_hands == true:
+		var randomness = randf_range(0,1)
+		if randomness < 0.2:
+			var x = randf_range(-10, 10)
+			var y = randf_range(-10,10)
+			direction *= Vector2(x,y)
 	var new_projectile = PROJECTILE.instantiate()
 	new_projectile.speed = GlobalData.projectile_speed
 	new_projectile.damage = GlobalData.dmg

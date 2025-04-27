@@ -7,6 +7,7 @@ signal potion_ready
 @warning_ignore("unused_signal")
 signal condition_met
 signal potion_added
+signal aoe_enemy
 
 @export var effects: Array[Potion]
 @export var pos_effect_pool: Array[PosPotionComp]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cjhs58ijwf2vd"]
+[gd_scene load_steps=41 format=3 uid="uid://cjhs58ijwf2vd"]
 
 [ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://potion/potion_effects.gd" id="1_lqcbc"]
 [ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_lqcbc"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://qbyxk21wa7lf" path="res://potion/conditions/comp_combo_kill_streak.gd" id="7_ypt18"]
 [ext_resource type="Script" uid="uid://d3gsade0u8ctx" path="res://potion/negative_effects/slow_projectiles.gd" id="8_hui8k"]
 [ext_resource type="Script" uid="uid://u7rwgrencmc3" path="res://potion/conditions/comp_take_damage.gd" id="8_med8q"]
+[ext_resource type="Script" uid="uid://dbnhqklqoj4fu" path="res://potion/negative_effects/enemy_aoe.gd" id="12_y1jt1"]
+[ext_resource type="Script" uid="uid://dwj8uxbwdmlsd" path="res://potion/negative_effects/shaking_hands.gd" id="13_bqx73"]
 [ext_resource type="Script" uid="uid://3nn0epjcxgdc" path="res://potion/conditions/comp_lose_quick_counter.gd" id="13_hui8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1jt1"]
@@ -88,7 +90,7 @@ weapon_nodes = {
 }
 name = " of the Viper"
 description = "Adds a damaging area around you, but "
-description_small = "damage area"
+description_small = "damage AoE"
 texture = SubResource("AtlasTexture_3r5sx")
 metadata/_custom_type_script = "uid://b1001dshj2usj"
 
@@ -98,9 +100,9 @@ region = Rect2(16, 112, 112, 80)
 
 [sub_resource type="Resource" id="Resource_lqcbc"]
 script = ExtResource("3_xdv8d")
-speed = 20
+speed = 5
 name = "Arrestive"
-description = " your Movement Speed is slowed down by 20."
+description = "your Movement Speed is slowed down by 5."
 description_small = "- 20 Movement Speed"
 texture = SubResource("AtlasTexture_c6pa8")
 metadata/_custom_type_script = "uid://cctqkbpuw6328"
@@ -113,7 +115,7 @@ region = Rect2(128, 112, 112, 80)
 script = ExtResource("7_rqyw7")
 modifier = 0.2
 name = "Freezing"
-description = " your feet are now sliding on the Floor"
+description = "your feet are now sliding on the Floor"
 description_small = "Floor sliding"
 texture = SubResource("AtlasTexture_01mah")
 metadata/_custom_type_script = "uid://bu4yrga0t6o6r"
@@ -126,10 +128,30 @@ region = Rect2(352, 112, 112, 80)
 script = ExtResource("8_hui8k")
 speed = 15
 name = "Crippling"
-description = " your projectiles lose 15 Speed."
+description = "your projectiles lose 15 Speed."
 description_small = "- 15 Projectile Speed"
 texture = SubResource("AtlasTexture_ouuda")
 metadata/_custom_type_script = "uid://d3gsade0u8ctx"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7627"]
+atlas = ExtResource("4_tqsle")
+region = Rect2(240, 112, 112, 80)
+
+[sub_resource type="Resource" id="Resource_e5qyl"]
+script = ExtResource("12_y1jt1")
+name = "Hounded"
+description = "your enemies gain damage areas."
+description_small = "eneym damage AoE"
+texture = SubResource("AtlasTexture_l7627")
+metadata/_custom_type_script = "uid://dbnhqklqoj4fu"
+
+[sub_resource type="Resource" id="Resource_3r5sx"]
+script = ExtResource("13_bqx73")
+name = "Shivering"
+description = "your hands become shaky, your spells direction get wonky."
+description_small = "wonky projectile direction"
+texture = SubResource("AtlasTexture_ouuda")
+metadata/_custom_type_script = "uid://dwj8uxbwdmlsd"
 
 [sub_resource type="Resource" id="Resource_med8q"]
 script = ExtResource("7_ypt18")
@@ -161,7 +183,7 @@ metadata/_custom_type_script = "uid://3nn0epjcxgdc"
 [node name="PotionEffects" type="Node"]
 script = ExtResource("1_lqcbc")
 pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp"), SubResource("Resource_hui8k"), SubResource("Resource_t73yo"), SubResource("Resource_8h1ll")])
-neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1")])
+neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1"), SubResource("Resource_e5qyl"), SubResource("Resource_3r5sx")])
 condition_pool = Array[ExtResource("6_4id6q")]([SubResource("Resource_med8q"), SubResource("Resource_yag17"), SubResource("Resource_bqx73")])
 
 [node name="process_effects" type="Node" parent="."]

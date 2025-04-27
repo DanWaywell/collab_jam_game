@@ -22,6 +22,7 @@ var dmg := 1
 var health := 15
 var projectile_speed := 80.0
 var velocity
+var shaking_hands: bool = false
 
 
 #colors 
@@ -31,6 +32,9 @@ var rival_color: Color = Color(0.883, 0.761, 0.561)
 # enemy vars
 var attack_cooldown = 1.0
 var attacking = false
+
+# other
+var text_dialogue_speed =  0.02
 
 func attack_timer():
 	await get_tree().create_timer(attack_cooldown).timeout

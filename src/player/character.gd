@@ -73,3 +73,11 @@ func take_damage(damage, _source: CharacterBody2D, color: Color):
 func check_health():
 	if GlobalData.health < 1:
 		queue_free()
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area is AoE:
+		take_damage(area.damage, area.source, area.color)
+		GlobalGameManager.explosion_hits_player.emit(global_position)
+		print("AoE Enemy hit")
+	pass # Replace with function body.

@@ -6,7 +6,7 @@ var speed = 50.0
 var direction_facing = Vector2.RIGHT
 
 var health = 3
-
+@onready var animation_player = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 var current_target: Mob
 
@@ -104,10 +104,12 @@ func _physics_process(_delta: float) -> void:
 
 	# Movement x y
 	if move_direction:
+		animation_player.play("walk")
 		velocity = move_direction * speed
 		#velocity.x = move_toward(velocity.x, move_direction.x * speed * input_direction.length(), ACCELERATION)
 		#velocity.y = move_toward(velocity.y, move_direction.y * speed * input_direction.length(), ACCELERATION)
 	else:
+		animation_player.play("RESET")
 		velocity = Vector2.ZERO
 		#velocity.x = move_toward(velocity.x, 0, DECELERATION)
 		#velocity.y = move_toward(velocity.y, 0, DECELERATION)
@@ -149,15 +151,15 @@ func set_direction_facing(vec2):
 
 
 func set_sprite():
-#	if direction_facing == Vector2.UP:
-#		sprite.frame = 0
-#	elif direction_facing == Vector2.RIGHT:
-#		sprite.frame = 3
-#	elif direction_facing == Vector2.DOWN:
-#		sprite.frame = 1
-#	elif direction_facing == Vector2.LEFT:
-#		sprite.frame = 2
-#	else:
+	if direction_facing == Vector2.UP:
+		sprite.frame = 0
+	elif direction_facing == Vector2.RIGHT:
+		sprite.frame = 3
+	elif direction_facing == Vector2.DOWN:
+		sprite.frame = 1
+	elif direction_facing == Vector2.LEFT:
+		sprite.frame = 2
+	else:
 		pass
 
 

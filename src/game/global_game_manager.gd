@@ -22,6 +22,7 @@ signal mob_spawned(mob:Mob)
 
 signal projectile_hits_mob(position: Vector2)
 signal explosion_hits_mob(position: Vector2)
+signal explosion_hits_player(position:Vector2)
 
 
 

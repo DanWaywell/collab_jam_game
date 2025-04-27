@@ -11,6 +11,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_318vg")
 
 [node name="Panel" type="Panel" parent="."]
