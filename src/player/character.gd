@@ -46,8 +46,8 @@ func _physics_process(_delta: float) -> void:
 	
 	check_health()
 	
-	if not Input.is_action_pressed("action_1"):
-		set_direction_facing(input_direction)
+#	if not Input.is_action_pressed("action_1"):
+	set_direction_facing(input_direction)
 
 
 func set_direction_facing(vec2):
@@ -79,6 +79,7 @@ func check_health():
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is AoEopponent:
+		AudioGlobal.play_sound("magic_explosion1", -20.0)
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_player.emit(global_position)
 		print("AoE Enemy hit")

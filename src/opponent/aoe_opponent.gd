@@ -11,6 +11,8 @@ var color: Color = GlobalData.enemy_color
 
 func _ready() -> void:
 	PotionEffects.aoe_enemy.connect(start)
+	if GlobalData.enemyaoe == true:
+		start()
 	#AudioGlobal.play_sound("magic_projectile2", -20.0) #TODO aoe sound
 	#$AnimationPlayer.play("explosion")
 
@@ -18,6 +20,7 @@ func start():
 	self.visible = true
 	$AnimationPlayer.play("explosion")
 	call_deferred("enable")
+	GlobalData.enemyaoe = true
 func fire():
 	pass
 

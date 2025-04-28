@@ -118,7 +118,7 @@ func _physics_process(_delta: float) -> void:
 			on_patrol = false
 			### debug prints -> globalgamemanager, delete later TODO
 			GlobalGameManager.debug_overlay.current_target_rival.text = str(current_target.name)
-			input_direction = current_target.position - position
+			input_direction = current_target.global_position - position
 		else:
 			print("start patrol")
 			start_patrolling()

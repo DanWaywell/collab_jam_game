@@ -22,7 +22,7 @@ class_name AudioManager extends Node
 @export var sfx_voices: Array [Resource]
 
 ## number of sound players
-@export var sfx_player_number := 4
+@export var sfx_player_number := 8
 @export var sfx_player_number2 := 4
 ## stores sound players while playing
 @onready var effect_node = $sounds

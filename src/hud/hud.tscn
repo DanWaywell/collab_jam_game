@@ -312,16 +312,16 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="healthbar" parent="Panel3" instance=ExtResource("3_svhta")]
-position = Vector2(-26, -150)
+position = Vector2(-17, -151)
 
 [node name="hp" type="Label" parent="Panel3/healthbar"]
 unique_name_in_owner = true
-offset_left = 56.0
-offset_top = 331.0
-offset_right = 131.0
-offset_bottom = 354.0
+offset_left = 39.0
+offset_top = 343.0
+offset_right = 114.0
+offset_bottom = 366.0
 theme = ExtResource("2_w8tcp")
-text = "hp 15"
+text = "15"
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="Panel3"]
 modulate = Color(0.199615, 0.119343, 0.23216, 1)
@@ -329,7 +329,7 @@ z_index = -2
 layout_mode = 0
 offset_left = -40.0
 offset_top = 2.0
-offset_right = 96.0
+offset_right = 98.0
 offset_bottom = 340.0
 texture = ExtResource("3_w8tcp")
 patch_margin_left = 32

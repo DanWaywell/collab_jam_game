@@ -123,6 +123,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area is Explosion:
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_mob.emit(global_position)
+		AudioGlobal.play_sound("magic_explosion2", -20.0)
 		print("explosion hit")
 	if area is AoE:
 		take_damage(area.damage, area.source, area.color)

@@ -8,7 +8,6 @@ var color: Color
 @export var source: CharacterBody2D
 
 func _ready() -> void:
-	AudioGlobal.play_sound("magic_projectile2", -20.0) #TODO explosion sound
 	$AnimationPlayer.play("explosion")
 
 
@@ -24,8 +23,9 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		if is_instance_valid(source):
-			body.take_damage(damage, source, color)
 			if body is Mob:
+				body.take_damage(damage, source, color)
+				
 				GlobalGameManager.explosion_hits_mob.emit(body.global_position)
 				print_debug("explosion hit")
 

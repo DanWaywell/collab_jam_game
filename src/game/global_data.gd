@@ -33,6 +33,7 @@ func reset():
 	projectile_speed = 80.0
 	shaking_hands = false
 	weapon_to_add.clear()
+	enemyaoe = false
 
 #colors 
 var enemy_color: Color = Color(0.81, 0.199, 0.0)
@@ -41,6 +42,7 @@ var rival_color: Color = Color(0.883, 0.761, 0.561)
 # enemy vars
 var attack_cooldown = 1.0
 var attacking = false
+var enemyaoe = false
 
 # other
 var text_dialogue_speed =  0.01

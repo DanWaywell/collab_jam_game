@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6au0e78rko7r"]
+[gd_scene load_steps=12 format=3 uid="uid://6au0e78rko7r"]
 
 [ext_resource type="Script" uid="uid://cvpwj068duxtn" path="res://audio/audio_global.gd" id="1_lj2qa"]
 [ext_resource type="AudioStream" uid="uid://bmg3ebdsjar2c" path="res://audio/sfx/button_1.wav" id="2_tcplg"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://drodnd3nhd2rx" path="res://audio/sfx/magic_projectile2.wav" id="4_72igx"]
 [ext_resource type="AudioStream" uid="uid://cbm0dxpbkeeev" path="res://audio/music/bagpulp.mp3" id="5_40v7m"]
 [ext_resource type="AudioStream" uid="uid://2puvescj4k7s" path="res://audio/sfx/magic_projectile.wav" id="5_kfn1p"]
+[ext_resource type="AudioStream" uid="uid://jj5ibpvcrar5" path="res://audio/sfx/magic_explosion1.wav" id="6_ev6ex"]
+[ext_resource type="AudioStream" uid="uid://cgcangudtg0sj" path="res://audio/sfx/magic_explosion2.wav" id="7_qaiuw"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_tcplg"]
 clip_count = 4
@@ -34,7 +36,7 @@ Vector2i(-1, -1): {
 
 [node name="AudioGlobal" type="Node"]
 script = ExtResource("1_lj2qa")
-sfx = Array[Resource]([ExtResource("2_tcplg"), ExtResource("3_60upr"), ExtResource("4_72igx"), ExtResource("5_kfn1p")])
+sfx = Array[Resource]([ExtResource("2_tcplg"), ExtResource("3_60upr"), ExtResource("4_72igx"), ExtResource("5_kfn1p"), ExtResource("6_ev6ex"), ExtResource("7_qaiuw")])
 
 [node name="sounds" type="Node" parent="."]
 
