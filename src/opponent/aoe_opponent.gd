@@ -17,10 +17,12 @@ func _ready() -> void:
 func start():
 	self.visible = true
 	$AnimationPlayer.play("explosion")
-	$CollisionShape2D.disabled = false
+	call_deferred("enable")
 func fire():
 	pass
 
+func enable():
+	$CollisionShape2D.disabled = false
 func explosion():
 	$AnimationPlayer.play("explosion")
 	@warning_ignore("unused_variable")

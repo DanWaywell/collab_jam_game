@@ -85,23 +85,47 @@ func enemy_killed(enemy: Mob):
 		else:
 			current_target = null
 		
+var on_patrol = false
+var randx 
+var randy 
+var random_pos
+var arena_middle = Vector2(316,204)
+var new_point
+var input_direction
 
-func stroll():
+func start_patrolling():
+	input_direction = Vector2.ZERO
+	await get_tree().create_timer(0.4).timeout #TEST
+	on_patrol = true
+	randx = randi_range(-160,160)
+	randy = randi_range(-160,160)
+	print("RANDI VECTOR", Vector2(randx, randy))
+	random_pos = arena_middle + (Vector2(randx,randy))
+#	input_direction = random_pos
+	new_point = false
 	pass
-
-
+var move_direction
 func _physics_process(_delta: float) -> void:
-	var input_direction
-	if current_target:
-		### debug prints -> globalgamemanager, delete later TODO
-		GlobalGameManager.debug_overlay.current_target_rival.text = str(current_target.name)
-		input_direction = current_target.position - position
-		
+	if on_patrol == true:
+		if new_point == false:
+			input_direction = (random_pos - global_position).normalized() * (speed/0.5) * _delta
+			#input_direction = velocity
+			if int(global_position.x/ 4) == int(random_pos.x / 4) :
+				new_point = true
+				start_patrolling()
 	else:
-		input_direction = Vector2.ZERO
+		if current_target != null:
+			on_patrol = false
+			### debug prints -> globalgamemanager, delete later TODO
+			GlobalGameManager.debug_overlay.current_target_rival.text = str(current_target.name)
+			input_direction = current_target.position - position
+		else:
+			print("start patrol")
+			start_patrolling()
 
-	var move_direction = input_direction.normalized()
+	
 
+	move_direction = input_direction.normalized()
 	# Movement x y
 	if move_direction:
 		animation_player.play("walk")
@@ -115,27 +139,11 @@ func _physics_process(_delta: float) -> void:
 		#velocity.y = move_toward(velocity.y, 0, DECELERATION)
 
 	move_and_slide()
-	
 	set_direction_facing(input_direction)
 	set_sprite()
 	check_health()
 	
 	
-
-	
-
-	
-	#if Input.is_action_just_pressed("action_1"):
-		#fire_projectile()
-	#
-	#
-#func fire_projectile():
-	#var new_projectile = PROJECTILE.instantiate()
-	#new_projectile.position = position
-	#new_projectile.direction = direction_facing
-	#add_sibling(new_projectile)
-
-
 func set_direction_facing(vec2):
 	if vec2 != Vector2.ZERO:
 		if abs(vec2.x) > abs(vec2.y):

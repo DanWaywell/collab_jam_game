@@ -15,7 +15,10 @@ signal aoe_enemy
 @export var condition_pool: Array[ConditionPotionComp]
 
 @onready var conditions = $conditions
-
+func reset():
+	effects.clear()
+	
+	
 func add_potion(potion: Potion):
 #	potion.positive_effect.player = GlobalData
 #	potion.negative_effect.player = GlobalData

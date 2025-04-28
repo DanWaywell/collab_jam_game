@@ -24,6 +24,15 @@ var projectile_speed := 80.0
 var velocity
 var shaking_hands: bool = false
 
+func reset():
+	speed = 60.0
+	acceleration = 10.0
+	deceleration = 20.0
+	dmg = 1
+	health = 15
+	projectile_speed = 80.0
+	shaking_hands = false
+	weapon_to_add.clear()
 
 #colors 
 var enemy_color: Color = Color(0.81, 0.199, 0.0)
@@ -34,7 +43,7 @@ var attack_cooldown = 1.0
 var attacking = false
 
 # other
-var text_dialogue_speed =  0.02
+var text_dialogue_speed =  0.01
 
 func attack_timer():
 	await get_tree().create_timer(attack_cooldown).timeout

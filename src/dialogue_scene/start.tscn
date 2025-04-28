@@ -29,21 +29,23 @@ flat = true
 
 [node name="skip" type="Button" parent="Button"]
 layout_mode = 0
-offset_left = 529.0
-offset_top = 335.0
-offset_right = 674.0
-offset_bottom = 385.0
+offset_left = 461.0
+offset_top = 329.0
+offset_right = 582.0
+offset_bottom = 379.0
 theme = ExtResource("2_8513s")
 theme_override_fonts/font = ExtResource("3_vuybj")
 text = "skip intro"
 
 [node name="player_label" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-offset_left = 87.0
+offset_left = 59.0
 offset_top = 175.0
-offset_right = 514.0
+offset_right = 578.0
 offset_bottom = 279.0
 theme = SubResource("Theme_ihgy0")
+bbcode_enabled = true
+visible_characters_behavior = 1
 
 [node name="do_something" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -67,6 +69,15 @@ theme_override_colors/default_color = Color(0.882353, 0.733333, 0.552941, 1)
 bbcode_enabled = true
 text = ". . . and this is how I'll bring an end to all evil and save cute, little kittens. "
 visible_characters_behavior = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -63.0
+offset_top = -44.0
+offset_right = 675.0
+offset_bottom = 410.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button/skip" to="." method="_on_skip_pressed"]
