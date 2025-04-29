@@ -2,14 +2,19 @@ extends Node
 
 @onready var player = $".."
 var color = Color.SEA_GREEN
+
+
 func _ready() -> void:
 	GlobalGameManager.five_kills.connect(gain_hp)
-
+var lost_health: bool = false
 var gained_health: bool= false
 func _process(_delta: float) -> void:
 	if gained_health == false:
 		gain_health()
-	
+	if lost_health == false:
+		lose_hp_over_time()
+		
+
 func gain_health():
 	if GlobalData.regen > 0 and GlobalData.health < 15:
 		gained_health = true
@@ -28,3 +33,10 @@ func gain_hp():
 		GlobalGameManager.player_hp.emit(GlobalData.regen_on_5_kill)
 		if GlobalData.health > 15:
 			GlobalData.health = 15
+
+func lose_hp_over_time():
+	if GlobalData.curse > 0 and GlobalData.health > 1:
+		lost_health = true
+		await get_tree().create_timer(9).timeout
+		player.take_damage(GlobalData.curse, player, GlobalData.enemy_color)
+		lost_health = false

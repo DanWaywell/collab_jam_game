@@ -103,7 +103,7 @@ shape = SubResource("CircleShape2D_jmpku")
 
 [node name="hurt_tween_comp" parent="." instance=ExtResource("11_4gtrb")]
 
-[node name="regen" type="Node" parent="."]
+[node name="regen_and_curse" type="Node" parent="."]
 script = ExtResource("12_22b1n")
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

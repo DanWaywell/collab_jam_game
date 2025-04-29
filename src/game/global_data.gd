@@ -42,8 +42,10 @@ var velocity
 var shaking_hands: bool = false
 var regen: int = 0
 var regen_on_5_kill: int = 0
+var curse: int = 0
 
 func reset():
+	curse = 0
 	regen_on_5_kill = 0
 	regen = 0
 	speed = 60.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cjhs58ijwf2vd"]
+[gd_scene load_steps=49 format=3 uid="uid://cjhs58ijwf2vd"]
 
 [ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://potion/potion_effects.gd" id="1_lqcbc"]
 [ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_lqcbc"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://dbnhqklqoj4fu" path="res://potion/negative_effects/enemy_aoe.gd" id="12_y1jt1"]
 [ext_resource type="Script" uid="uid://dwj8uxbwdmlsd" path="res://potion/negative_effects/shaking_hands.gd" id="13_bqx73"]
 [ext_resource type="Script" uid="uid://3nn0epjcxgdc" path="res://potion/conditions/comp_lose_quick_counter.gd" id="13_hui8k"]
+[ext_resource type="Script" uid="uid://cay0ksr3b8fb3" path="res://potion/negative_effects/curse.gd" id="16_c6pa8"]
 [ext_resource type="Script" uid="uid://btpvs8i7v138q" path="res://potion/conditions/gained_health_comp.gd" id="20_3r5sx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1jt1"]
@@ -100,7 +101,7 @@ metadata/_custom_type_script = "uid://b1001dshj2usj"
 [sub_resource type="Resource" id="Resource_c6pa8"]
 script = ExtResource("8_8h1ll")
 modifier = 1
-name = "of the Druid"
+name = " of the Druid"
 description = "Regenerates 1 HP every 6 seconds"
 description_small = "1 Regen"
 texture = SubResource("AtlasTexture_3r5sx")
@@ -109,7 +110,7 @@ metadata/_custom_type_script = "uid://b1dsk47liqx2p"
 [sub_resource type="Resource" id="Resource_01mah"]
 script = ExtResource("9_3r5sx")
 modifier = 1
-name = "of the Vampire"
+name = " of the Vampire"
 description = "Gain 1 HP for every 5 enemies killed"
 description_small = "1 HP for 5 kills"
 texture = SubResource("AtlasTexture_t73yo")
@@ -174,6 +175,14 @@ description_small = "wonky projectile direction"
 texture = SubResource("AtlasTexture_ouuda")
 metadata/_custom_type_script = "uid://dwj8uxbwdmlsd"
 
+[sub_resource type="Resource" id="Resource_l7627"]
+script = ExtResource("16_c6pa8")
+name = "Cursed"
+description = "You're cursed! Lose 1 HP every 9 sec."
+description_small = "- 1 HP / 9 sec."
+texture = SubResource("AtlasTexture_l7627")
+metadata/_custom_type_script = "uid://cay0ksr3b8fb3"
+
 [sub_resource type="Resource" id="Resource_med8q"]
 script = ExtResource("7_ypt18")
 max_combo = 10
@@ -213,7 +222,7 @@ metadata/_custom_type_script = "uid://btpvs8i7v138q"
 [node name="PotionEffects" type="Node"]
 script = ExtResource("1_lqcbc")
 pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp"), SubResource("Resource_hui8k"), SubResource("Resource_t73yo"), SubResource("Resource_8h1ll"), SubResource("Resource_c6pa8"), SubResource("Resource_01mah")])
-neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1"), SubResource("Resource_e5qyl"), SubResource("Resource_3r5sx")])
+neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1"), SubResource("Resource_e5qyl"), SubResource("Resource_3r5sx"), SubResource("Resource_l7627")])
 condition_pool = Array[ExtResource("6_4id6q")]([SubResource("Resource_med8q"), SubResource("Resource_yag17"), SubResource("Resource_bqx73"), SubResource("Resource_ouuda")])
 
 [node name="process_effects" type="Node" parent="."]
