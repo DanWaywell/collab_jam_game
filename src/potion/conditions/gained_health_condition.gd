@@ -2,7 +2,7 @@ class_name GainedHealthNode extends ConditionNode
 #connect neccessary signals to check_condition
 
 @export var value: int
-var start
+var start: int = 0
 func _ready() -> void:
 	GlobalGameManager.player_hp.connect(count)
 	pass

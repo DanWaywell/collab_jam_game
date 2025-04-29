@@ -54,14 +54,14 @@ func change_target(near_target: Mob):
 		current_target = near_target
 	#	print("change_target: new near target")
 
-		
+var rival_damage = 1
 func attack():
 	if attacking == false:
 		if current_target:
 			if target_in_reach.has(current_target):
 				if current_target.health > 0:
 			#		print("Rival damaged Mob")
-					current_target.take_damage(1,self, GlobalData.rival_color)
+					current_target.take_damage(rival_damage,self, GlobalData.rival_color)
 					attacking = true
 					#await get_tree().create_timer(0.8).timeout
 					attack()

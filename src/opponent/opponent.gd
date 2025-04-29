@@ -1,6 +1,6 @@
 class_name Mob extends CharacterBody2D
 
-var speed := 30.0
+@export var speed := 30.0
 var acceleration := 10.0
 var deceleration := 20.0
 var direction_facing := Vector2.RIGHT

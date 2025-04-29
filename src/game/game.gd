@@ -3,12 +3,14 @@ extends Node2D
 const OPPONENT = preload("res://opponent/opponent.tscn")
 const BAT = preload("res://opponent/opponent_bat2.tscn")
 const BLOB = preload("res://opponent/opponent_blob.tscn")
+const SLOWBRO = preload("res://opponent/opponent_slow_bro.tscn")
 const EDGE_MARGIN = 32
 
 var screen_size: Vector2i
 
 @onready var arena: Sprite2D = $Arena
 @onready var player = %Character
+@onready var rival = $Rival
 
 
 func _ready() -> void:
@@ -21,6 +23,8 @@ func _ready() -> void:
 	spawn_opponents(BAT, bats_number)
 	var blob_number = int(bats_number / 2.0)
 	spawn_opponents(BLOB,blob_number)
+	var slowbro_number = int(blob_number / 2.0)
+	spawn_opponents(SLOWBRO, slowbro_number)
 	GlobalGameManager.player_hp.emit(0)
 	Hud.visible = true
 
@@ -28,6 +32,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if arena.get_child_count() == 0 and is_instance_valid(player):
 		GlobalData.rounds += 1
+		if GlobalData.rounds >= 2 and GlobalData.rounds <4:
+			rival.rival_damage = 2
+		if GlobalData.rounds >= 4:
+			rival.rival_damage = 3
 		if GlobalData.rounds == 7:
 			if GlobalGameManager.player_score > GlobalGameManager.rival_score:
 				GlobalData.win = true
@@ -49,10 +57,10 @@ func win():
 @onready var q_2b: Marker2D = $q2b
 @onready var q_1b: Marker2D = $q1b
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		GlobalData.win = true
-		win()
+#func _input(event: InputEvent) -> void:
+#	if event.is_action_pressed("ui_cancel"):
+#		GlobalData.win = true
+#		win()
 	
 	
 	

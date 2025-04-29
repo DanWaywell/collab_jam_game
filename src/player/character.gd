@@ -67,7 +67,7 @@ func set_direction_facing(vec2):
 func take_damage(damage, _source: CharacterBody2D, color: Color):
 	if damage > 0:
 		GlobalData.health -= damage
-		GlobalGameManager.player_takes_damage.emit()
+		GlobalGameManager.player_takes_damage.emit(damage)
 	GlobalGameManager.player_got_hit.emit()
 	GlobalGameManager.popup_numbers.display_numbers(damage, global_position,self, false, color)
 	$hurt_tween_comp.hurt()

@@ -23,12 +23,13 @@ var enemies_killed_player: int
 var bats: int
 var blobs: int
 var pawns: int
-
+var slowbro: int
 #rival
 var renemies_killed_player: int
 var rbats: int
 var rblobs: int
 var rpawns: int
+var rslowbro: int
 
 
 #player vars

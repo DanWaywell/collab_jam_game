@@ -9,6 +9,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ji7p"]
 content_margin_left = 40.0
 content_margin_right = 40.0
+content_margin_bottom = 20.0
 texture = ExtResource("5_0qoho")
 texture_margin_left = 32.0
 texture_margin_top = 16.0
@@ -51,7 +52,7 @@ layout_mode = 2
 [node name="TitleLabel2" type="Label" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Score"
+text = "Witch"
 horizontal_alignment = 1
 
 [node name="player_score" type="Label" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2"]
@@ -69,7 +70,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "total Enemies"
+text = "total"
 
 [node name="enemies_player" type="Label" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -121,6 +122,21 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "234243"
 
+[node name="HSeparator5" type="VSeparator" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+text = "Slowbros"
+
+[node name="slowbro" type="Label" parent="VBoxContainer/HBoxContainer2/player/VBoxContainer2/HBoxContainer/VBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "234243"
+
 [node name="rival" type="PanelContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8ji7p")
@@ -131,7 +147,7 @@ layout_mode = 2
 [node name="TitleLabel2" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Score"
+text = "GOLDEN KNIGHT"
 horizontal_alignment = 1
 
 [node name="rival_score" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer"]
@@ -149,7 +165,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "total Enemies"
+text = "total"
 
 [node name="enemies_killed_rival" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -197,6 +213,21 @@ layout_mode = 2
 text = "Blobs"
 
 [node name="blobs_killed_rival" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "234243"
+
+[node name="HSeparator5" type="VSeparator" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+text = "Slowbros"
+
+[node name="rslowbro" type="Label" parent="VBoxContainer/HBoxContainer2/rival/VBoxContainer/HBoxContainer/VBoxContainer5"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "234243"
