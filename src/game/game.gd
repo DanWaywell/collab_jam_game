@@ -10,6 +10,7 @@ var screen_size: Vector2i
 @onready var arena: Sprite2D = $Arena
 @onready var player = %Character
 
+
 func _ready() -> void:
 	screen_size.x = ProjectSettings.get_setting("display/window/size/viewport_width")
 	screen_size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
@@ -20,7 +21,7 @@ func _ready() -> void:
 	spawn_opponents(BAT, bats_number)
 	var blob_number = int(bats_number / 2.0)
 	spawn_opponents(BLOB,blob_number)
-	GlobalGameManager.player_hp.emit()
+	GlobalGameManager.player_hp.emit(0)
 	Hud.visible = true
 
 

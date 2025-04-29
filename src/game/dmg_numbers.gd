@@ -41,7 +41,6 @@ func display_numbers(value: float, _target_position: Vector2,target, _is_critica
 		number.queue_free()
 
 func display_numbers_label(value: float, _target_position: Vector2,target, _is_critical: bool = false, new_color: Color = Color.WEB_PURPLE):
-	# TODO : color for Overload
 	_target_position = target.global_position
 	_target_position.y -= 25
 	_target_position.x -= 5

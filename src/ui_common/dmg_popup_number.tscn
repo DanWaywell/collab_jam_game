@@ -3,7 +3,6 @@
 [ext_resource type="FontFile" uid="uid://vwbeqsy0vrjp" path="res://ui_common/m5x7.ttf" id="1_10hlx"]
 
 [node name="dmg_popup_number" type="RichTextLabel"]
-visible = false
 clip_contents = false
 theme_override_fonts/normal_font = ExtResource("1_10hlx")
 theme_override_font_sizes/normal_font_size = 32

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cg3jfm0s4gfj4"]
+[gd_scene load_steps=16 format=3 uid="uid://cg3jfm0s4gfj4"]
 
 [ext_resource type="Script" uid="uid://beu8wwcx7tqfb" path="res://player/character.gd" id="1_1l1n4"]
 [ext_resource type="Texture2D" uid="uid://b1isr0ecuom47" path="res://sprite/sprites3.png" id="2_4gtrb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bk5wwyum4pcer" path="res://player/projectile_shooter.gd" id="8_jmpku"]
 [ext_resource type="Script" uid="uid://cg3r1jhvqifo" path="res://player/debug_overlay_player.gd" id="10_ga8vp"]
 [ext_resource type="PackedScene" uid="uid://lrh43m3tapx6" path="res://player/hurt_tween_comp.tscn" id="11_4gtrb"]
+[ext_resource type="Script" uid="uid://chq7q1x61y7gd" path="res://player/regen.gd" id="12_22b1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gtrb"]
 radius = 7.0
@@ -101,5 +102,8 @@ collision_mask = 7
 shape = SubResource("CircleShape2D_jmpku")
 
 [node name="hurt_tween_comp" parent="." instance=ExtResource("11_4gtrb")]
+
+[node name="regen" type="Node" parent="."]
+script = ExtResource("12_22b1n")
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

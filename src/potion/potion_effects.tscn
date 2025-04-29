@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cjhs58ijwf2vd"]
+[gd_scene load_steps=47 format=3 uid="uid://cjhs58ijwf2vd"]
 
 [ext_resource type="Script" uid="uid://yev6um4pc1xk" path="res://potion/potion_effects.gd" id="1_lqcbc"]
 [ext_resource type="Script" uid="uid://kr0qosmhnnos" path="res://potion/neg_potion_comp.gd" id="2_lqcbc"]
@@ -13,11 +13,14 @@
 [ext_resource type="Script" uid="uid://b1001dshj2usj" path="res://potion/positive_effects/add_weapon.gd" id="6_xxwcp"]
 [ext_resource type="Script" uid="uid://bu4yrga0t6o6r" path="res://potion/negative_effects/icy_floor.gd" id="7_rqyw7"]
 [ext_resource type="Script" uid="uid://qbyxk21wa7lf" path="res://potion/conditions/comp_combo_kill_streak.gd" id="7_ypt18"]
+[ext_resource type="Script" uid="uid://b1dsk47liqx2p" path="res://potion/positive_effects/add_regen.gd" id="8_8h1ll"]
 [ext_resource type="Script" uid="uid://d3gsade0u8ctx" path="res://potion/negative_effects/slow_projectiles.gd" id="8_hui8k"]
 [ext_resource type="Script" uid="uid://u7rwgrencmc3" path="res://potion/conditions/comp_take_damage.gd" id="8_med8q"]
+[ext_resource type="Script" uid="uid://bdu4gam0hl1ml" path="res://potion/positive_effects/add_regen_per_kill.gd" id="9_3r5sx"]
 [ext_resource type="Script" uid="uid://dbnhqklqoj4fu" path="res://potion/negative_effects/enemy_aoe.gd" id="12_y1jt1"]
 [ext_resource type="Script" uid="uid://dwj8uxbwdmlsd" path="res://potion/negative_effects/shaking_hands.gd" id="13_bqx73"]
 [ext_resource type="Script" uid="uid://3nn0epjcxgdc" path="res://potion/conditions/comp_lose_quick_counter.gd" id="13_hui8k"]
+[ext_resource type="Script" uid="uid://btpvs8i7v138q" path="res://potion/conditions/gained_health_comp.gd" id="20_3r5sx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1jt1"]
 atlas = ExtResource("4_tqsle")
@@ -93,6 +96,24 @@ description = "Adds a damaging area around you"
 description_small = "damage AoE"
 texture = SubResource("AtlasTexture_3r5sx")
 metadata/_custom_type_script = "uid://b1001dshj2usj"
+
+[sub_resource type="Resource" id="Resource_c6pa8"]
+script = ExtResource("8_8h1ll")
+modifier = 1
+name = "of the Druid"
+description = "Regenerates 1 HP every 6 seconds"
+description_small = "1 Regen"
+texture = SubResource("AtlasTexture_3r5sx")
+metadata/_custom_type_script = "uid://b1dsk47liqx2p"
+
+[sub_resource type="Resource" id="Resource_01mah"]
+script = ExtResource("9_3r5sx")
+modifier = 1
+name = "of the Vampire"
+description = "Gain 1 HP for every 5 enemies killed"
+description_small = "1 HP for 5 kills"
+texture = SubResource("AtlasTexture_t73yo")
+metadata/_custom_type_script = "uid://bdu4gam0hl1ml"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6pa8"]
 atlas = ExtResource("4_tqsle")
@@ -180,11 +201,20 @@ description_small = "lose QuickCombo 5 times"
 condition_node_path = "res://potion/conditions/lose_quick_combo_node.tscn"
 metadata/_custom_type_script = "uid://3nn0epjcxgdc"
 
+[sub_resource type="Resource" id="Resource_ouuda"]
+script = ExtResource("20_3r5sx")
+max_counter = 5
+name = "juice"
+description = "If you gain 5 health back:"
+description_small = "Gain 5 HP"
+condition_node_path = "res://potion/conditions/gained_health_condition.tscn"
+metadata/_custom_type_script = "uid://btpvs8i7v138q"
+
 [node name="PotionEffects" type="Node"]
 script = ExtResource("1_lqcbc")
-pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp"), SubResource("Resource_hui8k"), SubResource("Resource_t73yo"), SubResource("Resource_8h1ll")])
+pos_effect_pool = Array[ExtResource("2_xdv8d")]([SubResource("Resource_pu5hk"), SubResource("Resource_xxwcp"), SubResource("Resource_hui8k"), SubResource("Resource_t73yo"), SubResource("Resource_8h1ll"), SubResource("Resource_c6pa8"), SubResource("Resource_01mah")])
 neg_effect_pool = Array[ExtResource("2_lqcbc")]([SubResource("Resource_lqcbc"), SubResource("Resource_tqsle"), SubResource("Resource_y1jt1"), SubResource("Resource_e5qyl"), SubResource("Resource_3r5sx")])
-condition_pool = Array[ExtResource("6_4id6q")]([SubResource("Resource_med8q"), SubResource("Resource_yag17"), SubResource("Resource_bqx73")])
+condition_pool = Array[ExtResource("6_4id6q")]([SubResource("Resource_med8q"), SubResource("Resource_yag17"), SubResource("Resource_bqx73"), SubResource("Resource_ouuda")])
 
 [node name="process_effects" type="Node" parent="."]
 script = ExtResource("4_4id6q")

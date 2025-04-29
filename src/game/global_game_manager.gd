@@ -7,8 +7,8 @@ signal enemy_killed_by_player(mob:Mob)
 signal enemy_killed_by_rival(mob:Mob)
 signal player_got_hit
 @warning_ignore("unused_signal")
-signal player_hp
-
+signal player_hp(value)
+signal five_kills
 # condition signals
 signal kill_combo_streak(enemies_killed: int)
 signal kill_combo_end
@@ -30,6 +30,7 @@ signal explosion_hits_player(position:Vector2)
 @onready var debug_overlay = $debug_overlay
 @onready var popup_numbers: DamageNumbers = $dmg_numbers
 
+var count_to_five = 0
 var player_score: int
 var rival_score: int
 signal player_score_changed
@@ -86,6 +87,11 @@ func count_kills(_mob):
 	kill_combo += 1
 	enemies_defeated += 1
 	count_player_score(1)
+	count_to_five += 1
+	if count_to_five == 5:
+		five_kills.emit()
+		count_to_five = 0
+		
 	if kill_combo > 0:
 		count_player_score(int(kill_combo))
 		pass

@@ -12,7 +12,7 @@ var direction_facing := Vector2.RIGHT
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var additional_weapons = $ProjectileShooter/additional_weapons
-
+@onready var game = $".."
 
 func _ready() -> void:
 	touch_screen_joystick = touch_controlles.get_node("TouchJoystick")
@@ -75,7 +75,7 @@ func take_damage(damage, _source: CharacterBody2D, color: Color):
 
 func check_health():
 	if GlobalData.health < 1:
-		queue_free()
+		game.lose()
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

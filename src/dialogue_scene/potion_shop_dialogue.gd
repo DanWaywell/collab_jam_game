@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	Hud.visible = false
+	get_forward.connect(tut_off)
 	if GlobalData.rounds == 1:
 		tut_on()
 		text_1()
@@ -43,8 +44,6 @@ func text_1():
 	var bubble_text = "[shake rate=6.0 level=12 connected=1]" + text1
 	display_text(text1, label)
 	display_text(bubble_text, bubble)
-	await get_forward
-	tut_off()
 	pass
 
 
@@ -55,8 +54,6 @@ func text_2():
 	var bubble_text = "[shake rate=6.0 level=12 connected=1]" + text1
 	display_text(text1, label)
 	display_text(bubble_text, bubble)
-	await get_forward
-	tut_off()
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -106,17 +103,13 @@ signal text_stopped
 
 
 func _on_button_pressed() -> void:
-	if tutorial_ongoing == true and letters_appearing == false and do_something == false:
-		get_forward.emit()
-		get_viewport().set_input_as_handled()
-		pass
-	if tutorial_ongoing == true and letters_appearing == true and do_something == false:
-		label.visible_characters = label.text.length()
-		bubble.visible_characters = bubble.text.length()
-		get_viewport().set_input_as_handled()
-	pass # Replace with function body.
-
-
-func _on_skip_pressed() -> void:
 	tut_off()
-	pass # Replace with function body.
+#	if tutorial_ongoing == true and letters_appearing == false and do_something == false:
+#		get_forward.emit()
+#		get_viewport().set_input_as_handled()
+#		pass
+#	if tutorial_ongoing == true and letters_appearing == true and do_something == false:
+#		label.visible_characters = label.text.length()
+#		bubble.visible_characters = bubble.text.length()
+#		get_viewport().set_input_as_handled()
+#	pass # Replace with function body.

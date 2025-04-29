@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddf63l71i1hol"]
+
+[ext_resource type="Script" uid="uid://bha3d4gdsgxm0" path="res://potion/conditions/gained_health_condition.gd" id="1_uljkb"]
+
+[node name="condition_node" type="Node"]
+script = ExtResource("1_uljkb")

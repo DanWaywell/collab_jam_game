@@ -9,7 +9,7 @@ func _ready() -> void:
 	GlobalGameManager.player_takes_damage.connect(update)
 	GlobalGameManager.player_hp.connect(update)
 
-func update():
+func update(_value):
 	var hp = GlobalData.health
 	if hp == 15:
 		top.frame = 0
