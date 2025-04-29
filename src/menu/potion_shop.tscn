@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://rnage4g06jci"]
+[gd_scene load_steps=13 format=3 uid="uid://rnage4g06jci"]
 
 [ext_resource type="Theme" uid="uid://cjio8qyohpybk" path="res://game/hud_style.tres" id="1_s52je"]
 [ext_resource type="Script" uid="uid://d3lcorqgt5r0q" path="res://menu/potion_shop_scene.gd" id="2_877cn"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://xcnlymahbic0" path="res://menu/potion_material.tres" id="4_ux2yj"]
 [ext_resource type="Texture2D" uid="uid://c5mcmhhehrn1i" path="res://sprite/potions.png" id="5_wqofu"]
 [ext_resource type="Theme" uid="uid://dpe6aubqfhehk" path="res://ui_common/empty_button.tres" id="6_877cn"]
+[ext_resource type="Script" uid="uid://cpucdkx4ew6qg" path="res://dialogue_scene/potion_shop_dialogue.gd" id="7_wqofu"]
+[ext_resource type="FontFile" uid="uid://4dbbinfvd0l7" path="res://ui_common/lunchds.ttf" id="8_7rhk6"]
+[ext_resource type="FontFile" uid="uid://yg3ufmt77a5i" path="res://ui_common/GrapeSoda.ttf" id="9_w1su2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rhk6"]
 atlas = ExtResource("5_wqofu")
@@ -14,6 +17,10 @@ region = Rect2(16, 16, 112, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1su2"]
 atlas = ExtResource("5_wqofu")
 region = Rect2(16, 112, 112, 80)
+
+[sub_resource type="Theme" id="Theme_vuybj"]
+default_font = ExtResource("8_7rhk6")
+RichTextLabel/fonts/normal_font = ExtResource("8_7rhk6")
 
 [node name="PotionShop" type="Control"]
 layout_mode = 3
@@ -127,12 +134,14 @@ fit_content = true
 [node name="condition" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/default_color = Color(0.811112, 0.676905, 0.99488, 1)
 text = "sagsgsf"
 fit_content = true
 
 [node name="neg_effect" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/default_color = Color(0.604944, 0.276366, 1, 1)
 text = "fdgfdahdgs dsh sdh dh fdhadfh"
 fit_content = true
 
@@ -171,7 +180,80 @@ offset_right = 132.0
 offset_bottom = 250.0
 text = "accept trade"
 
+[node name="Start" type="Node2D" parent="."]
+position = Vector2(-35, -27)
+script = ExtResource("7_wqofu")
+
+[node name="Button" type="Button" parent="Start"]
+offset_left = -32.0
+offset_top = -28.0
+offset_right = 728.0
+offset_bottom = 435.0
+mouse_filter = 1
+theme = ExtResource("6_877cn")
+flat = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Start"]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 185.0
+offset_top = 182.0
+offset_right = 515.0
+offset_bottom = 301.0
+theme = SubResource("Theme_vuybj")
+theme_override_colors/default_color = Color(0.741176, 0.568627, 0.92549, 1)
+theme_override_fonts/normal_font = ExtResource("9_w1su2")
+bbcode_enabled = true
+text = "Hey Witch. You need a potion? For you it's only 1/6 of your soul. Maybe read the instrutions."
+visible_characters_behavior = 1
+
+[node name="bubbly" type="RichTextLabel" parent="Start"]
+unique_name_in_owner = true
+clip_contents = false
+offset_left = 185.0
+offset_top = 182.0
+offset_right = 515.0
+offset_bottom = 301.0
+theme = SubResource("Theme_vuybj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 73
+theme_override_fonts/normal_font = ExtResource("9_w1su2")
+bbcode_enabled = true
+text = "[shake rate=6.0 level=12 connected=1]Hey Witch. You need a potion? For you it's only 1/6 of your soul. But be aware of the side-effects."
+visible_characters_behavior = 1
+
+[node name="bubbly2" type="RichTextLabel" parent="Start"]
+unique_name_in_owner = true
+clip_contents = false
+offset_left = 520.0
+offset_top = 230.0
+offset_right = 850.0
+offset_bottom = 349.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_vuybj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 73
+bbcode_enabled = true
+text = "[shake rate=6.0 level=12 connected=1] ogdj"
+visible_characters_behavior = 1
+
+[node name="bubbly3" type="RichTextLabel" parent="Start"]
+unique_name_in_owner = true
+clip_contents = false
+offset_left = 544.0
+offset_top = 256.0
+offset_right = 874.0
+offset_bottom = 375.0
+scale = Vector2(0.2, 0.2)
+theme = SubResource("Theme_vuybj")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 73
+bbcode_enabled = true
+text = "[shake rate=6.0 level=12 connected=1] ODJ"
+visible_characters_behavior = 1
+
 [connection signal="pressed" from="potion_1" to="." method="_on_potion_1_pressed"]
 [connection signal="pressed" from="potion_2" to="." method="_on_potion_2_pressed"]
 [connection signal="pressed" from="potion_3" to="." method="_on_potion_3_pressed"]
 [connection signal="pressed" from="accept_button" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Start/Button" to="Start" method="_on_button_pressed"]

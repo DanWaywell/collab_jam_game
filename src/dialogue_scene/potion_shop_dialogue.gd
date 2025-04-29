@@ -1,11 +1,18 @@
 extends Node2D
 
 @onready var label = %RichTextLabel2
-@onready var player_label = %player_label
+@onready var bubble = %bubbly
 
 func _ready() -> void:
 	Hud.visible = false
-	on_start()
+	if GlobalData.rounds == 1:
+		tut_on()
+		text_1()
+	else:
+		tut_on()
+		text_2()
+		$Button.queue_free()
+		
 	pass
 signal get_forward
 signal text_appears
@@ -21,39 +28,33 @@ func tut_on():
 
 func tut_off():
 	tutorial_ongoing = false
-	tut_finished.emit()
-	get_tree().change_scene_to_file("res://game/game.tscn")
+	queue_free()
 
-func on_start():
-		tut_on()
-		text_1()
-		pass
+
 
 func clear_label():
 	label.text = ""
 	label.visible = false
 	
 func text_1():
-	tut_on()
-	var text1 = "... and this is how I'll bring an end to all evil and save cute, little kittens."
-	await display_text(text1, label)
+	label.position = Vector2(185.0,182.0)
+	bubble.position = Vector2(185.0,182.0)
+	var text1 = "Hey Witch. You need a potion? For you it's only 1/6 of your soul. Maybe read the instrutions."
+	var bubble_text = "[shake rate=6.0 level=12 connected=1]" + text1
+	display_text(text1, label)
+	display_text(bubble_text, bubble)
 	await get_forward
-	
-	var text2 = "[center]Ugh."
-	await display_text(text2, player_label)
-	await get_forward
-	
-	var text22 = "After winning the Royal Tournament, you'll all get autograms for your grandma!"
-	var text3 = "[center]Our saviour and hero! I hate that guy, someone's got to do _something_ ..."
-	display_text(text22, label)
-	await display_text(text3, player_label)
-	await get_forward
-	%do_something.visible = true
-	var text23 = "I love all my fans! You're the best!"
-	#label.size = Vector2(0.7,0.7)
-	display_text(text23, label)
-	player_label.text = ""
-	do_something = true
+	tut_off()
+	pass
+
+
+func text_2():
+	label.position = Vector2(353.0,196.0)
+	bubble.position = Vector2(353.0,196.0)
+	var text1 = "Oh hey, it's you again."
+	var bubble_text = "[shake rate=6.0 level=12 connected=1]" + text1
+	display_text(text1, label)
+	display_text(bubble_text, bubble)
 	await get_forward
 	tut_off()
 	pass
@@ -69,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if tutorial_ongoing == true and letters_appearing == true:
 		if event.is_action_pressed("mouseclick") or event.is_action_pressed("ui_accept"):
 			label.visible_characters = label.text.length()
-			player_label.visible_characters = player_label.text.length()
+			bubble.visible_characters = bubble.text.length()
 			get_viewport().set_input_as_handled()
 			pass
 
@@ -77,9 +78,9 @@ func display_text(text: String, flabel : RichTextLabel):
 	flabel.visible = true
 	flabel.visible_characters = 0
 	flabel.text = text
-	await get_tree().process_frame #TEST
+	#await get_tree().process_frame #TEST
  # "[wave rate=0.2 level=0.2 connected=0]" + 
-	await display_letter(flabel)
+	display_letter(flabel)
 	letters_appearing = false
 	text_stopped.emit()
 	pass
@@ -111,7 +112,7 @@ func _on_button_pressed() -> void:
 		pass
 	if tutorial_ongoing == true and letters_appearing == true and do_something == false:
 		label.visible_characters = label.text.length()
-		player_label.visible_characters = player_label.text.length()
+		bubble.visible_characters = bubble.text.length()
 		get_viewport().set_input_as_handled()
 	pass # Replace with function body.
 
