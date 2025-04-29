@@ -15,9 +15,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if shoot_delay.is_stopped():
 		if touch_screen_joystick_2.position_vector != Vector2(0,0):
-			fire_projectile(touch_screen_joystick_2.position_vector)
+			fire_projectile(touch_screen_joystick_2.position_vector.normalized())
 			shoot_delay.start()
-		elif Input.is_action_pressed("action_1"):
+		elif Input.is_action_pressed("action_1") and not DisplayServer.is_touchscreen_available():
 			fire_projectile(get_direction_between_mouse_and_player())
 			shoot_delay.start()
 
