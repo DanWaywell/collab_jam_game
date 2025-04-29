@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6r02qlq4csbb"]
+[gd_scene load_steps=19 format=3 uid="uid://c6r02qlq4csbb"]
 
 [ext_resource type="Script" uid="uid://cxsxgoq16lfmf" path="res://opponent/opponent_bat_2.gd" id="1_pw3jv"]
 [ext_resource type="Script" uid="uid://dk1uo042g6lww" path="res://opponent/mob_path2d.gd" id="2_ypn42"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://de3d4xniocrfe" path="res://opponent/aoe_opponent.gd" id="3_pw3jv"]
 [ext_resource type="Texture2D" uid="uid://cn65oxi778gtl" path="res://sprite/sprite_sheet_2.png" id="4_ec7fo"]
 [ext_resource type="Texture2D" uid="uid://u2e46eax2ohe" path="res://sprite/explosions.png" id="4_ypn42"]
+[ext_resource type="PackedScene" uid="uid://lrh43m3tapx6" path="res://player/hurt_tween_comp.tscn" id="7_ypn42"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hgent"]
 radius = 7.07107
@@ -273,6 +274,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_vq3sn")
 }
 speed_scale = 3.0
+
+[node name="hurt_tween_comp" parent="Path2D/PathFollow2D/Opponent" instance=ExtResource("7_ypn42")]
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Opponent/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Opponent/attack_reach" to="." method="_on_attack_reach_body_entered"]

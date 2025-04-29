@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://de2jli25mbung"]
+
+[ext_resource type="Texture2D" uid="uid://cw8sjxp1jlsfw" path="res://sprite/numbers.png" id="1_m885b"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_m885b")
+hframes = 5
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 32)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cg3jfm0s4gfj4"]
+[gd_scene load_steps=15 format=3 uid="uid://cg3jfm0s4gfj4"]
 
 [ext_resource type="Script" uid="uid://beu8wwcx7tqfb" path="res://player/character.gd" id="1_1l1n4"]
-[ext_resource type="Texture2D" uid="uid://bb6g3dced0f1p" path="res://sprite/sprite_sheet.png" id="1_1w67s"]
+[ext_resource type="Texture2D" uid="uid://b1isr0ecuom47" path="res://sprite/sprites3.png" id="2_4gtrb"]
 [ext_resource type="AudioStream" uid="uid://dw8xq208my0yn" path="res://audio/sfx/footstep.wav" id="3_0rvpn"]
 [ext_resource type="Script" uid="uid://dp52221pgdue5" path="res://player/sprite.gd" id="3_b4qc5"]
 [ext_resource type="PackedScene" uid="uid://ct3yu450u2px6" path="res://game/animation_player.tscn" id="4_afh3s"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://b2vlsc355dvif" path="res://audio/sfx/footstep3.wav" id="5_o6jyn"]
 [ext_resource type="Script" uid="uid://ciudolm50y8x1" path="res://player/footsteps_component.gd" id="5_tgjim"]
 [ext_resource type="Script" uid="uid://bk5wwyum4pcer" path="res://player/projectile_shooter.gd" id="8_jmpku"]
+[ext_resource type="Script" uid="uid://cg3r1jhvqifo" path="res://player/debug_overlay_player.gd" id="10_ga8vp"]
+[ext_resource type="PackedScene" uid="uid://lrh43m3tapx6" path="res://player/hurt_tween_comp.tscn" id="11_4gtrb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gtrb"]
 radius = 7.0
@@ -39,7 +41,7 @@ shape = SubResource("CircleShape2D_4gtrb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
-texture = ExtResource("1_1w67s")
+texture = ExtResource("2_4gtrb")
 hframes = 4
 frame = 1
 region_enabled = true
@@ -65,6 +67,30 @@ one_shot = true
 
 [node name="additional_weapons" type="Node2D" parent="ProjectileShooter"]
 
+[node name="debug overlay DELETE LATER" type="Node2D" parent="ProjectileShooter"]
+visible = false
+position = Vector2(-25, -84)
+script = ExtResource("10_ga8vp")
+
+[node name="mouse" type="Label" parent="ProjectileShooter/debug overlay DELETE LATER"]
+offset_left = -25.0
+offset_right = 28.0
+offset_bottom = 23.0
+text = "mouse"
+
+[node name="player_pos" type="Label" parent="ProjectileShooter/debug overlay DELETE LATER"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 71.0
+offset_bottom = 39.0
+text = "setsgrs"
+
+[node name="projectile_direction" type="Label" parent="ProjectileShooter/debug overlay DELETE LATER"]
+offset_top = 37.0
+offset_right = 47.0
+offset_bottom = 60.0
+text = "sgtsrg"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="hurtbox" type="Area2D" parent="."]
@@ -73,5 +99,7 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 shape = SubResource("CircleShape2D_jmpku")
+
+[node name="hurt_tween_comp" parent="." instance=ExtResource("11_4gtrb")]
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

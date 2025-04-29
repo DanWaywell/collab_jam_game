@@ -43,10 +43,14 @@ func fire_projectile(direction):
 	for weapon in other_weapons:
 		weapon.fire()
 	
-
+var last_direction 
 
 func get_direction_between_mouse_and_player():
-	var mouse_pos = get_viewport().get_mouse_position()
+	var mouse_pos = get_global_mouse_position()
+#	print("player_pos", player.position)
+#	print("mouse_pos", mouse_pos)
 	var direction = mouse_pos - player.position
 	direction = direction.normalized()
+	last_direction = direction
+#	print("direction", direction)
 	return direction

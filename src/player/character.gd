@@ -70,6 +70,7 @@ func take_damage(damage, _source: CharacterBody2D, color: Color):
 		GlobalGameManager.player_takes_damage.emit()
 	GlobalGameManager.player_got_hit.emit()
 	GlobalGameManager.popup_numbers.display_numbers(damage, global_position,self, false, color)
+	$hurt_tween_comp.hurt()
 
 
 func check_health():
@@ -82,5 +83,5 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		AudioGlobal.play_sound("magic_explosion1", -20.0)
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_player.emit(global_position)
-		print("AoE Enemy hit")
+	#	print("AoE Enemy hit")
 	pass # Replace with function body.

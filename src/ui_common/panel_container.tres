@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bh11fujf0shvo"]
+
+[ext_resource type="Texture2D" uid="uid://cg54j1urmr3uj" path="res://sprite/panel_sprite.png" id="1_r8ogl"]
+
+[resource]
+content_margin_left = 40.0
+content_margin_right = 40.0
+texture = ExtResource("1_r8ogl")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.2, 0.117647, 0.231373, 1)

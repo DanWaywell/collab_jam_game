@@ -14,7 +14,7 @@ func _ready() -> void:
 	spawn()
 
 func spawn():
-	print_debug("spawned bat")
+	#print_debug("spawned bat")
 	GlobalGameManager.mob_spawned.emit(mob)
 
 func attack_player(body: Player):
@@ -56,7 +56,7 @@ func take_damage(damage, source: CharacterBody2D, color: Color):
 	mob.health -= damage
 	mob.last_hit_source = source
 	GlobalGameManager.popup_numbers.display_numbers(damage, mob.global_position, mob, false, color)
-
+	$Path2D/PathFollow2D/Opponent/hurt_tween_comp.hurt()
 
 func check_health():
 	if mob.health < 1:
@@ -93,8 +93,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_mob.emit(mob.global_position)
 		AudioGlobal.play_sound("magic_explosion2", -20.0)
-		print("explosion hit")
+	#	print("explosion hit")
 	if area is AoE:
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_mob.emit(mob.global_position)
-		print("AoE hit")
+	#	print("AoE hit")

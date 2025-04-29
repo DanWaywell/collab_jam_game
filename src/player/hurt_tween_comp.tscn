@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lrh43m3tapx6"]
+
+[ext_resource type="Script" uid="uid://dwhyuvd1xtvrt" path="res://player/hurt_tween_comp.gd" id="1_k54fv"]
+
+[node name="hurt_tween_comp" type="Node"]
+script = ExtResource("1_k54fv")

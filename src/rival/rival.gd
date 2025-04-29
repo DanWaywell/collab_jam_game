@@ -24,7 +24,7 @@ var targets: Array [Mob]
 func target_spotted(new_target: Mob):
 	targets.append(new_target)
 	if current_target == null:
-		print("target_spotted: new target, target was null")
+		#print("target_spotted: new target, target was null")
 		current_target = new_target
 		check_append_to_targets(new_target)
 	else:
@@ -46,13 +46,13 @@ func check_append_to_near_targets(new_target):
 func change_target(near_target: Mob):
 	check_append_to_targets(near_target)
 	if current_target == null:
-		print("change_target: target was null")
+	#	print("change_target: target was null")
 		current_target = near_target
 		return
 	else:
 		await get_tree().create_timer(0.3).timeout
 		current_target = near_target
-		print("change_target: new near target")
+	#	print("change_target: new near target")
 
 		
 func attack():
@@ -60,7 +60,7 @@ func attack():
 		if current_target:
 			if target_in_reach.has(current_target):
 				if current_target.health > 0:
-					print("Rival damaged Mob")
+			#		print("Rival damaged Mob")
 					current_target.take_damage(1,self, GlobalData.rival_color)
 					attacking = true
 					#await get_tree().create_timer(0.8).timeout
@@ -99,7 +99,7 @@ func start_patrolling():
 	on_patrol = true
 	randx = randi_range(-160,160)
 	randy = randi_range(-160,160)
-	print("RANDI VECTOR", Vector2(randx, randy))
+#	print("RANDI VECTOR", Vector2(randx, randy))
 	random_pos = arena_middle + (Vector2(randx,randy))
 #	input_direction = random_pos
 	new_point = false
@@ -120,7 +120,7 @@ func _physics_process(_delta: float) -> void:
 			GlobalGameManager.debug_overlay.current_target_rival.text = str(current_target.name)
 			input_direction = current_target.global_position - position
 		else:
-			print("start patrol")
+		#	print("start patrol")
 			start_patrolling()
 
 	

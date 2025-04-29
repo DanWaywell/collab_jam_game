@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brlswkvg3lovb"]
+[gd_scene load_steps=14 format=3 uid="uid://divvvg1gl3dxg"]
 
 [ext_resource type="Script" uid="uid://bvg2rethq5lyw" path="res://opponent/opponent_bat.gd" id="1_bbxf1"]
 [ext_resource type="Texture2D" uid="uid://cn65oxi778gtl" path="res://sprite/sprite_sheet_2.png" id="2_bbxf1"]

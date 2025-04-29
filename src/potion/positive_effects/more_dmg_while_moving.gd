@@ -12,7 +12,7 @@ func apply():
 	
 func effect_process():
 	if calculated == true:
-		print(GlobalData.velocity)
+	#	print(GlobalData.velocity)
 		if GlobalData.velocity != Vector2.ZERO:
 			GlobalData.dmg = calculated_dmg
 		else:
@@ -22,5 +22,5 @@ func effect_process():
 func calc_dmg():
 	base_dmg = GlobalData.dmg
 	calculated_dmg = GlobalData.dmg + added_dmg
-	print("calc dmg = ", calculated_dmg)
+	#print("calc dmg = ", calculated_dmg)
 	calculated = true

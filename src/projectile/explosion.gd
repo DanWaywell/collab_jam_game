@@ -27,7 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 				body.take_damage(damage, source, color)
 				
 				GlobalGameManager.explosion_hits_mob.emit(body.global_position)
-				print_debug("explosion hit")
+			#	print_debug("explosion hit")
 
 
 

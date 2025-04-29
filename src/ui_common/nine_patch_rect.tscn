@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqc8rylyvo5st"]
+
+[ext_resource type="Texture2D" uid="uid://cg54j1urmr3uj" path="res://sprite/panel_sprite.png" id="1_4qax1"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+modulate = Color(0.199615, 0.119343, 0.23216, 1)
+z_index = -1
+offset_left = -32.0
+offset_right = 115.0
+offset_bottom = 338.0
+texture = ExtResource("1_4qax1")
+patch_margin_left = 32
+patch_margin_top = 16
+patch_margin_right = 32
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

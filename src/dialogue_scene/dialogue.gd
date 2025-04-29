@@ -63,7 +63,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("mouseclick") or event.is_action_pressed("ui_accept"):
 			get_viewport().set_input_as_handled()
 			get_forward.emit()
-			print("forward")
+			#print("forward")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if tutorial_ongoing == true and letters_appearing == true:
@@ -96,7 +96,7 @@ func display_letter(flabel: RichTextLabel):
 	#	letters_appearing = false
 		pass
 		if flabel.visible_characters == flabel.text.length():
-			print("all visible")
+			#print("all visible")
 			text_stopped.emit()
 			letters_appearing = false
 			break

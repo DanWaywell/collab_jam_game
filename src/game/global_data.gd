@@ -6,6 +6,8 @@ var number_of_opponents = 4
 var player: Player 
 ##weapons to add
 var weapon_to_add: Array[String]
+var rounds: int
+var win: bool = false
 
 func get_player(new_player):
 	player = new_player
@@ -13,7 +15,21 @@ func get_player(new_player):
 		for weapon in weapon_to_add:
 			player.add_weapon(weapon)
 	
-	
+#Score:
+var potions: int
+#player
+var enemies_killed_player: int
+var bats: int
+var blobs: int
+var pawns: int
+
+#rival
+var renemies_killed_player: int
+var rbats: int
+var rblobs: int
+var rpawns: int
+
+
 #player vars
 var speed := 60.0
 var acceleration := 10.0
@@ -34,6 +50,15 @@ func reset():
 	shaking_hands = false
 	weapon_to_add.clear()
 	enemyaoe = false
+	potions = 0
+	enemies_killed_player = 0
+	bats = 0
+	blobs = 0
+	pawns = 0
+	GlobalGameManager.player_score = 0
+	GlobalGameManager.rival_score = 0
+	rounds = 0
+	win = false
 
 #colors 
 var enemy_color: Color = Color(0.81, 0.199, 0.0)

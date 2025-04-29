@@ -98,10 +98,10 @@ func count_kills(_mob):
 var quick_combo_start: bool = false
 
 func quickness_combo(_mob):
-	print("quick combo")
+	#print("quick combo")
 	if quick_combo_start == false:
 		quickness_kill_combo += 1
-		print("quick combo started")
+	#	print("quick combo started")
 		kill_timer.start(time_between_kills)
 		quick_combo_start = true
 		quick_combo_streak.emit(quickness_kill_combo)
@@ -116,7 +116,7 @@ func _on_quick_kill_timer_timeout() -> void:
 	var last_combo = quickness_kill_combo
 	if last_combo > 1:
 		crowd_activation -= (last_combo * 0.1)
-	print("quick combo timeout!")
+#	print("quick combo timeout!")
 	quickness_kill_combo = 0
 	quick_combo_start = false
 	quick_combo_end.emit()
@@ -145,10 +145,10 @@ func count_kills_rival(_mob):
 var quick_combo_start_rival: bool = false
 
 func quickness_combo_rival(_mob):
-	print("quick combo rival")
+	#print("quick combo rival")
 	if quick_combo_start_rival == false:
 		quickness_kill_combo_rival += 1
-		print("quick combo started rival")
+	#	print("quick combo started rival")
 		kill_timer_rival.start(time_between_kills_rival)
 		quick_combo_start_rival = true
 		return
@@ -162,7 +162,7 @@ func _on_quick_kill_timer_rival_timeout() -> void:
 	var last_combo = quickness_kill_combo_rival
 	if last_combo > 1:
 		crowd_activation += (last_combo * 0.1)
-	print("quick combo rival timeout!")
+	#print("quick combo rival timeout!")
 	quickness_kill_combo_rival = 0
 	quick_combo_start_rival = false
 	pass # Replace with function body.

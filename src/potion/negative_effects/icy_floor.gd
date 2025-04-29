@@ -4,6 +4,6 @@ class_name IcyFloor extends NegPotionComp
 @export var modifier: float
 func apply():
 	GlobalData.deceleration = modifier
-	print("applied icy floor")
+	#print("applied icy floor")
 	#show the UI / HUD Icon 
 	pass

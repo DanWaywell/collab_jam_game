@@ -87,6 +87,7 @@ func take_damage(damage, source: CharacterBody2D, color: Color):
 	health -= damage
 	last_hit_source = source
 	GlobalGameManager.popup_numbers.display_numbers(damage, global_position, self, false, color)
+	$hurt_tween_comp.hurt()
 
 var defeated = false
 func check_health():
@@ -124,8 +125,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_mob.emit(global_position)
 		AudioGlobal.play_sound("magic_explosion2", -20.0)
-		print("explosion hit")
+	#	print("explosion hit")
 	if area is AoE:
 		take_damage(area.damage, area.source, area.color)
 		GlobalGameManager.explosion_hits_mob.emit(global_position)
-		print("AoE hit")
+	#	print("AoE hit")
