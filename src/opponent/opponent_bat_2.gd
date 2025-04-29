@@ -64,8 +64,12 @@ func check_health():
 			if mob.defeated == false:
 				if mob.last_hit_source is Player:
 					GlobalGameManager.enemy_killed_by_player.emit(mob)
+					GlobalData.bats += 1
+					GlobalData.enemies_killed_player += 1
 				if mob.last_hit_source is Rival:
 					GlobalGameManager.enemy_killed_by_rival.emit(mob)
+					GlobalData.rbats += 1
+					GlobalData.renemies_killed_player += 1
 				mob.defeated = true
 			# wait a bit before queue_free to show the dmg number
 		mob.defeated = true

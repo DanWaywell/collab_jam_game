@@ -66,8 +66,12 @@ func check_health():
 				
 				if mob.last_hit_source is Player:
 					GlobalGameManager.enemy_killed_by_player.emit(mob)
+					GlobalData.blobs += 1
+					GlobalData.enemies_killed_player += 1
 				if mob.last_hit_source is Rival:
 					GlobalGameManager.enemy_killed_by_rival.emit(mob)
+					GlobalData.rblobs += 1
+					GlobalData.renemies_killed_player += 1
 				var blob_aoe = aoe_field.instantiate()
 				#play blob sound
 				blob_aoe.global_position = mob.global_position

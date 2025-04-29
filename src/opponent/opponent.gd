@@ -96,8 +96,12 @@ func check_health():
 			if defeated == false:
 				if last_hit_source is Player:
 					GlobalGameManager.enemy_killed_by_player.emit(self)
+					GlobalData.pawns += 1
+					GlobalData.enemies_killed_player += 1
 				if last_hit_source is Rival:
 					GlobalGameManager.enemy_killed_by_rival.emit(self)
+					GlobalData.rpawns += 1
+					GlobalData.renemies_killed_player += 1
 				defeated = true
 			# wait a bit before queue_free to show the dmg number
 		defeated = true

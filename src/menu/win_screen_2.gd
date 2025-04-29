@@ -72,11 +72,8 @@ func _process(_delta: float) -> void:
 	bats_killed_rival.text = str(rbats)
 	blobs_killed_rival.text = str(rblobs)
 	
-	
-	
 func tween_number(variable,number:int):
 	create_tween().tween_property(self,variable,number, 1)
-	
 	
 
 
