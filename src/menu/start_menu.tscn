@@ -94,6 +94,8 @@ text = "The"
 fit_content = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="Node2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.564706)
 z_index = 1
 offset_left = 60.0
 offset_top = 12.0

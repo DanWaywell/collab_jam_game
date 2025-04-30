@@ -93,6 +93,10 @@ offset_bottom = 60.0
 text = "sgtsrg"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -105
+limit_top = -58
+limit_right = 740
+limit_bottom = 460
 
 [node name="hurtbox" type="Area2D" parent="."]
 collision_layer = 0

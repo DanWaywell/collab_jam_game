@@ -46,11 +46,11 @@ func text_1():
 	display_text(bubble_text, bubble)
 	pass
 
-
+@export var random_text:Array[String]
 func text_2():
 	label.position = Vector2(353.0,196.0)
 	bubble.position = Vector2(353.0,196.0)
-	var text1 = "Oh hey, it's you again."
+	var text1 = random_text.pick_random()
 	var bubble_text = "[shake rate=6.0 level=12 connected=1]" + text1
 	display_text(text1, label)
 	display_text(bubble_text, bubble)
