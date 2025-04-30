@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6au0e78rko7r"]
+[gd_scene load_steps=18 format=3 uid="uid://6au0e78rko7r"]
 
 [ext_resource type="Script" uid="uid://cvpwj068duxtn" path="res://audio/audio_global.gd" id="1_lj2qa"]
 [ext_resource type="AudioStream" uid="uid://bmg3ebdsjar2c" path="res://audio/sfx/button_1.wav" id="2_tcplg"]
@@ -14,9 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://ddnen1yidnap0" path="res://audio/sfx/plop.wav" id="8_bayjd"]
 [ext_resource type="AudioStream" uid="uid://crcr8n0wtidl5" path="res://audio/cheers/pos_crowd_ole.mp3" id="9_bayjd"]
 [ext_resource type="AudioStream" uid="uid://b5opjqnjheoc3" path="res://audio/cheers/pos_crowd_small_fade.mp3" id="10_ck7vq"]
+[ext_resource type="AudioStream" uid="uid://bief4svscyilt" path="res://audio/music/bagpulp_mild.mp3" id="15_41rit"]
+[ext_resource type="AudioStream" uid="uid://ch066y8ldxbic" path="res://audio/music/the_floor_is_magic.mp3" id="16_gcg64"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_tcplg"]
-clip_count = 4
+clip_count = 5
 clip_0/name = &"OPENINGmusic"
 clip_0/stream = ExtResource("3_weu62")
 clip_0/auto_advance = 0
@@ -27,7 +29,11 @@ clip_2/name = &"FIGHTmusic"
 clip_2/stream = ExtResource("5_40v7m")
 clip_2/auto_advance = 0
 clip_3/name = &"DIALOGUEmusic"
+clip_3/stream = ExtResource("15_41rit")
 clip_3/auto_advance = 0
+clip_4/name = &"WINmusic"
+clip_4/stream = ExtResource("16_gcg64")
+clip_4/auto_advance = 0
 initial_clip = 1
 _transitions = {
 Vector2i(-1, -1): {
@@ -35,6 +41,18 @@ Vector2i(-1, -1): {
 "fade_mode": 3,
 "from_time": 0,
 "to_time": 1
+},
+Vector2i(2, 3): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(3, 2): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
 }
 }
 

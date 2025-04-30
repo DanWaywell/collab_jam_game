@@ -19,6 +19,8 @@ func display_numbers(value: float, _target_position: Vector2,target, _is_critica
 		number.set_region_rect(Rect2(0.0, 32.0, 80.0, 32.0))
 	if color == GlobalData.rival_color:
 		number.set_region_rect(Rect2(0.0, 64.0, 80.0, 32.0))
+	if color == Color.SEA_GREEN:
+		number.set_region_rect(Rect2(0.0, 96.0, 80.0, 32.0))
 	if _is_critical:
 		color = "#B22"
 		number.scale = Vector2(1.5,1.5)

@@ -3,7 +3,7 @@ extends CenterContainer
 func _ready() -> void:
 	Hud.visible = false
 	show_score()
-	AudioGlobal.set_music_state(AudioGlobal.STATE.OPENING)
+	
 
 		
 	
@@ -53,7 +53,9 @@ func show_score():
 		$VBoxContainer/TitleLabel.text = "Win!"
 		$"VBoxContainer/VBoxContainer/new_game+".visible = true
 		$"VBoxContainer/VBoxContainer/new_game+".disabled = false
+		AudioGlobal.set_music_state(AudioGlobal.STATE.WIN)
 	else:
+		AudioGlobal.set_music_state(AudioGlobal.STATE.OPENING)
 		$VBoxContainer/TitleLabel.text = "Game over..."
 	pass
 	tween_number("pl_score", GlobalGameManager.player_score)

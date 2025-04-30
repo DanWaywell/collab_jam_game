@@ -20,7 +20,7 @@ func gain_health():
 		gained_health = true
 		await get_tree().create_timer(6).timeout
 		GlobalData.health += GlobalData.regen
-		GlobalGameManager.popup_numbers.display_numbers_label(float(GlobalData.regen), player.global_position,player, false, color)
+		GlobalGameManager.popup_numbers.display_numbers(float(GlobalData.regen), player.global_position,player, false, color)
 		GlobalGameManager.player_hp.emit(GlobalData.regen)
 		gained_health = false
 		if GlobalData.health > 15:
@@ -28,7 +28,7 @@ func gain_health():
 
 func gain_hp():
 	if GlobalData.regen_on_5_kill > 0 and GlobalData.health < 15:
-		GlobalGameManager.popup_numbers.display_numbers_label(float(GlobalData.regen_on_5_kill), player.global_position,player, false, color)
+		GlobalGameManager.popup_numbers.display_numbers(float(GlobalData.regen_on_5_kill), player.global_position,player, false, color)
 		GlobalData.health += GlobalData.regen_on_5_kill
 		GlobalGameManager.player_hp.emit(GlobalData.regen_on_5_kill)
 		if GlobalData.health > 15:

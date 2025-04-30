@@ -20,6 +20,7 @@ var potion3: Potion
 @onready var neg_effect: RichTextLabel = %neg_effect
 
 func _ready() -> void:
+	AudioGlobal.set_music_state(AudioGlobal.STATE.DIALOGUE)
 	Hud.visible = false
 	potion1 = PotionEffects.make_random_potion()
 	potion2 = PotionEffects.make_random_potion()

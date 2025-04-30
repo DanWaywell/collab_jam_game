@@ -77,6 +77,7 @@ OPENING,
 MAINMENU,
 FIGHT,
 DIALOGUE,
+WIN
 }
 
 @onready var music_player = $AudioStreamPlayer
@@ -108,6 +109,13 @@ func set_music_state(curr_state):
 			previous_state = curr_state # updates previous state in case of combat
 			pass
 		STATE.DIALOGUE:
+			if music_player.stream_paused == true:
+				music_player.stream_paused = false
+			var music:String = str(STATE.keys()[music_state]) + "music"
+			music_player["parameters/switch_to_clip"] = music
+			previous_state = curr_state # updates previous state in case of combat
+			pass
+		STATE.WIN:
 			if music_player.stream_paused == true:
 				music_player.stream_paused = false
 			var music:String = str(STATE.keys()[music_state]) + "music"
