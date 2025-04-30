@@ -213,7 +213,7 @@ metadata/_custom_type_script = "uid://3nn0epjcxgdc"
 [sub_resource type="Resource" id="Resource_ouuda"]
 script = ExtResource("20_3r5sx")
 max_counter = 5
-name = "juice"
+name = " juice"
 description = "If you gain 5 health back:"
 description_small = "Gain 5 HP"
 condition_node_path = "res://potion/conditions/gained_health_condition.tscn"
