@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://xcdvgkn005ur"]
+[gd_scene load_steps=6 format=3 uid="uid://xcdvgkn005ur"]
 
 [ext_resource type="Script" uid="uid://b15yelixhw54w" path="res://game/global_game_manager.gd" id="1_7rmnk"]
 [ext_resource type="Script" uid="uid://cwmktv3cd0l8d" path="res://game/debug_overlay.gd" id="2_eh8v3"]
 [ext_resource type="Script" uid="uid://duyxmk8ck8qx5" path="res://game/dmg_numbers.gd" id="3_6vcaf"]
+[ext_resource type="Script" uid="uid://bsfx0ej5u2slu" path="res://game/cheers.gd" id="4_1n6ps"]
 
 [sub_resource type="Theme" id="Theme_l7gmg"]
 Label/colors/font_color = Color(1, 0.292141, 0.752612, 1)
@@ -244,6 +245,9 @@ layout_mode = 2
 
 [node name="dmg_numbers" type="Node" parent="."]
 script = ExtResource("3_6vcaf")
+
+[node name="cheers" type="Node" parent="."]
+script = ExtResource("4_1n6ps")
 
 [connection signal="timeout" from="quick_kill_timer" to="." method="_on_quick_kill_timer_timeout"]
 [connection signal="timeout" from="quick_kill_timer_rival" to="." method="_on_quick_kill_timer_rival_timeout"]

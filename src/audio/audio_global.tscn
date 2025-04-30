@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6au0e78rko7r"]
+[gd_scene load_steps=15 format=3 uid="uid://6au0e78rko7r"]
 
 [ext_resource type="Script" uid="uid://cvpwj068duxtn" path="res://audio/audio_global.gd" id="1_lj2qa"]
 [ext_resource type="AudioStream" uid="uid://bmg3ebdsjar2c" path="res://audio/sfx/button_1.wav" id="2_tcplg"]
@@ -10,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://2puvescj4k7s" path="res://audio/sfx/magic_projectile.wav" id="5_kfn1p"]
 [ext_resource type="AudioStream" uid="uid://jj5ibpvcrar5" path="res://audio/sfx/magic_explosion1.wav" id="6_ev6ex"]
 [ext_resource type="AudioStream" uid="uid://cgcangudtg0sj" path="res://audio/sfx/magic_explosion2.wav" id="7_qaiuw"]
+[ext_resource type="AudioStream" uid="uid://dt56uo70bhdjg" path="res://audio/cheers/neg_crowd_middle.mp3" id="8_0mpjn"]
+[ext_resource type="AudioStream" uid="uid://crcr8n0wtidl5" path="res://audio/cheers/pos_crowd_ole.mp3" id="9_bayjd"]
+[ext_resource type="AudioStream" uid="uid://b5opjqnjheoc3" path="res://audio/cheers/pos_crowd_small_fade.mp3" id="10_ck7vq"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_tcplg"]
 clip_count = 4
@@ -37,6 +40,8 @@ Vector2i(-1, -1): {
 [node name="AudioGlobal" type="Node"]
 script = ExtResource("1_lj2qa")
 sfx = Array[Resource]([ExtResource("2_tcplg"), ExtResource("3_60upr"), ExtResource("4_72igx"), ExtResource("5_kfn1p"), ExtResource("6_ev6ex"), ExtResource("7_qaiuw")])
+sfx_voices = Array[Resource]([ExtResource("8_0mpjn"), ExtResource("9_bayjd"), ExtResource("10_ck7vq")])
+sfx_player_number2 = 10
 
 [node name="sounds" type="Node" parent="."]
 

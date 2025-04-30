@@ -25,8 +25,6 @@ signal explosion_hits_mob(position: Vector2)
 signal explosion_hits_player(position:Vector2)
 
 
-
-
 @onready var debug_overlay = $debug_overlay
 @onready var popup_numbers: DamageNumbers = $dmg_numbers
 

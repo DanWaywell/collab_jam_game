@@ -35,7 +35,7 @@ func _ready() -> void:
 		effect_node.add_child(stream)
 	for e in sfx_player_number2:
 		var stream2 = AudioStreamPlayer.new()
-		stream2.bus = "sound"
+		stream2.bus = "voices"
 		effect_node2.add_child(stream2)
 
 
