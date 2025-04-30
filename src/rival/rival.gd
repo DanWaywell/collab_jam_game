@@ -55,6 +55,7 @@ func change_target(near_target: Mob):
 	#	print("change_target: new near target")
 
 var rival_damage = 1
+var dmg_frequence = 0.8
 func attack():
 	if attacking == false:
 		if current_target:
@@ -67,7 +68,7 @@ func attack():
 					attack()
 					return
 	else:
-		await get_tree().create_timer(0.8).timeout
+		await get_tree().create_timer(dmg_frequence).timeout
 		attacking = false
 		attack()
 

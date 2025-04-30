@@ -94,6 +94,7 @@ func check_health():
 	if health < 1:
 		if is_instance_valid(last_hit_source):
 			if defeated == false:
+				AudioGlobal.play_sound("plop", -10.0)
 				if last_hit_source is Player:
 					GlobalGameManager.enemy_killed_by_player.emit(self)
 					GlobalData.pawns += 1

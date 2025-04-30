@@ -18,6 +18,12 @@ func _ready() -> void:
 	screen_size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
 	if AudioGlobal.music_state != AudioGlobal.STATE.FIGHT:
 		AudioGlobal.set_music_state(AudioGlobal.STATE.FIGHT)
+	if GlobalData.rounds >= 2 and GlobalData.rounds <4:
+		rival.rival_damage = 2
+		rival.dmg_frequence = 0.6
+	if GlobalData.rounds >= 4:
+		rival.rival_damage = 3
+		rival.dmg_frequence = 0.3
 	spawn_opponents(OPPONENT, GlobalData.number_of_opponents)
 	var bats_number =int(GlobalData.number_of_opponents/2.0)
 	spawn_opponents(BAT, bats_number)
@@ -32,10 +38,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if arena.get_child_count() == 0 and is_instance_valid(player):
 		GlobalData.rounds += 1
-		if GlobalData.rounds >= 2 and GlobalData.rounds <4:
-			rival.rival_damage = 2
-		if GlobalData.rounds >= 4:
-			rival.rival_damage = 3
 		if GlobalData.rounds == 7:
 			if GlobalGameManager.player_score > GlobalGameManager.rival_score:
 				GlobalData.win = true

@@ -93,6 +93,7 @@ func _on_potion_3_pressed() -> void:
 	update_description(potion3)
 
 func _on_accept_button_pressed() -> void:
+	AudioGlobal.play_sound("button_1", -15)
 	if picked_potion != null:
 		PotionEffects.add_potion(picked_potion)
 		goto_next_round()

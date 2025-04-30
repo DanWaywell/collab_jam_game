@@ -8,6 +8,8 @@ func _ready() -> void:
 		
 	
 func _on_start_button_button_up() -> void:
+	AudioGlobal.play_sound("button_1", -15)
+	GlobalGameManager.new_game_plus = 0
 	GlobalData.number_of_opponents = 4
 	GlobalData.reset()
 	PotionEffects.reset()
@@ -87,8 +89,11 @@ func tween_number(variable,number:int):
 
 
 func _on_new_game_pressed() -> void:
+	GlobalData.number_of_opponents = 6
+	GlobalGameManager.new_game_plus += 1
+	AudioGlobal.play_sound("button_1", -15)
 	GlobalData.reset()
 	PotionEffects.reset()
 	Hud.reset()
-	get_tree().change_scene_to_file("res://dialogue_scene/start.tscn")
+	get_tree().change_scene_to_file("res://game/game.tscn")
 	pass # Replace with function body.

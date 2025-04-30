@@ -33,7 +33,7 @@ var player_score: int
 var rival_score: int
 signal player_score_changed
 signal rival_score_changed
-
+var new_game_plus = 0
 func _ready() -> void:
 	enemy_killed_by_player.connect(quickness_combo)
 	enemy_killed_by_player.connect(count_kills)
@@ -50,7 +50,11 @@ SHOP,
 }
 
 func count_player_score(score):
-	player_score += score
+	if new_game_plus > 0:
+		@warning_ignore("integer_division")
+		player_score += (score + int((new_game_plus/10)^2))
+	else:
+		player_score += score
 	#player_score_changed.emit()
 
 func count_rival_score(score):

@@ -63,7 +63,7 @@ func check_health():
 	if mob.health < 1:
 		if is_instance_valid(mob.last_hit_source):
 			if mob.defeated == false:
-				
+				AudioGlobal.play_sound("plop", -10.0)
 				if mob.last_hit_source is Player:
 					GlobalGameManager.enemy_killed_by_player.emit(mob)
 					GlobalData.blobs += 1
@@ -75,7 +75,8 @@ func check_health():
 				var blob_aoe = aoe_field.instantiate()
 				#play blob sound
 				blob_aoe.global_position = mob.global_position
-				add_sibling(blob_aoe)
+				var area_node = $"../../dmg_areas"
+				area_node.add_child(blob_aoe)
 				mob.defeated = true
 			# wait a bit before queue_free to show the dmg number
 

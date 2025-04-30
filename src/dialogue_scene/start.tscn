@@ -8,7 +8,7 @@
 [sub_resource type="Theme" id="Theme_ihgy0"]
 default_font = ExtResource("3_vuybj")
 default_font_size = 32
-RichTextLabel/colors/default_color = Color(0.775518, 0.308432, 0.738071, 1)
+RichTextLabel/colors/default_color = Color(0.560784, 0.254902, 0.498039, 1)
 RichTextLabel/fonts/normal_font = ExtResource("3_vuybj")
 
 [sub_resource type="Theme" id="Theme_vuybj"]
@@ -30,7 +30,7 @@ flat = true
 [node name="skip" type="Button" parent="Button"]
 layout_mode = 0
 offset_left = 461.0
-offset_top = 329.0
+offset_top = 322.0
 offset_right = 582.0
 offset_bottom = 379.0
 theme = ExtResource("2_8513s")
@@ -50,10 +50,10 @@ visible_characters_behavior = 1
 [node name="do_something" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 192.0
-offset_top = 140.0
-offset_right = 619.0
-offset_bottom = 244.0
+offset_left = 202.0
+offset_top = 141.0
+offset_right = 629.0
+offset_bottom = 245.0
 theme = SubResource("Theme_ihgy0")
 bbcode_enabled = true
 text = "[shake rate=6.0 level=12 connected=1]Do something !"
@@ -65,7 +65,7 @@ offset_top = 39.0
 offset_right = 526.0
 offset_bottom = 158.0
 theme = SubResource("Theme_vuybj")
-theme_override_colors/default_color = Color(0.882353, 0.733333, 0.552941, 1)
+theme_override_colors/default_color = Color(0.912527, 0.721064, 0.504704, 1)
 bbcode_enabled = true
 text = ". . . and this is how I'll bring an end to all evil and save cute, little kittens. "
 visible_characters_behavior = 1

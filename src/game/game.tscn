@@ -138,3 +138,5 @@ position = Vector2(554, 152)
 
 [node name="q1b" type="Marker2D" parent="."]
 position = Vector2(171, 342)
+
+[node name="dmg_areas" type="Node2D" parent="."]

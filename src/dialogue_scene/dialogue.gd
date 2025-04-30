@@ -44,7 +44,7 @@ func text_1():
 	await get_forward
 	
 	var text22 = "After winning the Royal Tournament, you'll all get autograms for your grandma!"
-	var text3 = "[center]Our saviour and hero! I hate that guy, someone's got to do _something_ ..."
+	var text3 = "[center]Our saviour and hero! I hate that guy, someone's got to do 'something' ..."
 	display_text(text22, label)
 	await display_text(text3, player_label)
 	await get_forward
